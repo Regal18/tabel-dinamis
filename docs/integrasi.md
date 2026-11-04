@@ -110,3 +110,4 @@ Menentukan awalan URL seluruh rute modul.
    ```bash
    php artisan migrate
    ```
+

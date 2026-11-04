@@ -8,9 +8,9 @@ Dokumen ini mendefinisikan spesifikasi REST API untuk Modul Tabel Dinamis BAPPED
 ---
 
 ## 1. Konfigurasi Awalan & Protokol (Base URL)
-- **Base Endpoint**: `/{prefix}/api` (Default: `/tabel-dinamis/api`).
+- **Base Endpoint Versi Web**: `/{prefix}/api` (Default: `/tabel-dinamis/api`). Menggunakan middleware `web` dan token CSRF.
+- **Base Endpoint Stateless Mobile (Flutter)**: `/api` (atau `/api/{prefix}`). Terdaftar di `routes/api.php`, **stateless** (tanpa session cookies dan tanpa token CSRF).
 - **Format Pertukaran Data**: JSON (`Content-Type: application/json` & `Accept: application/json`), kecuali `/export` yang mengembalikan berkas stream biner.
-- **Proteksi CSRF**: Untuk permintaan dari web client, sertakan header `X-CSRF-TOKEN`.
 - **Kebijakan Pembatasan Laju (Rate Limiting)**:
   - Endpoint Query Data & Referensi: **60 permintaan per menit** per IP/pengguna.
   - Endpoint Unduh Berkas Export: **10 permintaan per menit** per IP/pengguna.
