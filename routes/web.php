@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Redirect halaman utama ke modul Tabel Dinamis
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('tabel-dinamis.index');
 });
