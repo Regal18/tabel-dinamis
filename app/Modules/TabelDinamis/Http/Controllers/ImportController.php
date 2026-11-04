@@ -61,3 +61,4 @@ class ImportController extends Controller
         return $this->importService->downloadTemplate();
     }
 }
+

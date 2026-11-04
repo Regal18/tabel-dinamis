@@ -33,3 +33,4 @@ class ImportGagalException extends Exception
         return $this->daftarGalat;
     }
 }
+
