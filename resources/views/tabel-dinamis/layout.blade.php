@@ -61,7 +61,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--gray-800);
-            background: var(--gray-50);
+            background: #f4f6fb;
             font-size: 14px;
             -webkit-font-smoothing: antialiased;
         }

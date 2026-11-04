@@ -54,45 +54,67 @@
         }
     }
 
-    /* ===== Section Box ===== */
+    /* ===== Section Box (Efek Timbul / 3D Elevated Card) ===== */
     .td-section-box {
         background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-md);
-        padding: 1.25rem;
-        margin-bottom: 1rem;
-        transition: box-shadow var(--transition);
+        border: 1px solid rgba(15, 34, 64, 0.08);
+        border-radius: var(--radius-lg);
+        padding: 1.4rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 4px 6px -1px rgba(10, 22, 40, 0.04),
+                    0 10px 24px -4px rgba(10, 22, 40, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 1);
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.2s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .td-section-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3.5px;
+        background: linear-gradient(90deg, var(--deep-blue-600) 0%, var(--deep-blue-400) 100%);
     }
     .td-section-box:hover {
-        box-shadow: var(--shadow-sm);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px -4px rgba(10, 22, 40, 0.12),
+                    0 6px 14px -2px rgba(10, 22, 40, 0.06),
+                    inset 0 1px 0 rgba(255, 255, 255, 1);
+        border-color: rgba(26, 68, 128, 0.22);
     }
 
     /* ===== Section Header ===== */
     .td-section-header {
-        font-size: 0.9rem;
+        font-size: 0.925rem;
         font-weight: 700;
         color: var(--deep-blue-800);
         margin-bottom: 1rem;
         display: flex;
         align-items: center;
-        gap: 0.6rem;
-        padding-bottom: 0.65rem;
+        gap: 0.65rem;
+        padding-bottom: 0.75rem;
         border-bottom: 1px solid var(--gray-100);
     }
 
-    /* ===== Step Badge ===== */
+    /* ===== Step Badge (Embossed 3D Badge) ===== */
     .td-step-badge {
-        background: var(--deep-blue-600);
+        background: linear-gradient(135deg, var(--deep-blue-500) 0%, var(--deep-blue-700) 100%);
         color: var(--white);
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         font-weight: 700;
         flex-shrink: 0;
+        box-shadow: 0 3px 8px rgba(20, 52, 100, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        border: 1.5px solid rgba(255, 255, 255, 0.9);
     }
 
     /* ===== Search Input ===== */
@@ -145,22 +167,27 @@
         gap: 0.4rem;
         background: var(--white);
         border: 1.5px solid var(--gray-200);
-        padding: 0.4rem 0.7rem;
+        padding: 0.45rem 0.75rem;
         border-radius: var(--radius-sm);
         font-size: 0.8rem;
         color: var(--gray-700);
         cursor: pointer;
         user-select: none;
-        transition: all var(--transition);
+        box-shadow: 0 1px 3px rgba(10, 22, 40, 0.04);
+        transition: all 0.2s ease;
     }
     .td-checkbox-pill:hover {
         border-color: var(--deep-blue-300);
         background: var(--deep-blue-50);
+        box-shadow: 0 3px 8px rgba(10, 22, 40, 0.07);
+        transform: translateY(-1px);
     }
     .td-checkbox-pill:has(input:checked) {
         border-color: var(--deep-blue-500);
         background: var(--deep-blue-50);
-        color: var(--deep-blue-700);
+        color: var(--deep-blue-800);
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(26, 68, 128, 0.14);
     }
     .td-checkbox-pill input[type="checkbox"] {
         margin: 0;
@@ -173,29 +200,30 @@
     /* ===== Selected Data Container ===== */
     .td-selected-container {
         min-height: 90px;
-        background: var(--gray-50);
-        border: 2px dashed var(--gray-200);
+        background: var(--deep-blue-50);
+        border: 2px dashed var(--deep-blue-200);
         border-radius: var(--radius-md);
         padding: 0.85rem;
         display: flex;
         flex-direction: column;
-        gap: 0.6rem;
+        gap: 0.65rem;
     }
     .td-selected-item {
         background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-left: 3px solid var(--deep-blue-500);
-        padding: 0.7rem 0.85rem;
+        border: 1px solid rgba(20, 52, 100, 0.1);
+        border-left: 4px solid var(--deep-blue-500);
+        padding: 0.75rem 0.95rem;
         border-radius: var(--radius-sm);
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         gap: 0.6rem;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 2px 8px rgba(10, 22, 40, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1);
         transition: all var(--transition);
     }
     .td-selected-item:hover {
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 6px 16px rgba(10, 22, 40, 0.1);
+        transform: translateY(-2px);
     }
     .td-selected-title {
         font-weight: 600;
@@ -353,6 +381,26 @@
         padding: 0.65rem 1rem;
         margin-top: 0.5rem;
         font-size: 0.9rem;
+    }
+
+    /* ===== Result Table Card (Elevated 3D Depth) ===== */
+    #td-hasil-wrapper {
+        border: 1px solid rgba(15, 34, 64, 0.08);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 4px 6px -1px rgba(10, 22, 40, 0.04),
+                    0 10px 24px -4px rgba(10, 22, 40, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    #td-hasil-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3.5px;
+        background: linear-gradient(90deg, var(--deep-blue-600) 0%, var(--deep-blue-400) 100%);
     }
 </style>
 @endpush

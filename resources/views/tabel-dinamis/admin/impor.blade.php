@@ -14,10 +14,24 @@
     }
     .td-import-card {
         background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-md);
+        border: 1px solid rgba(15, 34, 64, 0.08);
+        border-radius: var(--radius-lg);
         padding: 1.5rem;
         margin-bottom: 1.25rem;
+        box-shadow: 0 4px 6px -1px rgba(10, 22, 40, 0.04),
+                    0 10px 24px -4px rgba(10, 22, 40, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .td-import-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3.5px;
+        background: linear-gradient(90deg, var(--deep-blue-600) 0%, var(--deep-blue-400) 100%);
     }
     .td-import-card h2 {
         font-size: 1.05rem;
