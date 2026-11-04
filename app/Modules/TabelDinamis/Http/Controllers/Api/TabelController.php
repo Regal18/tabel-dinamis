@@ -54,3 +54,4 @@ class TabelController extends Controller
         return $this->exportService->export($format, $hasil);
     }
 }
+

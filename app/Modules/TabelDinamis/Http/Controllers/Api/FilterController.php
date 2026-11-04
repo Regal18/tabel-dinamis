@@ -96,3 +96,4 @@ class FilterController extends Controller
         return response()->json($data);
     }
 }
+
