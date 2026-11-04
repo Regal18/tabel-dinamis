@@ -9,7 +9,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Modules\TabelDinamis\Http\Controllers\TabelController;
-use App\Modules\TabelDinamis\Http\Controllers\ImporController;
+use App\Modules\TabelDinamis\Http\Controllers\ImportController;
 use App\Modules\TabelDinamis\Http\Controllers\Api\FilterController;
 use App\Modules\TabelDinamis\Http\Controllers\Api\TabelController as ApiTabelController;
 
@@ -50,6 +50,7 @@ Route::prefix('api')
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->middleware($middlewareAdmin)->group(function () {
-    Route::get('/impor', [ImporController::class, 'form'])->name('tabel-dinamis.admin.impor.form');
-    Route::post('/impor', [ImporController::class, 'proses'])->name('tabel-dinamis.admin.impor.proses');
+    Route::get('/impor', [ImportController::class, 'form'])->name('tabel-dinamis.admin.impor.form');
+    Route::post('/impor', [ImportController::class, 'proses'])->name('tabel-dinamis.admin.impor.proses');
+    Route::get('/impor/template', [ImportController::class, 'template'])->name('tabel-dinamis.admin.impor.template');
 });

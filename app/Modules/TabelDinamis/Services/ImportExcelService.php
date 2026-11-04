@@ -2,99 +2,98 @@
 
 namespace App\Modules\TabelDinamis\Services;
 
+use App\Modules\TabelDinamis\Exceptions\ImportGagalException;
 use App\Modules\TabelDinamis\Models\DataIndikator;
 use App\Modules\TabelDinamis\Models\Indikator;
 use App\Modules\TabelDinamis\Models\Wilayah;
 use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Throwable;
 
 /**
- * Service untuk mengimpor data indikator dari file Excel / CSV.
+ * Service untuk impor data indikator dari berkas Excel (.xlsx).
  *
- * Aturan Bisnis & Keterbatasan:
- * 1. Atomik (DB::transaction) — jika ada baris error, tidak ada data yang disimpan.
- * 2. Idempoten (upsert) — data yang sudah ada akan diperbarui, yang baru akan ditambah.
- * 3. Seluruh validasi dilakukan SEBELUM menulis ke database.
- * 4. Laporan kesalahan mencantumkan nomor baris Excel asli (maksimal 100 kesalahan).
- * 5. KETERBATASAN: Impor hanya menambah dan memperbarui data, TIDAK MENGHAPUS data yang ada.
+ * Menerapkan Pseudocode 2A:
+ * 1. Atomik (DB::transaction) — jika ada 1 baris salah, seluruh transaksi dibatalkan.
+ * 2. Idempoten (upsert) — jika data diimpor berulang kali, tidak terjadi data dobel.
+ * 3. Seluruh baris divalidasi SEBELUM menulis ke database.
+ * 4. Menyebut nomor baris Excel asli pada setiap laporan galat.
+ * 5. Menggunakan tabel berawalan td_ (td_indikator, td_wilayah, td_data_indikator).
  */
 class ImportExcelService
 {
     /**
-     * Memproses file spreadsheet dan melakukan validasi serta penyimpanan data.
+     * Memproses berkas Excel dan melakukan validasi serta penyimpanan ke tabel td_data_indikator.
      *
-     * @param string $filePath Path absolut atau temporary file
+     * @param string $filePath Path berkas spreadsheet
      * @return array ['sukses' => bool, 'pesan' => string, 'total' => int, 'errors' => array]
+     * @throws ImportGagalException Jika validasi gagal
      */
     public function import(string $filePath): array
     {
-        $maksErrors = config('tabel_dinamis.maks_error_impor', 100);
+        $maksGalat = config('tabel_dinamis.maks_error_impor', 100);
         $tahunMin = config('tabel_dinamis.tahun_min', 2021);
         $tahunMax = config('tabel_dinamis.tahun_max', 2026);
 
-        // 1. Baca spreadsheet
+        // 1. Baca berkas spreadsheet
         try {
             $spreadsheet = IOFactory::load($filePath);
             $sheet = $spreadsheet->getActiveSheet();
             $rows = $sheet->toArray(null, true, true, false);
         } catch (Throwable $e) {
-            return [
-                'sukses' => false,
-                'pesan' => 'Gagal membaca file: format file tidak valid atau rusak.',
-                'total' => 0,
-                'errors' => ['File tidak dapat dibaca oleh spreadsheet reader: ' . $e->getMessage()],
-            ];
+            throw new ImportGagalException(
+                'Berkas tidak dapat dibaca atau rusak.',
+                ['Format berkas tidak valid untuk dibaca oleh parser Excel: ' . $e->getMessage()]
+            );
         }
 
         if (empty($rows) || count($rows) < 2) {
-            return [
-                'sukses' => false,
-                'pesan' => 'File kosong atau tidak memiliki baris data (minimal 1 baris header dan 1 baris data).',
-                'total' => 0,
-                'errors' => ['File kosong atau hanya berisi baris header.'],
-            ];
+            throw new ImportGagalException(
+                'Berkas kosong atau tidak memuat baris data.',
+                ['Berkas harus memuat minimal baris 1 sebagai header dan baris 2 sebagai data.']
+            );
         }
 
-        // 2. Petakan header kolom
+        // 2. Petakan kolom header (Baris 1)
         $header = array_map(function ($col) {
             return strtolower(trim((string)$col));
         }, $rows[0]);
 
         $colMap = $this->identifikasiKolom($header);
-        $wajib = ['kode_indikator', 'nama_wilayah', 'tahun', 'jenis'];
-        $missing = [];
-        foreach ($wajib as $f) {
+        $kolomWajib = ['kode_indikator', 'nama_wilayah', 'tahun', 'jenis'];
+        $kolomHilang = [];
+        foreach ($kolomWajib as $f) {
             if (!isset($colMap[$f])) {
-                $missing[] = $f;
+                $kolomHilang[] = $f;
             }
         }
 
-        if (!empty($missing)) {
-            return [
-                'sukses' => false,
-                'pesan' => 'Header kolom tidak lengkap. Kolom wajib: ' . implode(', ', $missing),
-                'total' => 0,
-                'errors' => ['Header kolom wajib yang tidak ditemukan: ' . implode(', ', $missing)],
-            ];
+        if (!empty($kolomHilang)) {
+            throw new ImportGagalException(
+                'Header kolom tidak lengkap.',
+                ['Kolom wajib yang tidak ditemukan pada baris 1: ' . implode(', ', $kolomHilang)]
+            );
         }
 
-        // 3. Muat referensi indikator & wilayah ke memory untuk validasi cepat
+        // 3. Muat data referensi dari database (tabel td_indikator dan td_wilayah)
         $indikatorMap = Indikator::pluck('id', 'kode')->toArray(); // ['KODE' => id]
         $wilayahMap = Wilayah::all()->mapWithKeys(function ($w) {
             return [mb_strtolower(trim($w->nama)) => $w->id];
         })->toArray(); // ['nama_lower' => id]
 
-        $errors = [];
+        $daftarGalat = [];
         $dataValid = [];
 
-        // 4. Tahap Validasi Baris demi Baris SEBELUM Simpan
+        // 4. Tahap Validasi Baris demi Baris SEBELUM Simpan (Pseudocode 2A)
         for ($i = 1; $i < count($rows); $i++) {
-            $rowNum = $i + 1; // 1-based index di Excel
+            $nomorBaris = $i + 1; // 1-based index pada Excel asli
             $row = $rows[$i];
 
-            // Abaikan baris kosong total
-            if (empty(array_filter($row, fn($val) => $val !== null && trim((string)$val) !== ''))) {
+            // Abaikan jika baris benar-benar kosong
+            if (empty(array_filter($row, fn($v) => $v !== null && trim((string)$v) !== ''))) {
                 continue;
             }
 
@@ -105,52 +104,50 @@ class ImportExcelService
             $nilaiRaw = isset($colMap['nilai']) ? $row[$colMap['nilai']] : null;
             $sumber = isset($colMap['sumber']) ? trim((string)$row[$colMap['sumber']]) : null;
 
-            // Validasi Kode Indikator
+            // Validasi Kode Indikator (harus ada di tabel td_indikator)
             if ($kodeIndikator === '') {
-                $this->tambahError($errors, "Baris {$rowNum}: Kode indikator wajib diisi.", $maksErrors);
+                $this->catatGalat($daftarGalat, "Baris {$nomorBaris}: Kode indikator wajib diisi.", $maksGalat);
             } elseif (!isset($indikatorMap[$kodeIndikator])) {
-                $this->tambahError($errors, "Baris {$rowNum}: Kode indikator '{$kodeIndikator}' tidak ditemukan di database.", $maksErrors);
+                $this->catatGalat($daftarGalat, "Baris {$nomorBaris}: Kode indikator '{$kodeIndikator}' tidak ditemukan di database (tabel td_indikator).", $maksGalat);
             }
 
-            // Validasi Wilayah
+            // Validasi Wilayah (harus ada di tabel td_wilayah)
             $wilayahLower = mb_strtolower($namaWilayah);
             if ($namaWilayah === '') {
-                $this->tambahError($errors, "Baris {$rowNum}: Nama wilayah wajib diisi.", $maksErrors);
+                $this->catatGalat($daftarGalat, "Baris {$nomorBaris}: Nama wilayah wajib diisi.", $maksGalat);
             } elseif (!isset($wilayahMap[$wilayahLower])) {
-                $this->tambahError($errors, "Baris {$rowNum}: Wilayah '{$namaWilayah}' tidak dikenali dalam daftar wilayah resmi.", $maksErrors);
+                $this->catatGalat($daftarGalat, "Baris {$nomorBaris}: Nama wilayah '{$namaWilayah}' tidak dikenali di daftar wilayah (tabel td_wilayah).", $maksGalat);
             }
 
-            // Validasi Tahun
+            // Validasi Tahun (harus integer 2021-2026)
             $tahun = filter_var($tahunRaw, FILTER_VALIDATE_INT);
             if ($tahun === false || $tahun < $tahunMin || $tahun > $tahunMax) {
-                $this->tambahError($errors, "Baris {$rowNum}: Tahun '{$tahunRaw}' tidak valid. Harus angka antara {$tahunMin} dan {$tahunMax}.", $maksErrors);
+                $this->catatGalat($daftarGalat, "Baris {$nomorBaris}: Tahun '{$tahunRaw}' tidak valid. Harus berupa angka tahun antara {$tahunMin} dan {$tahunMax}.", $maksGalat);
             }
 
-            // Validasi Jenis
+            // Validasi Jenis (harus 'Realisasi' atau 'Target')
             $jenisNormalized = ucfirst(strtolower($jenis));
             if (!in_array($jenisNormalized, ['Realisasi', 'Target'])) {
-                $this->tambahError($errors, "Baris {$rowNum}: Jenis data '{$jenis}' tidak valid. Hanya diizinkan 'Realisasi' atau 'Target'.", $maksErrors);
+                $this->catatGalat($daftarGalat, "Baris {$nomorBaris}: Jenis data '{$jenis}' tidak valid. Hanya diizinkan 'Realisasi' atau 'Target'.", $maksGalat);
             }
 
-            // Validasi Nilai (boleh null / kosong, tapi jika diisi harus numerik)
+            // Validasi Nilai (nullable; jika ada harus numerik)
             $nilai = null;
             if ($nilaiRaw !== null && trim((string)$nilaiRaw) !== '' && trim((string)$nilaiRaw) !== '-') {
-                // Ubah koma ke titik jika format lokal Indonesia
                 $cleanNilai = str_replace(',', '.', trim((string)$nilaiRaw));
                 if (!is_numeric($cleanNilai)) {
-                    $this->tambahError($errors, "Baris {$rowNum}: Nilai '{$nilaiRaw}' bukan angka numerik yang valid.", $maksErrors);
+                    $this->catatGalat($daftarGalat, "Baris {$nomorBaris}: Nilai '{$nilaiRaw}' bukan angka numerik yang valid.", $maksGalat);
                 } else {
                     $nilai = (float)$cleanNilai;
                 }
             }
 
-            // Jika limit error tercapai, hentikan looping
-            if (count($errors) >= $maksErrors) {
+            // Hentikan jika mencapai batas pelaporan kesalahan
+            if (count($daftarGalat) >= $maksGalat) {
                 break;
             }
 
-            // Simpan baris yang lolos parsing sementara
-            if (empty($errors)) {
+            if (empty($daftarGalat)) {
                 $dataValid[] = [
                     'indikator_id' => $indikatorMap[$kodeIndikator] ?? null,
                     'wilayah_id' => $wilayahMap[$wilayahLower] ?? null,
@@ -162,29 +159,25 @@ class ImportExcelService
             }
         }
 
-        // 5. Jika ada error validasi sama sekali, BATALKAN SEMUA (Atomik)
-        if (!empty($errors)) {
-            return [
-                'sukses' => false,
-                'pesan' => 'Ditemukan ' . count($errors) . ' kesalahan validasi pada file Excel. Tidak ada data yang disimpan.',
-                'total' => 0,
-                'errors' => $errors,
-            ];
+        // 5. Lempar Exception jika ditemukan galat (Atomik: tidak ada baris yang tersimpan)
+        if (!empty($daftarGalat)) {
+            throw new ImportGagalException(
+                'Ditemukan ' . count($daftarGalat) . ' kesalahan validasi pada berkas Excel. Seluruh proses impor dibatalkan.',
+                $daftarGalat
+            );
         }
 
         if (empty($dataValid)) {
-            return [
-                'sukses' => false,
-                'pesan' => 'Tidak ada data valid yang ditemukan untuk diimpor.',
-                'total' => 0,
-                'errors' => ['Tidak ada baris data yang valid.'],
-            ];
+            throw new ImportGagalException(
+                'Tidak ada data valid yang ditemukan untuk diimpor.',
+                ['Tidak ada baris data valid yang terbaca.']
+            );
         }
 
-        // 6. Tulis ke Database secara Atomik (Transaction + Upsert Idempoten)
-        $totalTersimpan = 0;
+        // 6. Simpan secara Atomik (DB::transaction) dan Idempoten (updateOrCreate pada tabel td_data_indikator)
+        $totalDisimpan = 0;
         try {
-            DB::transaction(function () use ($dataValid, &$totalTersimpan) {
+            DB::transaction(function () use ($dataValid, &$totalDisimpan) {
                 foreach ($dataValid as $row) {
                     DataIndikator::updateOrCreate(
                         [
@@ -198,28 +191,74 @@ class ImportExcelService
                             'sumber' => $row['sumber'],
                         ]
                     );
-                    $totalTersimpan++;
+                    $totalDisimpan++;
                 }
             });
         } catch (Throwable $e) {
-            return [
-                'sukses' => false,
-                'pesan' => 'Terjadi kesalahan basis data saat menyimpan data: ' . $e->getMessage(),
-                'total' => 0,
-                'errors' => [$e->getMessage()],
-            ];
+            throw new ImportGagalException(
+                'Terjadi kesalahan basis data saat menyimpan data: ' . $e->getMessage(),
+                [$e->getMessage()]
+            );
         }
 
         return [
             'sukses' => true,
-            'pesan' => "Berhasil mengimpor {$totalTersimpan} data indikator secara idempoten.",
-            'total' => $totalTersimpan,
+            'pesan' => "Berhasil mengimpor {$totalDisimpan} data indikator secara idempoten.",
+            'total' => $totalDisimpan,
             'errors' => [],
         ];
     }
 
     /**
-     * Memetakan nama kolom di file dengan kolom yang dibutuhkan.
+     * Mengunduh berkas template Excel (.xlsx) untuk panduan pengisian data impor.
+     */
+    public function downloadTemplate(): StreamedResponse
+    {
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setTitle('Template Impor');
+
+        // Header kolom
+        $header = ['kode_indikator', 'nama_wilayah', 'tahun', 'jenis', 'nilai', 'sumber'];
+        $sheet->fromArray([$header], null, 'A1');
+        $sheet->getStyle('A1:F1')->getFont()->setBold(true);
+
+        // Ambil contoh indikator dan wilayah pertama jika ada
+        $contohIndikator = Indikator::first();
+        $contohWilayah = Wilayah::first();
+
+        $contohKode = $contohIndikator ? $contohIndikator->kode : 'CONTOH-KOMINFO-01';
+        $contohNamaWilayah = $contohWilayah ? $contohWilayah->nama : 'Kota Ternate';
+
+        // Baris contoh data
+        $contohData = [
+            [$contohKode, $contohNamaWilayah, 2023, 'Realisasi', 85.50, 'BPS Provinsi Maluku Utara'],
+            [$contohKode, $contohNamaWilayah, 2024, 'Target', 88.00, 'Rencana Kerja BAPPEDA'],
+        ];
+        $sheet->fromArray($contohData, null, 'A2');
+
+        foreach (range('A', 'F') as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $namaBerkas = 'template_impor_indikator_ipw.xlsx';
+
+        return response()->stream(
+            function () use ($writer) {
+                $writer->save('php://output');
+            },
+            200,
+            [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                'Content-Disposition' => "attachment; filename=\"{$namaBerkas}\"",
+                'Cache-Control' => 'max-age=0',
+            ]
+        );
+    }
+
+    /**
+     * Memetakan nama kolom di berkas Excel.
      */
     protected function identifikasiKolom(array $header): array
     {
@@ -245,13 +284,12 @@ class ImportExcelService
     }
 
     /**
-     * Menambahkan pesan error dengan batas maksimum.
+     * Menambahkan pesan galat ke daftar jika belum mencapai batas maksimum.
      */
-    protected function tambahError(array &$errors, string $pesan, int $maks): void
+    protected function catatGalat(array &$daftar, string $pesan, int $maks): void
     {
-        if (count($errors) < $maks) {
-            $errors[] = $pesan;
+        if (count($daftar) < $maks) {
+            $daftar[] = $pesan;
         }
     }
 }
-

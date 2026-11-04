@@ -3,9 +3,12 @@
 @section('title', 'Impor Data Excel — Admin Tabel Dinamis')
 
 @section('content')
-<div style="margin-bottom: 1rem;">
+<div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
     <a href="{{ route('tabel-dinamis.index') }}" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
         &larr; Kembali ke Tabel Dinamis
+    </a>
+    <a href="{{ route('tabel-dinamis.admin.impor.template') }}" class="td-btn td-btn-secondary" style="font-size: 0.8rem;">
+        📥 Unduh Template Excel (.xlsx)
     </a>
 </div>
 
@@ -54,8 +57,8 @@
         @csrf
 
         <div class="td-form-group">
-            <label for="file">Pilih Berkas Spreadsheet (.xlsx, .xls, .csv)</label>
-            <input type="file" name="file" id="file" accept=".xlsx,.xls,.csv" required>
+            <label for="file">Pilih Berkas Excel (.xlsx, Maksimal 5 MB)</label>
+            <input type="file" name="file" id="file" accept=".xlsx" required>
             @error('file')
                 <small style="color: #e94560; display: block; margin-top: 0.25rem;">{{ $message }}</small>
             @enderror
