@@ -132,5 +132,20 @@ class ModelTest extends TestCase
 
         $this->assertCount(2, $wilayah->dataIndikator);
     }
+
+    public function test_foreign_key_menolak_indikator_tanpa_opd(): void
+    {
+        $subjek = Subjek::create(['nama' => 'Subjek Tes FK']);
+
+        $this->expectException(\Illuminate\Database\QueryException::class);
+
+        // Percobaan membuat indikator dengan opd_id yang tidak ada / tanpa OPD
+        Indikator::create([
+            'kode' => 'NO-OPD-001',
+            'opd_id' => 999999,
+            'subjek_id' => $subjek->id,
+            'nama' => 'Indikator Tanpa OPD',
+        ]);
+    }
 }
 
