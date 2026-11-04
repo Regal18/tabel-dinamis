@@ -52,3 +52,4 @@ class ExportController extends Controller
         return $this->exportService->export($format, $dataTabel);
     }
 }
+
