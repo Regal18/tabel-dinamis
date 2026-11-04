@@ -4,6 +4,35 @@
 
 @push('styles')
 <style>
+    /* ===== Toast Notification Container ===== */
+    #td-alert-box {
+        position: fixed;
+        top: 76px;
+        right: 20px;
+        z-index: 9999;
+        max-width: 420px;
+        width: calc(100% - 40px);
+        pointer-events: none;
+    }
+    #td-alert-box .td-alert {
+        pointer-events: auto;
+        box-shadow: 0 10px 30px -4px rgba(10, 22, 40, 0.22), 0 4px 10px rgba(10, 22, 40, 0.08);
+        border-radius: var(--radius-md);
+        padding: 0.85rem 1.15rem;
+        margin-bottom: 0.6rem;
+        animation: tdToastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+    @keyframes tdToastSlideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
     /* ===== Info Banner ===== */
     .td-banner-info {
         background: var(--deep-blue-50);
@@ -261,6 +290,19 @@
         gap: 0.6rem;
         margin-top: 1rem;
     }
+    @media (max-width: 767px) {
+        .td-action-buttons {
+            position: sticky;
+            bottom: 0.75rem;
+            z-index: 40;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            padding: 0.65rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 18px rgba(10, 22, 40, 0.18);
+            border: 1px solid rgba(15, 34, 64, 0.12);
+        }
+    }
 
     /* ===== Result Table ===== */
     .td-table-scroll {
@@ -269,17 +311,20 @@
         margin-top: 1rem;
         border: 1px solid var(--gray-200);
         border-radius: var(--radius-md);
+        position: relative;
     }
     .td-table-dynamic {
         width: 100%;
-        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 0;
         font-size: 0.825rem;
         min-width: 600px;
     }
     .td-table-dynamic th,
     .td-table-dynamic td {
-        border: 1px solid var(--gray-200);
-        padding: 0.6rem 0.85rem;
+        border-right: 1px solid var(--gray-200);
+        border-bottom: 1px solid var(--gray-200);
+        padding: 0.65rem 0.85rem;
     }
     .td-table-dynamic th {
         background: var(--deep-blue-800);
@@ -290,12 +335,32 @@
         font-size: 0.8rem;
         letter-spacing: 0.01em;
     }
+    /* Sticky First Column for Wilayah */
     .td-table-dynamic th.td-th-wilayah {
         text-align: left;
         vertical-align: middle;
         min-width: 190px;
+        position: sticky;
+        left: 0;
+        z-index: 5;
         background: var(--deep-blue-900);
+        box-shadow: 3px 0 8px -2px rgba(10, 22, 40, 0.35);
     }
+    .td-table-dynamic tbody td.td-td-wilayah {
+        position: sticky;
+        left: 0;
+        z-index: 3;
+        font-weight: 600;
+        background-color: var(--white);
+        box-shadow: 3px 0 8px -2px rgba(10, 22, 40, 0.1);
+    }
+    .td-table-dynamic tbody tr:nth-child(even) td.td-td-wilayah {
+        background-color: var(--gray-50);
+    }
+    .td-table-dynamic tbody tr:hover td.td-td-wilayah {
+        background-color: var(--deep-blue-50);
+    }
+
     .td-table-dynamic td.td-align-right {
         text-align: right;
         font-variant-numeric: tabular-nums;
@@ -304,11 +369,73 @@
         text-align: center;
         color: var(--gray-400);
     }
-    .td-table-dynamic tbody tr:nth-child(even) {
+    .td-table-dynamic tbody tr:nth-child(even) td:not(.td-td-wilayah) {
         background-color: var(--gray-50);
     }
-    .td-table-dynamic tbody tr:hover {
+    .td-table-dynamic tbody tr:hover td:not(.td-td-wilayah) {
         background-color: var(--deep-blue-50);
+    }
+
+    /* Tags for Realisasi and Target in Table Header */
+    .td-table-tag {
+        font-size: 0.68rem;
+        font-weight: 700;
+        padding: 0.15rem 0.45rem;
+        border-radius: 4px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        margin-right: 0.35rem;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .td-tag-realisasi {
+        background: rgba(56, 189, 248, 0.22);
+        color: #7dd3fc;
+        border: 1px solid rgba(56, 189, 248, 0.45);
+    }
+    .td-tag-target {
+        background: rgba(251, 191, 36, 0.22);
+        color: #fde68a;
+        border: 1px solid rgba(251, 191, 36, 0.45);
+    }
+
+    /* Metadata Pills under Indikator */
+    .td-meta-pills-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.45rem;
+    }
+    .td-meta-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+    .td-meta-opd {
+        background: var(--deep-blue-50);
+        color: var(--deep-blue-700);
+        border: 1px solid var(--deep-blue-200);
+    }
+    .td-meta-satuan {
+        background: #f0fdf4;
+        color: #166534;
+        border: 1px solid #bbf7d0;
+    }
+
+    /* Badge Available for Years */
+    .td-badge-available {
+        font-size: 0.65rem;
+        background: #ecfdf5;
+        color: #059669;
+        border: 1px solid #a7f3d0;
+        padding: 0.05rem 0.35rem;
+        border-radius: 10px;
+        font-weight: 600;
+        margin-left: 0.2rem;
     }
 
     /* ===== Result Header ===== */
@@ -597,14 +724,23 @@
         exportCsv: document.getElementById('td-export-csv')
     };
 
-    // Helper Tampilkan Pesan Peringatan
+    // Helper Tampilkan Pesan Peringatan (Floating Toast Notification)
+    let toastTimer = null;
     function tampilkanPesan(pesan, tipe = 'error') {
+        clearTimeout(toastTimer);
+        const icon = tipe === 'success' ? '✓' : (tipe === 'warning' ? '⚠' : '✕');
         dom.alertBox.innerHTML = `
             <div class="td-alert td-alert-${tipe}">
-                ${pesan}
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                    <span style="font-size: 1rem; line-height: 1; font-weight: bold;">${icon}</span>
+                    <span>${pesan}</span>
+                </div>
+                <button type="button" onclick="this.closest('.td-alert').remove()" style="background:none;border:none;cursor:pointer;color:inherit;font-size:1.1rem;padding:0 0.25rem;opacity:0.75;" title="Tutup">✕</button>
             </div>
         `;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        toastTimer = setTimeout(() => {
+            bersihkanPesan();
+        }, 4500);
     }
 
     function bersihkanPesan() {
@@ -783,9 +919,13 @@
         const terpilih = state.indikator.find(i => i.id == indId);
         if (terpilih) {
             const meta = [];
-            if (terpilih.satuan) meta.push(`Satuan: <strong>${terpilih.satuan}</strong>`);
-            if (terpilih.opd) meta.push(`OPD: <strong>${terpilih.opd}</strong>`);
-            dom.infoIndikator.innerHTML = meta.join(' &nbsp;·&nbsp; ');
+            if (terpilih.opd) {
+                meta.push(`<span class="td-meta-pill td-meta-opd"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M6 11v6M10 11v6M14 11v6M18 11v6M12 3L2 7h20L12 3z"/></svg> OPD: ${terpilih.opd}</span>`);
+            }
+            if (terpilih.satuan) {
+                meta.push(`<span class="td-meta-pill td-meta-satuan"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Satuan: ${terpilih.satuan}</span>`);
+            }
+            dom.infoIndikator.innerHTML = `<div class="td-meta-pills-wrap">${meta.join('')}</div>`;
         }
 
         dom.tahunList.innerHTML = '<span style="color: var(--gray-400); font-size: 0.8rem;">Memeriksa ketersediaan tahun...</span>';
@@ -806,9 +946,11 @@
             const adaData = Array.isArray(tahunTersedia) && tahunTersedia.includes(th);
             const label = document.createElement('label');
             label.className = 'td-checkbox-pill';
+            label.title = adaData ? `Data tahun ${th} tersedia di sistem` : `Data tahun ${th} belum tersedia`;
             label.innerHTML = `
                 <input type="checkbox" class="td-cb-thn" value="${th}" ${adaData ? 'checked' : ''}>
                 <span>${th}</span>
+                ${adaData ? '<span class="td-badge-available">Tersedia</span>' : ''}
             `;
             dom.tahunList.appendChild(label);
         }
@@ -980,10 +1122,11 @@
         grup.forEach(g => {
             const colSpan = g.tahun.length;
             const satuanTeks = g.satuan ? ` (${g.satuan})` : '';
-            thTingkat1 += `<th colspan="${colSpan}">[${g.jenis}] ${g.judul}${satuanTeks}</th>`;
+            const tagClass = g.jenis.toLowerCase() === 'target' ? 'td-tag-target' : 'td-tag-realisasi';
+            thTingkat1 += `<th colspan="${colSpan}"><span class="td-table-tag ${tagClass}">[${g.jenis}]</span> ${g.judul}${satuanTeks}</th>`;
 
             g.tahun.forEach(th => {
-                thTingkat2 += `<th style="min-width: 80px;">${th}</th>`;
+                thTingkat2 += `<th style="min-width: 85px;">${th}</th>`;
             });
         });
 
@@ -1003,7 +1146,7 @@
             bodyHtml = `<tr><td colspan="100" class="td-align-center" style="padding: 2rem;">Tidak ada data ditemukan.</td></tr>`;
         } else {
             baris.forEach(b => {
-                bodyHtml += `<tr><td style="font-weight: 600;">${b.wilayah}</td>`;
+                bodyHtml += `<tr><td class="td-td-wilayah">${b.wilayah}</td>`;
                 b.nilai.forEach(grupNilai => {
                     grupNilai.forEach(val => {
                         if (val === null || val === undefined) {
@@ -1027,6 +1170,11 @@
             tampilkanPesan('Silakan lakukan submit tabel terlebih dahulu.', 'warning');
             return;
         }
+
+        const btn = format === 'xlsx' ? dom.exportXlsx : dom.exportCsv;
+        const origHtml = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = `<span class="td-spinner" style="width:0.75rem;height:0.75rem;margin-right:0.3rem;"></span> Mengunduh...`;
 
         try {
             const response = await fetch(`${API_BASE}/export?format=${format}`, {
@@ -1056,8 +1204,12 @@
             link.click();
             link.remove();
             window.URL.revokeObjectURL(link.href);
+            tampilkanPesan(`Berkas ${format.toUpperCase()} berhasil diunduh.`, 'success');
         } catch (err) {
             tampilkanPesan(err.message, 'error');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = origHtml;
         }
     }
 
