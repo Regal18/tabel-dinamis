@@ -152,3 +152,4 @@ class StatelessMobileApiTest extends TestCase
         $response->assertJsonCount(1);
     }
 }
+

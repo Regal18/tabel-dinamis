@@ -41,3 +41,4 @@ $daftarkanRuteApi();
 if ($prefix) {
     Route::prefix($prefix)->group($daftarkanRuteApi);
 }
+
