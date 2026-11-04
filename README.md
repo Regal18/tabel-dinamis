@@ -1,59 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Tabel Dinamis Indikator Bidang IPW — BAPPEDA Maluku Utara
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Modul web terisolasi (*isolated module*) untuk penyajian data statistik dan indikator pembangunan 8 Organisasi Perangkat Daerah (OPD) Bidang Infrastruktur dan Pengembangan Wilayah (IPW) Badan Perencanaan Pembangunan Daerah (BAPPEDA) Provinsi Maluku Utara.
 
-## About Laravel
+Modul ini dibangun sebagai aplikasi mandiri di Laravel yang siap diintegrasikan secara mulus ke aplikasi Web Taskboard IPW tanpa merusak arsitektur induk.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Penyajian Tabel Dinamis (Meniru BPS)**:
+   - Alur filter: Subjek -> Indikator (pencarian realtime dengan debounce) -> Jenis Data (`Realisasi` atau `Target`) -> Tahun (rentang 2021–2026) -> Tambah (maksimal 2 data terpilih) -> Judul Baris (Wilayah) -> Tabel Hasil.
+   - Tabel hasil dengan header dua tingkat yang responsif dan dapat digeser secara horizontal (*horizontal scroll*).
+   - Format angka lokal Indonesia (`.` untuk ribuan dan `,` untuk desimal), nilai kosong/null ditampilkan `'-'`.
+2. **Ekspor Data (XLSX & CSV)**:
+   - Format `.xlsx`: Menggabungkan sel header (*merged cells*), nilai angka tetap bertipe numerik asli, *freeze pane* pada sel `B3`, dan catatan kaki sumber data.
+   - Format `.csv`: Dilengkapi UTF-8 BOM dan pemisah titik koma (`;`).
+   - Dilindungi rate limiting 10 permintaan per menit.
+3. **Impor Berkas Excel Admin**:
+   - Dilindungi autentikasi dan Gate `kelola-tabel-dinamis`.
+   - Proses **atomik** (DB Transaction: jika ada 1 baris salah, seluruh proses dibatalkan) dan **idempoten** (*upsert*).
+   - Pelaporan galat menyebutkan nomor baris Excel asli (maksimal 100 galat).
+   - Menyediakan fitur unduh template berkas Excel resmi.
+4. **Kesiapan Mobile (Stateless Backend API)**:
+   - Seluruh logika bisnis dipusatkan pada Service layer (`TabelService`, `ImportExcelService`, `ExportService`).
+   - Endpoint REST API bebas dari session state dan siap digunakan oleh aplikasi Flutter.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 📋 Checklist Keamanan (*Security Hardening*)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [x] **Tidak Ada Kredensial di Kode**: Akun admin dan rahasia basis data sepenuhnya dibaca dari berkas `.env` (`ADMIN_EMAIL`, `ADMIN_PASSWORD`).
+- [x] **Mode Produksi (`APP_DEBUG=false`)**: Pada lingkungan produksi, selalu setel `APP_DEBUG=false` agar informasi jejak panggilan (*stack trace*) dan kredensial sistem tidak terekspos.
+- [x] **Proteksi CSRF**: Seluruh formulir web dan AJAX POST menyertakan header token CSRF `X-CSRF-TOKEN`.
+- [x] **Rate Limiting (Throttle)**:
+  - Query Filter & Data: 60 permintaan/menit (`throttle:60,1`).
+  - Unduh Berkas Export: 10 permintaan/menit (`throttle:10,1`).
+- [x] **Validasi Input Berlapis**: Validasi dilakukan di sisi klien (JS) dan di sisi server menggunakan `TabelRequest` dan Form Validation.
+- [x] **Netralitas Database**: Penamaan tabel menggunakan awalan `td_` (`td_opd`, `td_subjek`, `td_wilayah`, `td_indikator`, `td_data_indikator`) dan tipe data netral yang kompatibel di PostgreSQL, MySQL, maupun SQLite.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Instalasi & Menjalankan Lokal
 
-### Premium Partners
+### 1. Klon Repositori & Instal Dependensi
+```powershell
+git clone https://github.com/Regal18/tabel-dinamis.git
+cd tabel-dinamis
+composer install
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2. Konfigurasi Lingkungan (.env)
+Salin berkas `.env.example` ke `.env`:
+```powershell
+copy .env.example .env
+php artisan key:generate
+```
+Sesuaikan konfigurasi admin di `.env`:
+```env
+ADMIN_EMAIL=admin@tabeldinamis.test
+ADMIN_PASSWORD=rahasia123
+TD_ROUTE_PREFIX=tabel-dinamis
+```
 
-## Contributing
+### 3. Migrasi & Seeder Basis Data
+Jalankan migrasi tabel `td_*` dan data awal:
+```powershell
+php artisan migrate --seed --seeder="Database\Seeders\TabelDinamisSeeder"
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Menjalankan Server Lokal
+```powershell
+php artisan serve
+```
+Akses aplikasi melalui peramban web:
+- **Halaman Utama Tabel Dinamis**: [http://127.0.0.1:8000/tabel-dinamis](http://127.0.0.1:8000/tabel-dinamis) (atau langsung [http://127.0.0.1:8000](http://127.0.0.1:8000))
+- **Halaman Admin Impor Excel**: [http://127.0.0.1:8000/tabel-dinamis/admin/impor](http://127.0.0.1:8000/tabel-dinamis/admin/impor)  
+  *(Gunakan autentikasi Basic Auth sesuai kredensial di `.env`)*
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🧪 Menjalankan Pengujian Otomatis
 
-## Security Vulnerabilities
+Rangkaian tes otomatis mencakup tes Unit, Feature API, Web Page, dan Uji Penerimaan Kriteria SKPL Bagian 3.4.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```powershell
+# Menjalankan seluruh pengujian (65 tests)
+php artisan test
 
-## License
+# Menjalankan uji penerimaan SKPL 3.4
+php artisan test --filter=SkplAcceptanceTest
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Menjalankan pengujian per modul
+php artisan test --filter=TabelServiceTest
+php artisan test --filter=ImportExcelServiceTest
+php artisan test --filter=ExportApiTest
+```
+
+---
+
+## 📖 Dokumentasi Lengkap
+- [Spesifikasi Kontrak REST API](docs/api.md) — Dokumen panduan untuk integrasi aplikasi web dan mobile Flutter.
+- [Panduan Titik Integrasi Taskboard](docs/integrasi.md) — Rincian 5 titik konfigurasi untuk penggabungan modul ke aplikasi taskboard BAPPEDA.

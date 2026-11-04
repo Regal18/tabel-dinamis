@@ -1,26 +1,27 @@
-# Kontrak API Modul Tabel Dinamis Indikator Bidang IPW
+# Kontrak REST API Modul Tabel Dinamis Indikator Bidang IPW
 
-Dokumen ini mendefinisikan kontrak REST API untuk modul Tabel Dinamis BAPPEDA Provinsi Maluku Utara. Kontrak ini digunakan oleh antarmuka Web dan aplikasi Mobile (Flutter).
+Dokumen ini mendefinisikan spesifikasi REST API untuk Modul Tabel Dinamis BAPPEDA Provinsi Maluku Utara. Digunakan oleh antarmuka Web dan aplikasi Mobile (Flutter).
 
 > **PENTING UNTUK PENGEMBANG MOBILE:**  
 > Jangan mengubah struktur parameter maupun response JSON ini tanpa koordinasi, karena aplikasi mobile dan web bergantung penuh pada kontrak ini.
 
 ---
 
-## 1. Konfigurasi Awalan Rute (Base URL)
-- Default Awalan Rute: `/{prefix}/api` (secara default: `/tabel-dinamis/api`).
-- Format Response: Seluruh endpoint mengembalikan JSON (header `Content-Type: application/json`), kecuali endpoint `/export` yang mengembalikan berkas stream biner.
-- Rate Limiting: 60 permintaan per menit per pengguna / alamat IP (HTTP 429 jika melampaui batas).
+## 1. Konfigurasi Awalan & Protokol (Base URL)
+- **Base Endpoint**: `/{prefix}/api` (Default: `/tabel-dinamis/api`).
+- **Format Pertukaran Data**: JSON (`Content-Type: application/json` & `Accept: application/json`), kecuali `/export` yang mengembalikan berkas stream biner.
+- **Proteksi CSRF**: Untuk permintaan dari web client, sertakan header `X-CSRF-TOKEN`.
+- **Kebijakan Pembatasan Laju (Rate Limiting)**:
+  - Endpoint Query Data & Referensi: **60 permintaan per menit** per IP/pengguna.
+  - Endpoint Unduh Berkas Export: **10 permintaan per menit** per IP/pengguna.
+  - Status `HTTP 429 Too Many Attempts` akan dikembalikan jika kuota terlampaui.
 
 ---
 
-## 2. Endpoint Referensi (Metadata Filter)
+## 2. Endpoint Referensi Filter
 
-### 2.1 Ambil Daftar Subjek
-Mengambil seluruh kategori/subjek bidang indikator IPW.
-
-- **Metode**: `GET`
-- **URL**: `/{prefix}/api/subjek`
+### 2.1 GET `/api/subjek`
+Mengambil seluruh kategori/subjek indikator bidang IPW.
 - **Response 200 OK**:
 ```json
 [
@@ -37,11 +38,8 @@ Mengambil seluruh kategori/subjek bidang indikator IPW.
 
 ---
 
-### 2.2 Ambil Daftar Indikator per Subjek
-Mengambil indikator berdasarkan `subjek_id`, dengan opsi pencarian kata kunci `q`.
-
-- **Metode**: `GET`
-- **URL**: `/{prefix}/api/indikator`
+### 2.2 GET `/api/indikator`
+Mengambil indikator berdasarkan `subjek_id`, dengan fitur pencarian kata kunci `q` (case-insensitive `LOWER + LIKE`).
 - **Parameter Query**:
   - `subjek_id` *(wajib, integer)*: ID subjek referensi.
   - `q` *(opsional, string)*: Kata kunci pencarian (mencocokkan nama, sub-indikator, atau kode).
@@ -58,21 +56,17 @@ Mengambil indikator berdasarkan `subjek_id`, dengan opsi pencarian kata kunci `q
   {
     "id": 11,
     "kode": "KOMINFO-02",
-    "label": "Indeks SPBE — Indeks Kebijakan",
+    "label": "Indeks SPBE — Domain Layanan",
     "satuan": "Indeks",
     "opd": "Dinas Komunikasi dan Informatika (Diskominfo)"
   }
 ]
 ```
-*Catatan: Atribut `label` otomatis menggabungkan `nama` dan `sub_indikator` jika sub-indikator tersedia.*
 
 ---
 
-### 2.3 Ambil Ketersediaan Tahun per Indikator & Jenis
-Mengambil daftar tahun (rentang 2021-2026) yang memiliki data untuk indikator dan jenis tertentu.
-
-- **Metode**: `GET`
-- **URL**: `/{prefix}/api/tahun`
+### 2.3 GET `/api/tahun`
+Mengambil ketersediaan tahun data untuk indikator dan jenis tertentu.
 - **Parameter Query**:
   - `indikator_id` *(wajib, integer)*: ID indikator.
   - `jenis` *(wajib, string)*: Nilai harus `"Realisasi"` atau `"Target"`.
@@ -83,11 +77,8 @@ Mengambil daftar tahun (rentang 2021-2026) yang memiliki data untuk indikator da
 
 ---
 
-### 2.4 Ambil Daftar Wilayah (Kabupaten/Kota)
-Mengambil daftar wilayah yang menjadi judul baris tabel.
-
-- **Metode**: `GET`
-- **URL**: `/{prefix}/api/wilayah`
+### 2.4 GET `/api/wilayah`
+Mengambil daftar seluruh wilayah kabupaten/kota.
 - **Response 200 OK**:
 ```json
 [
@@ -106,14 +97,12 @@ Mengambil daftar wilayah yang menjadi judul baris tabel.
 
 ## 3. Endpoint Query & Export Tabel Dinamis
 
-### 3.1 Dapatkan Data Tabel Dinamis
-Membangun matriks tabel dinamis berdasarkan kombinasi indikator, tahun, jenis, dan pilihan wilayah.
-
-- **Metode**: `POST`
-- **URL**: `/{prefix}/api/tabel`
+### 3.1 POST `/api/tabel`
+Membangun matriks tabel dinamis.
 - **Header**:
   - `Content-Type: application/json`
   - `Accept: application/json`
+  - `X-CSRF-TOKEN: <token>` *(untuk web)*
 - **Body Request**:
 ```json
 {
@@ -132,10 +121,11 @@ Membangun matriks tabel dinamis berdasarkan kombinasi indikator, tahun, jenis, d
   ]
 }
 ```
-*Catatan:*
-- `wilayah_ids`: Berisi array ID wilayah. Jika bernilai `null` atau kosong, sistem otomatis memuat **seluruh** wilayah yang ada.
-- `data`: Array berisi **1 sampai maksimal 2 item**. Lebih dari 2 item akan ditolak validasi.
-- `tahun`: Hanya diperbolehkan integer dalam rentang **2021 sampai 2026**.
+*Aturan Validasi:*
+- `wilayah_ids`: Array integer ID wilayah. Kirim `null` atau kosong untuk memuat seluruh wilayah.
+- `data`: Array berisi **minimal 1 dan maksimal 2 item** (Aturan 2).
+- `data.*.jenis`: Harus `"Realisasi"` atau `"Target"` (Aturan 3).
+- `data.*.tahun`: Rentang integer **2021 s.d. 2026** (Aturan 1).
 
 - **Response 200 OK**:
 ```json
@@ -148,7 +138,7 @@ Membangun matriks tabel dinamis berdasarkan kombinasi indikator, tahun, jenis, d
       "tahun": [2021, 2022]
     },
     {
-      "judul": "Indeks SPBE — Indeks Kebijakan",
+      "judul": "Indeks SPBE — Domain Layanan",
       "satuan": "Indeks",
       "jenis": "Target",
       "tahun": [2022, 2023]
@@ -165,51 +155,48 @@ Membangun matriks tabel dinamis berdasarkan kombinasi indikator, tahun, jenis, d
     {
       "wilayah": "Kota Ternate",
       "nilai": [
-        [85.2, null],
+        [82.5, null],
         [3.5, 3.8]
       ]
     }
   ]
 }
 ```
-*Matriks Nilai:*  
-`baris[k].nilai[i][j]` = nilai wilayah ke-`k`, grup indikator ke-`i`, tahun ke-`j`.  
-Jika data belum tersedia di database, nilai adalah `null`. Di tampilan UI, nilai `null` harus dirender sebagai tanda strip `'-'`.
+*Keterangan Matriks Nilai:*  
+`nilai[i][j]` = nilai pada grup indikator ke-`i`, tahun ke-`j`. Nilai `null` menandakan data belum ada atau belum diisi (di sisi UI ditampilkan tanda strip `'-'`).
 
 ---
 
-### 3.2 Unduh Berkas Export Tabel (Excel / CSV)
-Menghasilkan berkas biner `.xlsx` atau `.csv` dari konfigurasi tabel yang sama.
-
-- **Metode**: `POST`
-- **URL**: `/{prefix}/api/export?format=xlsx` (atau `format=csv`)
-- **Body Request**: Sama persis dengan body `POST /{prefix}/api/tabel`.
-- **Response**: File stream biner:
-  - Header XLSX: `Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`
-  - Header CSV: `Content-Type: text/csv; charset=UTF-8`
-  - `Content-Disposition: attachment; filename="tabel-dinamis-YYYYMMDD-HHmmss.xlsx"`
+### 3.2 POST `/api/export`
+Mengunduh berkas biner matriks tabel hasil dalam format Excel (`.xlsx`) atau `.csv`.
+- **Parameter URL / Body**: `format=xlsx` atau `format=csv` *(wajib)*.
+- **Body Request**: Sama persis dengan body `POST /api/tabel`.
+- **Rate Limit**: 10 permintaan per menit.
+- **Karakteristik Berkas**:
+  - `xlsx`: Header bergabung (merged cell), angka bertipe numerik murni, freeze pane pada sel `B3`, dan catatan keterangan di bawah tabel.
+  - `csv`: Disertai UTF-8 BOM (`\xEF\xBB\xBF`) dan pemisah titik koma (`;`).
+- **Response 200 OK**: Stream berkas biner (`Content-Disposition: attachment`).
 
 ---
 
-## 4. Penanganan Kesalahan (Error Handling)
+## 4. Format Kesalahan (Error Responses)
 
 ### 4.1 Validasi Gagal (HTTP 422 Unprocessable Content)
-Terjadi jika aturan bisnis dilanggar (misal: lebih dari 2 data indikator, tahun di luar 2021-2026, atau jenis bukan 'Realisasi'/'Target').
+Terjadi jika format ekspor tidak dikenal, jumlah data > 2, tahun di luar rentang, dsb.
 ```json
 {
-  "message": "Maksimal 2 data per permintaan tabel.",
+  "message": "Format ekspor tidak dikenal. Hanya format xlsx atau csv yang diizinkan.",
   "errors": {
-    "data": [
-      "Maksimal 2 data per permintaan tabel."
+    "format": [
+      "Format ekspor tidak dikenal. Hanya format xlsx atau csv yang diizinkan."
     ]
   }
 }
 ```
 
-### 4.2 Terlalu Banyak Permintaan (HTTP 429 Too Many Requests)
+### 4.2 Laju Permintaan Terlampaui (HTTP 429 Too Many Requests)
 ```json
 {
   "message": "Too Many Attempts."
 }
 ```
-
