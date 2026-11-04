@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -11,8 +10,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Modules\TabelDinamis\Http\Controllers\TabelController;
 use App\Modules\TabelDinamis\Http\Controllers\ImporController;
-use App\Modules\TabelDinamis\Http\Controllers\Api\ReferensiController;
-use App\Modules\TabelDinamis\Http\Controllers\Api\TabelApiController;
+use App\Modules\TabelDinamis\Http\Controllers\Api\FilterController;
+use App\Modules\TabelDinamis\Http\Controllers\Api\TabelController as ApiTabelController;
 
 $middlewareBaca = config('tabel_dinamis.middleware_baca', []);
 $middlewareAdmin = config('tabel_dinamis.middleware_admin', ['auth.basic', 'can:kelola-tabel-dinamis']);
@@ -30,16 +29,19 @@ Route::middleware($middlewareBaca)->group(function () {
 |--------------------------------------------------------------------------
 | Endpoint API (JSON & Export)
 | Awalan: /{prefix}/api
+| Dilindungi middleware_baca dan throttle 60 permintaan per menit.
 |--------------------------------------------------------------------------
 */
-Route::prefix('api')->middleware($middlewareBaca)->group(function () {
-    Route::get('/subjek', [ReferensiController::class, 'subjek'])->name('tabel-dinamis.api.subjek');
-    Route::get('/indikator', [ReferensiController::class, 'indikator'])->name('tabel-dinamis.api.indikator');
-    Route::get('/tahun', [ReferensiController::class, 'tahun'])->name('tabel-dinamis.api.tahun');
-    Route::get('/wilayah', [ReferensiController::class, 'wilayah'])->name('tabel-dinamis.api.wilayah');
-    Route::post('/tabel', [TabelApiController::class, 'tabel'])->name('tabel-dinamis.api.tabel');
-    Route::post('/export', [TabelApiController::class, 'export'])->name('tabel-dinamis.api.export');
-});
+Route::prefix('api')
+    ->middleware(array_merge($middlewareBaca, ['throttle:60,1']))
+    ->group(function () {
+        Route::get('/subjek', [FilterController::class, 'subjek'])->name('tabel-dinamis.api.subjek');
+        Route::get('/indikator', [FilterController::class, 'indikator'])->name('tabel-dinamis.api.indikator');
+        Route::get('/tahun', [FilterController::class, 'tahun'])->name('tabel-dinamis.api.tahun');
+        Route::get('/wilayah', [FilterController::class, 'wilayah'])->name('tabel-dinamis.api.wilayah');
+        Route::post('/tabel', [ApiTabelController::class, 'tabel'])->name('tabel-dinamis.api.tabel');
+        Route::post('/export', [ApiTabelController::class, 'export'])->name('tabel-dinamis.api.export');
+    });
 
 /*
 |--------------------------------------------------------------------------
@@ -51,4 +53,3 @@ Route::prefix('admin')->middleware($middlewareAdmin)->group(function () {
     Route::get('/impor', [ImporController::class, 'form'])->name('tabel-dinamis.admin.impor.form');
     Route::post('/impor', [ImporController::class, 'proses'])->name('tabel-dinamis.admin.impor.proses');
 });
-

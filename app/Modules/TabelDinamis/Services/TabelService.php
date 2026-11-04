@@ -21,7 +21,7 @@ class TabelService
      * @param array $dataPermintaan Array [{indikator_id, jenis, tahun: [int]}] (maks 2)
      * @return array {grup: [...], baris: [...]}
      */
-    public function bangunTabel(?array $wilayahIds, array $dataPermintaan): array
+    public function bangun(?array $wilayahIds, array $dataPermintaan): array
     {
         // Ambil daftar wilayah
         $wilayahQuery = Wilayah::orderBy('nama');
@@ -68,7 +68,8 @@ class TabelService
                         $item['jenis']
                     );
 
-                    $nilaiGrup[] = $semuaData[$kunci] ?? null;
+                    // Jika tidak ada data di DB, bernilai null
+                    $nilaiGrup[] = array_key_exists($kunci, $semuaData) ? $semuaData[$kunci] : null;
                 }
 
                 $nilai[] = $nilaiGrup;
@@ -84,6 +85,14 @@ class TabelService
             'grup' => $grup,
             'baris' => $baris,
         ];
+    }
+
+    /**
+     * Alias untuk backward compatibility.
+     */
+    public function bangunTabel(?array $wilayahIds, array $dataPermintaan): array
+    {
+        return $this->bangun($wilayahIds, $dataPermintaan);
     }
 
     /**

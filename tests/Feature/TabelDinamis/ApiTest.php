@@ -83,20 +83,60 @@ class ApiTest extends TestCase
             'kode' => 'API-002',
             'opd_id' => $this->opd->id,
             'subjek_id' => $this->subjek->id,
-            'nama' => 'Indikator Lain',
+            'nama' => 'Indikator Lain Khusus',
+            'sub_indikator' => 'Sub Bagian Spesifik',
             'satuan' => 'Unit',
         ]);
 
-        $response = $this->getJson("/tabel-dinamis/api/indikator?subjek_id={$this->subjek->id}&q=API");
+        // Uji pencarian case-insensitive huruf kecil vs besar
+        $response = $this->getJson("/tabel-dinamis/api/indikator?subjek_id={$this->subjek->id}&q=api");
+        $response->assertOk()->assertJsonCount(2);
+
+        $response2 = $this->getJson("/tabel-dinamis/api/indikator?subjek_id={$this->subjek->id}&q=KHUSUS");
+        $response2->assertOk()->assertJsonCount(1)->assertJsonFragment(['kode' => 'API-002']);
+
+        $response3 = $this->getJson("/tabel-dinamis/api/indikator?subjek_id={$this->subjek->id}&q=spesifik");
+        $response3->assertOk()->assertJsonCount(1)->assertJsonFragment(['kode' => 'API-002']);
+    }
+
+    public function test_bentuk_json_persis_sesuai_kontrak(): void
+    {
+        $response = $this->postJson('/tabel-dinamis/api/tabel', [
+            'wilayah_ids' => [$this->wilayah->id],
+            'data' => [
+                [
+                    'indikator_id' => $this->indikator->id,
+                    'jenis' => 'Realisasi',
+                    'tahun' => [2022],
+                ],
+            ],
+        ]);
 
         $response->assertOk()
-            ->assertJsonCount(2);
+            ->assertJsonStructure([
+                'grup' => [
+                    '*' => [
+                        'judul',
+                        'satuan',
+                        'jenis',
+                        'tahun',
+                    ]
+                ],
+                'baris' => [
+                    '*' => [
+                        'wilayah',
+                        'nilai',
+                    ]
+                ],
+            ]);
 
-        $response2 = $this->getJson("/tabel-dinamis/api/indikator?subjek_id={$this->subjek->id}&q=Lain");
-
-        $response2->assertOk()
-            ->assertJsonCount(1)
-            ->assertJsonFragment(['kode' => 'API-002']);
+        $json = $response->json();
+        $this->assertIsArray($json['grup']);
+        $this->assertIsArray($json['baris']);
+        $this->assertIsArray($json['baris'][0]['nilai']);
+        $this->assertIsArray($json['baris'][0]['nilai'][0]);
+        // Format nilai[i][j]
+        $this->assertEquals(88.5, $json['baris'][0]['nilai'][0][0]);
     }
 
     public function test_api_tahun(): void

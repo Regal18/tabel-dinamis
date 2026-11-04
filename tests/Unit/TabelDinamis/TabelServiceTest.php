@@ -68,6 +68,27 @@ class TabelServiceTest extends TestCase
         ]);
     }
 
+    public function test_bangun_mengembalikan_null_untuk_data_kosong(): void
+    {
+        // Wilayah B: tahun 2021 nilai null di DB, tahun 2022 tidak ada row sama sekali di DB
+        $hasil = $this->service->bangun(
+            wilayahIds: [$this->wilayah2->id],
+            dataPermintaan: [
+                [
+                    'indikator_id' => $this->indikator->id,
+                    'jenis' => 'Realisasi',
+                    'tahun' => [2021, 2022],
+                ],
+            ]
+        );
+
+        $this->assertCount(1, $hasil['baris']);
+        $this->assertEquals('Wilayah B', $hasil['baris'][0]['wilayah']);
+        // Harus null untuk nilai kosong / null
+        $this->assertNull($hasil['baris'][0]['nilai'][0][0], 'Nilai null di DB harus mengembalikan null');
+        $this->assertNull($hasil['baris'][0]['nilai'][0][1], 'Data tidak ada di DB harus mengembalikan null');
+    }
+
     public function test_bangun_tabel_satu_grup(): void
     {
         $hasil = $this->service->bangunTabel(
