@@ -2,6 +2,7 @@
 
 namespace App\Modules\TabelDinamis\Services;
 
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
@@ -12,7 +13,9 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Service untuk Export data tabel dinamis ke format Excel (XLSX) dan CSV.
- * Logika murni dan stateless.
+ * Menerapkan spesifikasi Fase W5:
+ * - XLSX: header bergabung, angka numerik asli, freeze pane, catatan keterangan
+ * - CSV: UTF-8 BOM, pemisah titik koma (;)
  */
 class ExportService
 {
@@ -20,16 +23,12 @@ class ExportService
      * Ekspor data tabel ke response stream biner.
      *
      * @param string $format 'xlsx' atau 'csv'
-     * @param array $tabelData Hasil dari TabelService::bangunTabel
+     * @param array $tabelData Hasil dari TabelService::bangun
      * @return StreamedResponse
      */
     public function export(string $format, array $tabelData): StreamedResponse
     {
         $format = strtolower($format);
-        if (!in_array($format, ['xlsx', 'csv'])) {
-            $format = 'xlsx';
-        }
-
         $spreadsheet = $this->bangunSpreadsheet($tabelData, $format === 'csv');
 
         $namaFile = 'tabel-dinamis-' . date('Ymd-His') . '.' . $format;
@@ -37,10 +36,11 @@ class ExportService
         if ($format === 'csv') {
             $contentType = 'text/csv; charset=UTF-8';
             $writer = new Csv($spreadsheet);
-            $writer->setDelimiter(',');
+            // Sesuai instruksi: UTF-8 BOM dan pemisah titik koma (;)
+            $writer->setUseBOM(true);
+            $writer->setDelimiter(';');
             $writer->setEnclosure('"');
             $writer->setLineEnding("\r\n");
-            $writer->setUseBOM(true);
         } else {
             $contentType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
             $writer = new Xlsx($spreadsheet);
@@ -72,14 +72,8 @@ class ExportService
         $grup = $tabelData['grup'] ?? [];
         $baris = $tabelData['baris'] ?? [];
 
-        // Hitung total kolom tahun
-        $totalKolomTahun = 0;
-        foreach ($grup as $g) {
-            $totalKolomTahun += count($g['tahun'] ?? []);
-        }
-
+        // ─── Format CSV (Header flat, pemisah titik koma, UTF-8 BOM) ─────────
         if ($isCsv) {
-            // Untuk CSV, buat header flat 1 baris agar mudah dibaca parser CSV
             $headerCsv = ['Kabupaten / Kota'];
             foreach ($grup as $g) {
                 $satuan = !empty($g['satuan']) ? " ({$g['satuan']})" : '';
@@ -104,14 +98,16 @@ class ExportService
             return $spreadsheet;
         }
 
-        // --- Format XLSX (Multi-level header bergaya resmi) ---
+        // ─── Format XLSX (Header Bergabung, Freeze Pane, Angka Numerik, Catatan) ───
+
+        // 1. Header Tingkat 1 & Tingkat 2 (Header Bergabung)
         $sheet->setCellValue('A1', 'Kabupaten / Kota');
         $sheet->mergeCells('A1:A2');
 
         $sheet->getStyle('A1')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-        $colNumber = 2; // Kolom B adalah 2
+        $colNumber = 2; // Mulai kolom B
         foreach ($grup as $g) {
             $startCol = $colNumber;
             $satuan = !empty($g['satuan']) ? " ({$g['satuan']})" : '';
@@ -128,6 +124,7 @@ class ExportService
             $startColLetter = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($startCol);
             $endColLetter = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($endCol);
 
+            // Merge cells untuk grup indikator di atas kolom tahun-tahunnya
             if ($startCol < $endCol) {
                 $sheet->mergeCells("{$startColLetter}1:{$endColLetter}1");
             }
@@ -135,15 +132,18 @@ class ExportService
             $sheet->getStyle("{$startColLetter}1")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         }
 
-        // Terapkan style header
+        // Styling Header
         $lastColLetter = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex(max(1, $colNumber - 1));
         $headerRange = "A1:{$lastColLetter}2";
         $sheet->getStyle($headerRange)->getFont()->setBold(true);
         $sheet->getStyle($headerRange)->getFill()
             ->setFillType(Fill::FILL_SOLID)
-            ->getStartColor()->setARGB('FFE9ECEF');
+            ->getStartColor()->setARGB('FFE2E8F0');
 
-        // Isi Data Baris
+        // 2. Freeze Pane di B3 (Membekukan kolom A dan baris 1-2)
+        $sheet->freezePane('B3');
+
+        // 3. Isi Data Baris (Angka Tetap Numerik)
         $rowIdx = 3;
         foreach ($baris as $b) {
             $sheet->setCellValue("A{$rowIdx}", $b['wilayah']);
@@ -156,7 +156,9 @@ class ExportService
                         $sheet->setCellValue("{$cLetter}{$rowIdx}", '-');
                         $sheet->getStyle("{$cLetter}{$rowIdx}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
                     } else {
-                        $sheet->setCellValue("{$cLetter}{$rowIdx}", (float)$val);
+                        // Angka tetap bertipe numerik asli
+                        $numericVal = (float)$val;
+                        $sheet->setCellValueExplicit("{$cLetter}{$rowIdx}", $numericVal, DataType::TYPE_NUMERIC);
                         $sheet->getStyle("{$cLetter}{$rowIdx}")->getNumberFormat()->setFormatCode('#,##0.00');
                         $sheet->getStyle("{$cLetter}{$rowIdx}")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
                     }
@@ -166,18 +168,29 @@ class ExportService
             $rowIdx++;
         }
 
-        // Terapkan border ke seluruh tabel
-        $lastRow = max(2, $rowIdx - 1);
-        $sheet->getStyle("A1:{$lastColLetter}{$lastRow}")->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
+        // Terapkan border ke tabel data
+        $lastDataRow = max(2, $rowIdx - 1);
+        $sheet->getStyle("A1:{$lastColLetter}{$lastDataRow}")->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
 
-        // Auto-size kolom A
+        // 4. Catatan Keterangan di Bawah Tabel
+        $catatanRow1 = $lastDataRow + 2;
+        $catatanRow2 = $catatanRow1 + 1;
+
+        $sheet->setCellValue("A{$catatanRow1}", "Catatan: Nilai '-' menunjukkan data belum tersedia atau belum dipublikasikan.");
+        $sheet->getStyle("A{$catatanRow1}")->getFont()->setItalic(true)->setSize(9);
+        $sheet->getStyle("A{$catatanRow1}")->getFont()->getColor()->setARGB('FF64748B');
+
+        $sheet->setCellValue("A{$catatanRow2}", "Sumber: Indikator Bidang IPW BAPPEDA Provinsi Maluku Utara.");
+        $sheet->getStyle("A{$catatanRow2}")->getFont()->setItalic(true)->setSize(9);
+        $sheet->getStyle("A{$catatanRow2}")->getFont()->getColor()->setARGB('FF64748B');
+
+        // Atur Lebar Kolom
         $sheet->getColumnDimension('A')->setAutoSize(true);
         for ($c = 2; $c < $colNumber; $c++) {
             $cLetter = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($c);
-            $sheet->getColumnDimension($cLetter)->setWidth(12);
+            $sheet->getColumnDimension($cLetter)->setWidth(14);
         }
 
         return $spreadsheet;
     }
 }
-

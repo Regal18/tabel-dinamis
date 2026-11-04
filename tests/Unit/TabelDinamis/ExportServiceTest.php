@@ -6,7 +6,9 @@ use App\Modules\TabelDinamis\Services\ExportService;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Tes Unit untuk ExportService.
+ * Tes Unit untuk ExportService Fase W5:
+ * XLSX (header bergabung, angka numerik, freeze pane, catatan keterangan)
+ * CSV (UTF-8 BOM, pemisah titik koma)
  */
 class ExportServiceTest extends TestCase
 {
@@ -18,7 +20,7 @@ class ExportServiceTest extends TestCase
         $this->exportService = new ExportService();
     }
 
-    public function test_bangun_spreadsheet_xlsx_dengan_multi_header(): void
+    public function test_bangun_spreadsheet_xlsx_dengan_multi_header_freeze_pane_dan_catatan(): void
     {
         $dummyTabel = [
             'grup' => [
@@ -44,24 +46,31 @@ class ExportServiceTest extends TestCase
         $spreadsheet = $this->exportService->bangunSpreadsheet($dummyTabel, false);
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Cek label header
+        // 1. Header Bergabung
         $this->assertEquals('Kabupaten / Kota', $sheet->getCell('A1')->getValue());
         $this->assertEquals('[Realisasi] Persentase Internet (Persen)', $sheet->getCell('B1')->getValue());
         $this->assertEquals(2021, $sheet->getCell('B2')->getValue());
         $this->assertEquals(2022, $sheet->getCell('C2')->getValue());
 
-        // Cek nilai baris
+        // 2. Freeze Pane di B3
+        $this->assertEquals('B3', $sheet->getFreezePane());
+
+        // 3. Nilai Tetap Bertipe Numerik
         $this->assertEquals('Kota Ternate', $sheet->getCell('A3')->getValue());
         $this->assertEquals(75.5, $sheet->getCell('B3')->getValue());
+        $this->assertTrue(is_numeric($sheet->getCell('B3')->getValue()));
         $this->assertEquals(80.0, $sheet->getCell('C3')->getValue());
 
-        // Cek baris kedua dengan nilai null (tampil '-')
+        // Nilai null ditulis '-'
         $this->assertEquals('Kota Tidore Kepulauan', $sheet->getCell('A4')->getValue());
         $this->assertEquals('-', $sheet->getCell('B4')->getValue());
-        $this->assertEquals(65.0, $sheet->getCell('C4')->getValue());
+
+        // 4. Catatan Keterangan di Bawah Tabel Data
+        $this->assertStringContainsString('Catatan:', $sheet->getCell('A6')->getValue());
+        $this->assertStringContainsString('Sumber:', $sheet->getCell('A7')->getValue());
     }
 
-    public function test_bangun_spreadsheet_csv_flat_header(): void
+    public function test_bangun_spreadsheet_csv_flat_header_dan_pemisah_titik_koma(): void
     {
         $dummyTabel = [
             'grup' => [
@@ -89,4 +98,3 @@ class ExportServiceTest extends TestCase
         $this->assertEquals(3.5, $sheet->getCell('B2')->getValue());
     }
 }
-

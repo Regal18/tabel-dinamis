@@ -12,6 +12,7 @@ use App\Modules\TabelDinamis\Http\Controllers\TabelController;
 use App\Modules\TabelDinamis\Http\Controllers\ImportController;
 use App\Modules\TabelDinamis\Http\Controllers\Api\FilterController;
 use App\Modules\TabelDinamis\Http\Controllers\Api\TabelController as ApiTabelController;
+use App\Modules\TabelDinamis\Http\Controllers\Api\ExportController;
 
 $middlewareBaca = config('tabel_dinamis.middleware_baca', []);
 $middlewareAdmin = config('tabel_dinamis.middleware_admin', ['auth.basic', 'can:kelola-tabel-dinamis']);
@@ -29,18 +30,24 @@ Route::middleware($middlewareBaca)->group(function () {
 |--------------------------------------------------------------------------
 | Endpoint API (JSON & Export)
 | Awalan: /{prefix}/api
-| Dilindungi middleware_baca dan throttle 60 permintaan per menit.
+| Dilindungi middleware_baca. Endpoint query throttle 60/menit, export 10/menit.
 |--------------------------------------------------------------------------
 */
 Route::prefix('api')
-    ->middleware(array_merge($middlewareBaca, ['throttle:60,1']))
+    ->middleware($middlewareBaca)
     ->group(function () {
-        Route::get('/subjek', [FilterController::class, 'subjek'])->name('tabel-dinamis.api.subjek');
-        Route::get('/indikator', [FilterController::class, 'indikator'])->name('tabel-dinamis.api.indikator');
-        Route::get('/tahun', [FilterController::class, 'tahun'])->name('tabel-dinamis.api.tahun');
-        Route::get('/wilayah', [FilterController::class, 'wilayah'])->name('tabel-dinamis.api.wilayah');
-        Route::post('/tabel', [ApiTabelController::class, 'tabel'])->name('tabel-dinamis.api.tabel');
-        Route::post('/export', [ApiTabelController::class, 'export'])->name('tabel-dinamis.api.export');
+        Route::middleware('throttle:60,1')->group(function () {
+            Route::get('/subjek', [FilterController::class, 'subjek'])->name('tabel-dinamis.api.subjek');
+            Route::get('/indikator', [FilterController::class, 'indikator'])->name('tabel-dinamis.api.indikator');
+            Route::get('/tahun', [FilterController::class, 'tahun'])->name('tabel-dinamis.api.tahun');
+            Route::get('/wilayah', [FilterController::class, 'wilayah'])->name('tabel-dinamis.api.wilayah');
+            Route::post('/tabel', [ApiTabelController::class, 'tabel'])->name('tabel-dinamis.api.tabel');
+        });
+
+        // Throttle 10 per menit khusus Export (Fase W5)
+        Route::post('/export', [ExportController::class, 'export'])
+            ->middleware('throttle:10,1')
+            ->name('tabel-dinamis.api.export');
     });
 
 /*
