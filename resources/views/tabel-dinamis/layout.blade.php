@@ -66,71 +66,114 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ===== Header ===== */
+        /* ===== Header (Clean, Elegant & Modern) ===== */
         .td-header {
-            background: linear-gradient(135deg, var(--deep-blue-900) 0%, var(--deep-blue-800) 50%, var(--deep-blue-700) 100%);
+            background: linear-gradient(135deg, #071224 0%, #0c203f 50%, #112d59 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--white);
             padding: 0 1.25rem;
-            height: 60px;
+            height: 62px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(10,22,40,0.25);
+            box-shadow: 0 4px 20px rgba(5, 12, 24, 0.25);
+            backdrop-filter: blur(12px);
         }
         .td-header-brand {
             display: flex;
             align-items: center;
-            gap: 0.65rem;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
         }
         .td-header-logo {
-            width: 32px;
-            height: 32px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 8px;
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 9px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+            flex-shrink: 0;
+        }
+        .td-header-logo svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.2;
         }
         .td-header h1 {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.975rem;
+            font-weight: 700;
             letter-spacing: -0.01em;
+            color: #ffffff;
+            margin: 0;
         }
         .td-header-actions {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.75rem;
         }
         .td-header-link {
-            color: rgba(255,255,255,0.85);
+            color: rgba(255, 255, 255, 0.92);
             text-decoration: none;
             font-size: 0.8rem;
             font-weight: 500;
-            padding: 0.35rem 0.75rem;
-            border-radius: var(--radius-sm);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all var(--transition);
-            display: flex;
+            padding: 0.42rem 0.85rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
+            gap: 0.45rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .td-header-link svg {
+            width: 15px;
+            height: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            transition: transform 0.35s ease, color 0.2s ease;
         }
         .td-header-link:hover {
-            background: rgba(255,255,255,0.12);
-            color: var(--white);
-            border-color: rgba(255,255,255,0.35);
+            background: rgba(255, 255, 255, 0.16);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.32);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        .td-header .td-badge {
-            background: var(--deep-blue-400);
-            color: var(--white);
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
+        .td-header-link:hover svg {
+            color: #ffffff;
+            transform: rotate(45deg);
+        }
+        .td-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.88);
+            padding: 0.38rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
             letter-spacing: 0.02em;
+            backdrop-filter: blur(8px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+        .td-badge-dot {
+            width: 6.5px;
+            height: 6.5px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+            display: inline-block;
         }
 
         /* ===== Container ===== */
@@ -341,15 +384,28 @@
 </head>
 <body>
     <header class="td-header">
-        <div class="td-header-brand">
-            <div class="td-header-logo">📊</div>
+        <a href="{{ route('tabel-dinamis.index') }}" class="td-header-brand">
+            <div class="td-header-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+            </div>
             <h1>Tabel Dinamis Indikator Bidang IPW</h1>
-        </div>
+        </a>
         <div class="td-header-actions">
             <a href="{{ route('tabel-dinamis.admin.impor.form') }}" class="td-header-link">
-                <span>⚙️</span> Admin Impor
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span>Admin Impor</span>
             </a>
-            <span class="td-badge">BAPPEDA Maluku Utara</span>
+            <span class="td-header-badge">
+                <span class="td-badge-dot"></span>
+                <span>BAPPEDA Maluku Utara</span>
+            </span>
         </div>
     </header>
 
