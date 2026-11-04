@@ -95,7 +95,7 @@ class AdminImporTest extends TestCase
     {
         $response = $this->actingAs($this->adminUser)->get('/tabel-dinamis/admin/impor');
         $response->assertOk();
-        $response->assertSee('Impor Data Indikator (Excel / CSV)');
+        $response->assertSee('Impor Data Indikator (Excel)');
     }
 
     public function test_upload_file_valid_masuk_ke_database(): void

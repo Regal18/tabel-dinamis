@@ -4,196 +4,355 @@
 
 @push('styles')
 <style>
-    /* Styling mobile-first untuk Form Filter & Tabel Hasil */
+    /* ===== Info Banner ===== */
     .td-banner-info {
-        background-color: #e8f4fd;
-        border-left: 4px solid #1976d2;
-        color: #0d47a1;
-        padding: 0.75rem 1rem;
-        border-radius: 4px;
-        font-size: 0.875rem;
+        background: var(--deep-blue-50);
+        border: 1px solid var(--deep-blue-200);
+        border-left: 4px solid var(--deep-blue-500);
+        color: var(--deep-blue-700);
+        padding: 0.7rem 1rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
         font-weight: 500;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
     }
+    .td-banner-info svg {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        color: var(--deep-blue-500);
+    }
+
+    /* ===== Page Title ===== */
+    .td-page-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--deep-blue-800);
+        margin-bottom: 0.25rem;
+    }
+    .td-page-subtitle {
+        font-size: 0.825rem;
+        color: var(--gray-500);
+        margin-bottom: 1.25rem;
+    }
+
+    /* ===== Two-Column Layout ===== */
     .td-layout-grid {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.25rem;
     }
     @media (min-width: 992px) {
         .td-layout-grid {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 5fr 4fr;
             align-items: start;
+            gap: 1.5rem;
         }
     }
+
+    /* ===== Section Box ===== */
     .td-section-box {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        padding: 1rem;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-md);
+        padding: 1.25rem;
         margin-bottom: 1rem;
+        transition: box-shadow var(--transition);
     }
+    .td-section-box:hover {
+        box-shadow: var(--shadow-sm);
+    }
+
+    /* ===== Section Header ===== */
     .td-section-header {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 0.75rem;
+        color: var(--deep-blue-800);
+        margin-bottom: 1rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        border-bottom: 1px solid #f1f5f9;
-        padding-bottom: 0.5rem;
+        gap: 0.6rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 1px solid var(--gray-100);
     }
+
+    /* ===== Step Badge ===== */
     .td-step-badge {
-        background: #1e293b;
-        color: #ffffff;
-        width: 22px;
-        height: 22px;
+        background: var(--deep-blue-600);
+        color: var(--white);
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.75rem;
-        font-weight: bold;
+        font-size: 0.7rem;
+        font-weight: 700;
+        flex-shrink: 0;
     }
+
+    /* ===== Search Input ===== */
     .td-search-box {
         position: relative;
         margin-bottom: 0.5rem;
     }
     .td-search-input {
         width: 100%;
-        padding: 0.5rem 0.75rem;
-        border: 1px solid #cbd5e1;
-        border-radius: 4px;
-        font-size: 0.875rem;
+        padding: 0.55rem 0.75rem 0.55rem 2.25rem;
+        border: 1.5px solid var(--gray-300);
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-family: inherit;
+        color: var(--gray-800);
+        background: var(--white);
+        transition: all var(--transition);
     }
     .td-search-input:focus {
         outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        border-color: var(--deep-blue-500);
+        box-shadow: 0 0 0 3px rgba(30,82,153,0.12);
     }
+    .td-search-input:disabled {
+        background: var(--gray-100);
+        cursor: not-allowed;
+    }
+    .td-search-icon {
+        position: absolute;
+        left: 0.7rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gray-400);
+        pointer-events: none;
+    }
+    .td-search-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* ===== Checkbox Grid ===== */
     .td-checkbox-wrap {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.4rem;
+        gap: 0.45rem;
     }
     .td-checkbox-pill {
         display: inline-flex;
         align-items: center;
-        gap: 0.35rem;
-        background: #f8fafc;
-        border: 1px solid #cbd5e1;
-        padding: 0.35rem 0.6rem;
-        border-radius: 4px;
-        font-size: 0.825rem;
+        gap: 0.4rem;
+        background: var(--white);
+        border: 1.5px solid var(--gray-200);
+        padding: 0.4rem 0.7rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.8rem;
+        color: var(--gray-700);
         cursor: pointer;
         user-select: none;
-        transition: all 0.15s ease;
+        transition: all var(--transition);
     }
     .td-checkbox-pill:hover {
-        background: #edf2f7;
-        border-color: #94a3b8;
+        border-color: var(--deep-blue-300);
+        background: var(--deep-blue-50);
+    }
+    .td-checkbox-pill:has(input:checked) {
+        border-color: var(--deep-blue-500);
+        background: var(--deep-blue-50);
+        color: var(--deep-blue-700);
     }
     .td-checkbox-pill input[type="checkbox"] {
         margin: 0;
         cursor: pointer;
+        accent-color: var(--deep-blue-600);
+        width: 14px;
+        height: 14px;
     }
+
+    /* ===== Selected Data Container ===== */
     .td-selected-container {
-        min-height: 80px;
-        background: #f8fafc;
-        border: 1px dashed #cbd5e1;
-        border-radius: 6px;
-        padding: 0.75rem;
+        min-height: 90px;
+        background: var(--gray-50);
+        border: 2px dashed var(--gray-200);
+        border-radius: var(--radius-md);
+        padding: 0.85rem;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.6rem;
     }
     .td-selected-item {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-left: 4px solid #3b82f6;
-        padding: 0.6rem 0.75rem;
-        border-radius: 4px;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-left: 3px solid var(--deep-blue-500);
+        padding: 0.7rem 0.85rem;
+        border-radius: var(--radius-sm);
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 0.5rem;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        gap: 0.6rem;
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition);
+    }
+    .td-selected-item:hover {
+        box-shadow: var(--shadow-md);
     }
     .td-selected-title {
         font-weight: 600;
-        font-size: 0.875rem;
-        color: #1e293b;
-        line-height: 1.3;
+        font-size: 0.85rem;
+        color: var(--deep-blue-800);
+        line-height: 1.35;
     }
     .td-selected-meta {
         font-size: 0.75rem;
-        color: #64748b;
-        margin-top: 0.25rem;
+        color: var(--gray-500);
+        margin-top: 0.3rem;
     }
     .td-btn-delete {
         background: none;
         border: none;
-        color: #ef4444;
+        color: var(--gray-400);
         cursor: pointer;
-        font-size: 1.1rem;
+        font-size: 0.85rem;
         line-height: 1;
-        padding: 0.2rem;
+        padding: 0.3rem;
+        border-radius: 4px;
+        transition: all var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .td-btn-delete:hover {
-        color: #b91c1c;
+        color: var(--danger);
+        background: var(--danger-bg);
     }
+
+    /* ===== Action Buttons ===== */
     .td-action-buttons {
         display: flex;
-        gap: 0.5rem;
+        gap: 0.6rem;
         margin-top: 1rem;
     }
+
+    /* ===== Result Table ===== */
     .td-table-scroll {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         margin-top: 1rem;
-        border: 1px solid #cbd5e1;
-        border-radius: 4px;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-md);
     }
     .td-table-dynamic {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.85rem;
+        font-size: 0.825rem;
         min-width: 600px;
     }
     .td-table-dynamic th,
     .td-table-dynamic td {
-        border: 1px solid #cbd5e1;
-        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--gray-200);
+        padding: 0.6rem 0.85rem;
     }
     .td-table-dynamic th {
-        background-color: #1e293b;
-        color: #ffffff;
+        background: var(--deep-blue-800);
+        color: var(--white);
         font-weight: 600;
         white-space: nowrap;
         text-align: center;
+        font-size: 0.8rem;
+        letter-spacing: 0.01em;
     }
     .td-table-dynamic th.td-th-wilayah {
         text-align: left;
         vertical-align: middle;
-        min-width: 180px;
+        min-width: 190px;
+        background: var(--deep-blue-900);
     }
     .td-table-dynamic td.td-align-right {
         text-align: right;
+        font-variant-numeric: tabular-nums;
     }
     .td-table-dynamic td.td-align-center {
         text-align: center;
-        color: #94a3b8;
+        color: var(--gray-400);
     }
     .td-table-dynamic tbody tr:nth-child(even) {
-        background-color: #f8fafc;
+        background-color: var(--gray-50);
     }
     .td-table-dynamic tbody tr:hover {
-        background-color: #f1f5f9;
+        background-color: var(--deep-blue-50);
+    }
+
+    /* ===== Result Header ===== */
+    .td-result-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    .td-result-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--deep-blue-800);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .td-export-group {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    /* ===== Empty State ===== */
+    .td-empty-state {
+        text-align: center;
+        color: var(--gray-400);
+        font-size: 0.825rem;
+        padding: 1.5rem 1rem;
+    }
+    .td-empty-state svg {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 0.5rem;
+        opacity: 0.4;
+    }
+
+    /* ===== Counter Badge ===== */
+    .td-counter-badge {
+        margin-left: auto;
+        font-size: 0.75rem;
+        color: var(--gray-500);
+        font-weight: 500;
+        background: var(--gray-100);
+        padding: 0.15rem 0.5rem;
+        border-radius: 20px;
+    }
+
+    /* ===== Helper Text ===== */
+    .td-helper-text {
+        display: block;
+        color: var(--gray-500);
+        margin-top: 0.3rem;
+        font-size: 0.78rem;
+    }
+
+    /* ===== Select All Pill ===== */
+    .td-select-all-pill {
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+        display: inline-flex;
+        background: var(--deep-blue-50);
+        border-color: var(--deep-blue-200);
+    }
+
+    /* ===== Tambah Button Full Width ===== */
+    .td-btn-tambah-full {
+        width: 100%;
+        padding: 0.65rem 1rem;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
     }
 </style>
 @endpush
@@ -203,121 +362,128 @@
 
 <!-- Banner Kewajiban Maksimal 2 Data -->
 <div class="td-banner-info">
-    <span>ℹ️</span>
-    <span>Hanya dapat memilih maksimal 2 data</span>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
+    <span>Hanya dapat memilih maksimal 2 data per tabel</span>
 </div>
 
-<div class="td-card">
-    <h2 style="font-size: 1.15rem; margin-bottom: 1rem;">Filter Tabel Dinamis</h2>
+<!-- Page Title -->
+<h1 class="td-page-title">Filter Tabel Dinamis</h1>
+<p class="td-page-subtitle">Pilih indikator, periode, dan wilayah untuk membentuk tabel data.</p>
 
-    <div class="td-layout-grid">
-        <!-- Kolom 1: Pemilihan Subjek, Indikator, Jenis & Tahun -->
-        <div>
-            <div class="td-section-box">
-                <div class="td-section-header">
-                    <span class="td-step-badge">1</span>
-                    <span>Pilih Indikator & Periode</span>
+<div class="td-layout-grid">
+    <!-- ====== Kolom 1: Pemilihan Subjek, Indikator, Jenis & Tahun ====== -->
+    <div>
+        <div class="td-section-box">
+            <div class="td-section-header">
+                <span class="td-step-badge">1</span>
+                <span>Pilih Indikator & Periode</span>
+            </div>
+
+            <!-- Dropdown Subjek -->
+            <div class="td-form-group">
+                <label for="td-subjek">Subjek / Sektor Bidang IPW</label>
+                <select id="td-subjek">
+                    <option value="">— Memuat Subjek... —</option>
+                </select>
+            </div>
+
+            <!-- Pencarian & Dropdown Indikator (Debounce) -->
+            <div class="td-form-group">
+                <label for="td-cari-indikator">Pencarian & Daftar Indikator</label>
+                <div class="td-search-box">
+                    <span class="td-search-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                    </span>
+                    <input type="text" id="td-cari-indikator" class="td-search-input" placeholder="Ketik kata kunci untuk mencari indikator..." disabled>
                 </div>
+                <select id="td-indikator" disabled>
+                    <option value="">— Pilih Subjek Terlebih Dahulu —</option>
+                </select>
+                <small id="td-info-indikator" class="td-helper-text"></small>
+            </div>
 
-                <!-- Dropdown Subjek -->
-                <div class="td-form-group">
-                    <label for="td-subjek">Subjek / Sektor Bidang IPW</label>
-                    <select id="td-subjek">
-                        <option value="">-- Memuat Subjek... --</option>
-                    </select>
+            <!-- Pilihan Jenis Data -->
+            <div class="td-form-group">
+                <label for="td-jenis">Jenis Data</label>
+                <select id="td-jenis" disabled>
+                    <option value="Realisasi">Realisasi</option>
+                    <option value="Target">Target</option>
+                </select>
+            </div>
+
+            <!-- Centang Tahun (2021-2026) -->
+            <div class="td-form-group">
+                <label>Tahun (Rentang 2021 – 2026)</label>
+                <div id="td-tahun-list" class="td-checkbox-wrap">
+                    <span style="color: var(--gray-400); font-size: 0.8rem;">Pilih indikator terlebih dahulu.</span>
                 </div>
+            </div>
 
-                <!-- Pencarian & Dropdown Indikator (Debounce) -->
-                <div class="td-form-group">
-                    <label for="td-cari-indikator">Pencarian & Daftar Indikator</label>
-                    <div class="td-search-box">
-                        <input type="text" id="td-cari-indikator" class="td-search-input" placeholder="Ketik kata kunci untuk mencari indikator..." disabled>
-                    </div>
-                    <select id="td-indikator" disabled>
-                        <option value="">-- Pilih Subjek Terlebih Dahulu --</option>
-                    </select>
-                    <small id="td-info-indikator" style="display: block; color: #64748b; margin-top: 0.35rem; font-size: 0.8rem;"></small>
+            <!-- Tombol Tambah -->
+            <button type="button" id="td-btn-tambah" class="td-btn td-btn-primary td-btn-tambah-full" disabled>
+                Tambah ke Data Terpilih
+            </button>
+        </div>
+    </div>
+
+    <!-- ====== Kolom 2: Data Terpilih & Wilayah & Aksi ====== -->
+    <div>
+        <!-- Kontainer Data Terpilih (Maks 2) -->
+        <div class="td-section-box">
+            <div class="td-section-header">
+                <span class="td-step-badge">2</span>
+                <span>Data Terpilih</span>
+                <span id="td-data-counter" class="td-counter-badge">(0 / 2)</span>
+            </div>
+
+            <div id="td-data-terpilih" class="td-selected-container">
+                <div id="td-terpilih-kosong" class="td-empty-state">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                    <div>Belum ada data terpilih.<br>Klik <strong>Tambah</strong> pada panel sebelah kiri.</div>
                 </div>
-
-                <!-- Pilihan Jenis Data -->
-                <div class="td-form-group">
-                    <label for="td-jenis">Jenis Data</label>
-                    <select id="td-jenis" disabled>
-                        <option value="Realisasi">Realisasi</option>
-                        <option value="Target">Target</option>
-                    </select>
-                </div>
-
-                <!-- Centang Tahun (2021-2026) -->
-                <div class="td-form-group">
-                    <label>Tahun (Rentang 2021 - 2026)</label>
-                    <div id="td-tahun-list" class="td-checkbox-wrap">
-                        <span style="color: #94a3b8; font-size: 0.825rem;">Pilih indikator terlebih dahulu.</span>
-                    </div>
-                </div>
-
-                <!-- Tombol Tambah -->
-                <button type="button" id="td-btn-tambah" class="td-btn td-btn-primary" style="width: 100%;" disabled>
-                    ➕ Tambah
-                </button>
             </div>
         </div>
 
-        <!-- Kolom 2: Data Terpilih & Wilayah & Aksi -->
-        <div>
-            <!-- Kontainer Data Terpilih (Maks 2) -->
-            <div class="td-section-box">
-                <div class="td-section-header">
-                    <span class="td-step-badge">2</span>
-                    <span>Data Terpilih</span>
-                    <span id="td-data-counter" style="margin-left: auto; font-size: 0.8rem; color: #64748b; font-weight: normal;">(0 / 2)</span>
-                </div>
-
-                <div id="td-data-terpilih" class="td-selected-container">
-                    <div id="td-terpilih-kosong" style="text-align: center; color: #94a3b8; font-size: 0.825rem; padding: 1rem 0;">
-                        Belum ada data terpilih. Klik 'Tambah' pada panel sebelah kiri.
-                    </div>
-                </div>
+        <!-- Centang Wilayah (Judul Baris) -->
+        <div class="td-section-box">
+            <div class="td-section-header">
+                <span class="td-step-badge">3</span>
+                <span>Judul Baris (Wilayah)</span>
             </div>
 
-            <!-- Centang Wilayah (Judul Baris) -->
-            <div class="td-section-box">
-                <div class="td-section-header">
-                    <span class="td-step-badge">3</span>
-                    <span>Judul Baris (Wilayah)</span>
-                </div>
-
-                <div class="td-form-group">
-                    <label class="td-checkbox-pill" style="font-weight: 600; margin-bottom: 0.5rem; display: inline-flex;">
-                        <input type="checkbox" id="td-semua-wilayah" checked>
-                        <span>Pilih Semua Wilayah</span>
-                    </label>
-                    <div id="td-wilayah-list" class="td-checkbox-wrap">
-                        <span style="color: #94a3b8; font-size: 0.825rem;">Memuat daftar wilayah...</span>
-                    </div>
+            <div class="td-form-group">
+                <label class="td-checkbox-pill td-select-all-pill">
+                    <input type="checkbox" id="td-semua-wilayah" checked>
+                    <span>Pilih Semua Wilayah</span>
+                </label>
+                <div id="td-wilayah-list" class="td-checkbox-wrap">
+                    <span style="color: var(--gray-400); font-size: 0.8rem;">Memuat daftar wilayah...</span>
                 </div>
             </div>
+        </div>
 
-            <!-- Tombol Aksi: Submit & Atur Ulang -->
-            <div class="td-action-buttons">
-                <button type="button" id="td-btn-submit" class="td-btn td-btn-secondary" style="flex: 2;" disabled>
-                    🚀 Submit
-                </button>
-                <button type="button" id="td-btn-reset" class="td-btn td-btn-outline" style="flex: 1;">
-                    🔄 Atur Ulang
-                </button>
-            </div>
+        <!-- Tombol Aksi: Submit & Atur Ulang -->
+        <div class="td-action-buttons">
+            <button type="button" id="td-btn-submit" class="td-btn td-btn-primary" style="flex: 2;" disabled>
+                Tampilkan Tabel
+            </button>
+            <button type="button" id="td-btn-reset" class="td-btn td-btn-outline" style="flex: 1;">
+                Atur Ulang
+            </button>
         </div>
     </div>
 </div>
 
 <!-- Kartu Tabel Hasil Dinamis Header Dua Tingkat -->
-<div id="td-hasil-wrapper" class="td-card td-hidden">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
-        <h2 style="font-size: 1.1rem; border: none; padding: 0; margin: 0;">Tabel Hasil Dinamis</h2>
-        <div style="display: flex; gap: 0.5rem;">
+<div id="td-hasil-wrapper" class="td-card td-hidden" style="margin-top: 1.5rem;">
+    <div class="td-result-header">
+        <div class="td-result-title">
+            <span class="td-h2-icon" style="width:28px;height:28px;background:var(--deep-blue-50);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;font-size:0.9rem;">📋</span>
+            Tabel Hasil Dinamis
+        </div>
+        <div class="td-export-group">
             <button type="button" id="td-export-xlsx" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
-                📥 Unduh Excel (.xlsx)
+                📥 Unduh Excel
             </button>
             <button type="button" id="td-export-csv" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
                 📄 Unduh CSV
@@ -454,7 +620,7 @@
     }
 
     function renderOpsiSubjek() {
-        dom.subjek.innerHTML = '<option value="">-- Pilih Subjek / Sektor --</option>';
+        dom.subjek.innerHTML = '<option value="">— Pilih Subjek / Sektor —</option>';
         state.subjek.forEach(s => {
             const opt = document.createElement('option');
             opt.value = s.id;
@@ -499,15 +665,15 @@
         const subjekId = this.value;
         dom.cariIndikator.value = '';
         dom.cariIndikator.disabled = !subjekId;
-        dom.indikator.innerHTML = '<option value="">-- Memuat Indikator... --</option>';
+        dom.indikator.innerHTML = '<option value="">— Memuat Indikator... —</option>';
         dom.indikator.disabled = true;
         dom.jenis.disabled = true;
         dom.btnTambah.disabled = true;
         dom.infoIndikator.textContent = '';
-        dom.tahunList.innerHTML = '<span style="color: #94a3b8; font-size: 0.825rem;">Pilih indikator terlebih dahulu.</span>';
+        dom.tahunList.innerHTML = '<span style="color: var(--gray-400); font-size: 0.8rem;">Pilih indikator terlebih dahulu.</span>';
 
         if (!subjekId) {
-            dom.indikator.innerHTML = '<option value="">-- Pilih Subjek Terlebih Dahulu --</option>';
+            dom.indikator.innerHTML = '<option value="">— Pilih Subjek Terlebih Dahulu —</option>';
             return;
         }
 
@@ -532,14 +698,14 @@
             const indikators = await requestApi(url);
             state.indikator = indikators;
 
-            dom.indikator.innerHTML = '<option value="">-- Pilih Indikator --</option>';
+            dom.indikator.innerHTML = '<option value="">— Pilih Indikator —</option>';
             if (indikators.length === 0) {
-                dom.indikator.innerHTML = '<option value="">-- Tidak ada indikator yang cocok --</option>';
+                dom.indikator.innerHTML = '<option value="">— Tidak ada indikator yang cocok —</option>';
             } else {
                 indikators.forEach(ind => {
                     const opt = document.createElement('option');
                     opt.value = ind.id;
-                    opt.textContent = `${ind.kode} - ${ind.label}`;
+                    opt.textContent = `${ind.kode} — ${ind.label}`;
                     dom.indikator.appendChild(opt);
                 });
             }
@@ -561,7 +727,7 @@
             dom.jenis.disabled = true;
             dom.btnTambah.disabled = true;
             dom.infoIndikator.textContent = '';
-            dom.tahunList.innerHTML = '<span style="color: #94a3b8; font-size: 0.825rem;">Pilih indikator terlebih dahulu.</span>';
+            dom.tahunList.innerHTML = '<span style="color: var(--gray-400); font-size: 0.8rem;">Pilih indikator terlebih dahulu.</span>';
             return;
         }
 
@@ -571,10 +737,10 @@
             const meta = [];
             if (terpilih.satuan) meta.push(`Satuan: <strong>${terpilih.satuan}</strong>`);
             if (terpilih.opd) meta.push(`OPD: <strong>${terpilih.opd}</strong>`);
-            dom.infoIndikator.innerHTML = meta.join(' | ');
+            dom.infoIndikator.innerHTML = meta.join(' &nbsp;·&nbsp; ');
         }
 
-        dom.tahunList.innerHTML = '<span style="color: #94a3b8; font-size: 0.825rem;">Memeriksa ketersediaan tahun...</span>';
+        dom.tahunList.innerHTML = '<span style="color: var(--gray-400); font-size: 0.8rem;">Memeriksa ketersediaan tahun...</span>';
 
         try {
             const tahunTersedia = await requestApi(`/tahun?indikator_id=${indId}&jenis=${jenisVal}`);
@@ -594,7 +760,7 @@
             label.className = 'td-checkbox-pill';
             label.innerHTML = `
                 <input type="checkbox" class="td-cb-thn" value="${th}" ${adaData ? 'checked' : ''}>
-                <span>${th} ${adaData ? '✓' : ''}</span>
+                <span>${th}</span>
             `;
             dom.tahunList.appendChild(label);
         }
@@ -670,9 +836,9 @@
             box.innerHTML = `
                 <div style="flex: 1;">
                     <div class="td-selected-title">[${item.jenis}] ${item.label}</div>
-                    <div class="td-selected-meta">Tahun: <strong>${item.tahun.join(', ')}</strong> ${item.satuan ? `(${item.satuan})` : ''}</div>
+                    <div class="td-selected-meta">Tahun: <strong>${item.tahun.join(', ')}</strong> ${item.satuan ? `· ${item.satuan}` : ''}</div>
                 </div>
-                <button type="button" class="td-btn-delete" title="Hapus Data" data-index="${index}">✖</button>
+                <button type="button" class="td-btn-delete" title="Hapus Data" data-index="${index}">✕</button>
             `;
             dom.dataTerpilih.appendChild(box);
         });
@@ -751,7 +917,7 @@
             tampilkanPesan(err.message, 'error');
         } finally {
             dom.btnSubmit.disabled = false;
-            dom.btnSubmit.innerHTML = '🚀 Submit';
+            dom.btnSubmit.innerHTML = 'Tampilkan Tabel';
         }
     });
 
@@ -786,7 +952,7 @@
 
         let bodyHtml = '';
         if (!baris || baris.length === 0) {
-            bodyHtml = `<tr><td colspan="100" class="td-align-center" style="padding: 1.5rem;">Tidak ada data ditemukan.</td></tr>`;
+            bodyHtml = `<tr><td colspan="100" class="td-align-center" style="padding: 2rem;">Tidak ada data ditemukan.</td></tr>`;
         } else {
             baris.forEach(b => {
                 bodyHtml += `<tr><td style="font-weight: 600;">${b.wilayah}</td>`;
