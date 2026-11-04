@@ -1,39 +1,56 @@
-@extends($layout)
+@extends(config('tabel_dinamis.layout'))
 
 @section('title', 'Tabel Dinamis Indikator Bidang IPW')
 
 @push('styles')
 <style>
-    /* Styling khusus form filter & tabel dinamis */
-    .td-grid-2 {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    @media (min-width: 768px) {
-        .td-grid-2 {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-    .td-step-box {
-        background: #fafbfc;
-        border: 1px solid #e1e4e8;
-        border-radius: 6px;
-        padding: 1rem;
+    /* Styling mobile-first untuk Form Filter & Tabel Hasil */
+    .td-banner-info {
+        background-color: #e8f4fd;
+        border-left: 4px solid #1976d2;
+        color: #0d47a1;
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+        font-weight: 500;
         margin-bottom: 1rem;
-    }
-    .td-step-title {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #16213e;
-        margin-bottom: 0.75rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
     }
-    .td-step-num {
-        background: #16213e;
-        color: #fff;
+    .td-layout-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    @media (min-width: 992px) {
+        .td-layout-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: start;
+        }
+    }
+    .td-section-box {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .td-section-header {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 0.5rem;
+    }
+    .td-step-badge {
+        background: #1e293b;
+        color: #ffffff;
         width: 22px;
         height: 22px;
         border-radius: 50%;
@@ -41,208 +58,278 @@
         align-items: center;
         justify-content: center;
         font-size: 0.75rem;
+        font-weight: bold;
     }
-    .td-checkbox-group {
+    .td-search-box {
+        position: relative;
+        margin-bottom: 0.5rem;
+    }
+    .td-search-input {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        font-size: 0.875rem;
+    }
+    .td-search-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+    .td-checkbox-wrap {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.4rem;
     }
-    .td-checkbox-label {
+    .td-checkbox-pill {
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
-        background: #fff;
-        border: 1px solid #ced4da;
-        padding: 0.3rem 0.6rem;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        padding: 0.35rem 0.6rem;
         border-radius: 4px;
-        font-size: 0.85rem;
+        font-size: 0.825rem;
         cursor: pointer;
         user-select: none;
+        transition: all 0.15s ease;
     }
-    .td-checkbox-label:hover {
-        background: #f8f9fa;
-        border-color: #adb5bd;
+    .td-checkbox-pill:hover {
+        background: #edf2f7;
+        border-color: #94a3b8;
     }
-    .td-checkbox-label input[type="checkbox"] {
+    .td-checkbox-pill input[type="checkbox"] {
         margin: 0;
         cursor: pointer;
     }
-    .td-selected-box {
-        min-height: 56px;
-        background: #fff;
-        border: 1px dashed #ced4da;
+    .td-selected-container {
+        min-height: 80px;
+        background: #f8fafc;
+        border: 1px dashed #cbd5e1;
         border-radius: 6px;
-        padding: 0.5rem;
+        padding: 0.75rem;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
     }
     .td-selected-item {
-        background: #eef2f7;
-        border-left: 3px solid #16213e;
-        padding: 0.5rem 0.75rem;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-left: 4px solid #3b82f6;
+        padding: 0.6rem 0.75rem;
         border-radius: 4px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         gap: 0.5rem;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
-    .td-selected-info {
-        font-size: 0.85rem;
-    }
-    .td-selected-info strong {
-        display: block;
-        color: #16213e;
+    .td-selected-title {
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: #1e293b;
+        line-height: 1.3;
     }
     .td-selected-meta {
         font-size: 0.75rem;
-        color: #555;
+        color: #64748b;
+        margin-top: 0.25rem;
     }
-    .td-counter-badge {
-        font-size: 0.75rem;
-        font-weight: normal;
-        color: #666;
-        margin-left: auto;
+    .td-btn-delete {
+        background: none;
+        border: none;
+        color: #ef4444;
+        cursor: pointer;
+        font-size: 1.1rem;
+        line-height: 1;
+        padding: 0.2rem;
     }
-    .td-header-actions {
+    .td-btn-delete:hover {
+        color: #b91c1c;
+    }
+    .td-action-buttons {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
         gap: 0.5rem;
-        margin-bottom: 0.75rem;
+        margin-top: 1rem;
     }
-    .td-export-group {
-        display: flex;
-        gap: 0.5rem;
+    .td-table-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 1rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
     }
-    .td-th-center {
-        text-align: center !important;
+    .td-table-dynamic {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+        min-width: 600px;
     }
-    .td-td-right {
-        text-align: right !important;
+    .td-table-dynamic th,
+    .td-table-dynamic td {
+        border: 1px solid #cbd5e1;
+        padding: 0.5rem 0.75rem;
+    }
+    .td-table-dynamic th {
+        background-color: #1e293b;
+        color: #ffffff;
+        font-weight: 600;
+        white-space: nowrap;
+        text-align: center;
+    }
+    .td-table-dynamic th.td-th-wilayah {
+        text-align: left;
+        vertical-align: middle;
+        min-width: 180px;
+    }
+    .td-table-dynamic td.td-align-right {
+        text-align: right;
+    }
+    .td-table-dynamic td.td-align-center {
+        text-align: center;
+        color: #94a3b8;
+    }
+    .td-table-dynamic tbody tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+    .td-table-dynamic tbody tr:hover {
+        background-color: #f1f5f9;
     }
 </style>
 @endpush
 
 @section('content')
-<div id="td-alert-container"></div>
+<div id="td-alert-box"></div>
 
-<!-- Kartu Filter Dinamis (Meniru BPS Malut) -->
+<!-- Banner Kewajiban Maksimal 2 Data -->
+<div class="td-banner-info">
+    <span>ℹ️</span>
+    <span>Hanya dapat memilih maksimal 2 data</span>
+</div>
+
 <div class="td-card">
-    <h2>Filter Tabel Dinamis</h2>
-    
-    <div class="td-grid-2">
-        <!-- Kolom Kiri: Pilihan Indikator & Tambah Data -->
+    <h2 style="font-size: 1.15rem; margin-bottom: 1rem;">Filter Tabel Dinamis</h2>
+
+    <div class="td-layout-grid">
+        <!-- Kolom 1: Pemilihan Subjek, Indikator, Jenis & Tahun -->
         <div>
-            <div class="td-step-box">
-                <div class="td-step-title">
-                    <span class="td-step-num">1</span>
+            <div class="td-section-box">
+                <div class="td-section-header">
+                    <span class="td-step-badge">1</span>
                     <span>Pilih Indikator & Periode</span>
                 </div>
 
+                <!-- Dropdown Subjek -->
                 <div class="td-form-group">
-                    <label for="td-select-subjek">Subjek / Sektor</label>
-                    <select id="td-select-subjek">
+                    <label for="td-subjek">Subjek / Sektor Bidang IPW</label>
+                    <select id="td-subjek">
                         <option value="">-- Memuat Subjek... --</option>
                     </select>
                 </div>
 
+                <!-- Pencarian & Dropdown Indikator (Debounce) -->
                 <div class="td-form-group">
-                    <label for="td-select-indikator">Tabel / Indikator</label>
-                    <select id="td-select-indikator" disabled>
+                    <label for="td-cari-indikator">Pencarian & Daftar Indikator</label>
+                    <div class="td-search-box">
+                        <input type="text" id="td-cari-indikator" class="td-search-input" placeholder="Ketik kata kunci untuk mencari indikator..." disabled>
+                    </div>
+                    <select id="td-indikator" disabled>
                         <option value="">-- Pilih Subjek Terlebih Dahulu --</option>
                     </select>
-                    <small id="td-indikator-info" class="td-mt-1" style="display:block; color:#666;"></small>
+                    <small id="td-info-indikator" style="display: block; color: #64748b; margin-top: 0.35rem; font-size: 0.8rem;"></small>
                 </div>
 
+                <!-- Pilihan Jenis Data -->
                 <div class="td-form-group">
-                    <label for="td-select-jenis">Jenis Data</label>
-                    <select id="td-select-jenis" disabled>
+                    <label for="td-jenis">Jenis Data</label>
+                    <select id="td-jenis" disabled>
                         <option value="Realisasi">Realisasi</option>
                         <option value="Target">Target</option>
                     </select>
                 </div>
 
+                <!-- Centang Tahun (2021-2026) -->
                 <div class="td-form-group">
                     <label>Tahun (Rentang 2021 - 2026)</label>
-                    <div id="td-tahun-container" class="td-checkbox-group">
-                        <span style="color:#888; font-size:0.85rem;">Pilih indikator untuk melihat ketersediaan tahun.</span>
+                    <div id="td-tahun-list" class="td-checkbox-wrap">
+                        <span style="color: #94a3b8; font-size: 0.825rem;">Pilih indikator terlebih dahulu.</span>
                     </div>
                 </div>
 
+                <!-- Tombol Tambah -->
                 <button type="button" id="td-btn-tambah" class="td-btn td-btn-primary" style="width: 100%;" disabled>
-                    ➕ Tambah ke Data Terpilih
+                    ➕ Tambah
                 </button>
             </div>
         </div>
 
-        <!-- Kolom Kanan: Data Terpilih & Filter Wilayah -->
+        <!-- Kolom 2: Data Terpilih & Wilayah & Aksi -->
         <div>
-            <!-- Box Data Terpilih (Maks 2) -->
-            <div class="td-step-box">
-                <div class="td-step-title">
-                    <span class="td-step-num">2</span>
+            <!-- Kontainer Data Terpilih (Maks 2) -->
+            <div class="td-section-box">
+                <div class="td-section-header">
+                    <span class="td-step-badge">2</span>
                     <span>Data Terpilih</span>
-                    <span id="td-counter-data" class="td-counter-badge">(0 / 2)</span>
+                    <span id="td-data-counter" style="margin-left: auto; font-size: 0.8rem; color: #64748b; font-weight: normal;">(0 / 2)</span>
                 </div>
 
-                <div id="td-selected-box" class="td-selected-box">
-                    <div id="td-selected-empty" style="text-align: center; color: #888; font-size: 0.85rem; padding: 0.5rem 0;">
-                        Belum ada data yang ditambahkan (Maksimal 2).
+                <div id="td-data-terpilih" class="td-selected-container">
+                    <div id="td-terpilih-kosong" style="text-align: center; color: #94a3b8; font-size: 0.825rem; padding: 1rem 0;">
+                        Belum ada data terpilih. Klik 'Tambah' pada panel sebelah kiri.
                     </div>
                 </div>
             </div>
 
-            <!-- Box Judul Baris / Wilayah -->
-            <div class="td-step-box">
-                <div class="td-step-title">
-                    <span class="td-step-num">3</span>
-                    <span>Judul Baris / Wilayah</span>
+            <!-- Centang Wilayah (Judul Baris) -->
+            <div class="td-section-box">
+                <div class="td-section-header">
+                    <span class="td-step-badge">3</span>
+                    <span>Judul Baris (Wilayah)</span>
                 </div>
 
                 <div class="td-form-group">
-                    <label class="td-checkbox-label" style="font-weight: 600; margin-bottom: 0.5rem;">
-                        <input type="checkbox" id="td-wilayah-semua" checked>
+                    <label class="td-checkbox-pill" style="font-weight: 600; margin-bottom: 0.5rem; display: inline-flex;">
+                        <input type="checkbox" id="td-semua-wilayah" checked>
                         <span>Pilih Semua Wilayah</span>
                     </label>
-                    <div id="td-wilayah-container" class="td-checkbox-group">
-                        <span style="color:#888; font-size:0.85rem;">Memuat daftar wilayah...</span>
+                    <div id="td-wilayah-list" class="td-checkbox-wrap">
+                        <span style="color: #94a3b8; font-size: 0.825rem;">Memuat daftar wilayah...</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Tombol Aksi Submit -->
-            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <!-- Tombol Aksi: Submit & Atur Ulang -->
+            <div class="td-action-buttons">
                 <button type="button" id="td-btn-submit" class="td-btn td-btn-secondary" style="flex: 2;" disabled>
-                    🚀 Tampilkan Tabel
+                    🚀 Submit
                 </button>
                 <button type="button" id="td-btn-reset" class="td-btn td-btn-outline" style="flex: 1;">
-                    Reset
+                    🔄 Atur Ulang
                 </button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Kartu Tabel Hasil Dinamis -->
-<div id="td-card-hasil" class="td-card td-hidden">
-    <div class="td-header-actions">
-        <h2 style="margin-bottom: 0; border: none; padding: 0;">Tabel Hasil Dinamis</h2>
-        <div class="td-export-group">
-            <button type="button" id="td-btn-export-xlsx" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
+<!-- Kartu Tabel Hasil Dinamis Header Dua Tingkat -->
+<div id="td-hasil-wrapper" class="td-card td-hidden">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <h2 style="font-size: 1.1rem; border: none; padding: 0; margin: 0;">Tabel Hasil Dinamis</h2>
+        <div style="display: flex; gap: 0.5rem;">
+            <button type="button" id="td-export-xlsx" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
                 📥 Unduh Excel (.xlsx)
             </button>
-            <button type="button" id="td-btn-export-csv" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
+            <button type="button" id="td-export-csv" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
                 📄 Unduh CSV
             </button>
         </div>
     </div>
 
-    <div class="td-table-wrap">
-        <table id="td-tabel-hasil" class="td-table">
-            <thead id="td-tabel-thead"></thead>
-            <tbody id="td-tabel-tbody"></tbody>
+    <!-- Tabel Header Dua Tingkat yang Bisa Digeser Horizontal -->
+    <div class="td-table-scroll">
+        <table class="td-table-dynamic">
+            <thead id="td-table-head"></thead>
+            <tbody id="td-table-body"></tbody>
         </table>
     </div>
 </div>
@@ -253,444 +340,482 @@
 (function() {
     'use strict';
 
-    // Konfigurasi & Base URL
-    const BASE_URL = '{{ url(config("tabel_dinamis.prefix", "tabel-dinamis")) }}';
+    // 1. Bangun Alamat API dari Prefix Config (Tidak di-hardcode)
+    const ROUTE_PREFIX = '{{ trim(config("tabel_dinamis.prefix", "tabel-dinamis"), "/") }}';
+    const API_BASE = (ROUTE_PREFIX === '' ? '' : '/' + ROUTE_PREFIX) + '/api';
+
+    // Ambil Token CSRF dari meta tag
     const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
     const MAKS_DATA = {{ config('tabel_dinamis.maks_data_per_tabel', 2) }};
     const TAHUN_MIN = {{ config('tabel_dinamis.tahun_min', 2021) }};
     const TAHUN_MAX = {{ config('tabel_dinamis.tahun_max', 2026) }};
 
-    // State Aplikasi
+    // State Manajemen Klien
     let state = {
-        subjekList: [],
-        indikatorList: [],
-        wilayahList: [],
-        selectedData: [], // Array item: { indikator_id, label, satuan, opd, jenis, tahun: [] }
-        lastPayload: null // Payload terakhir yang di-submit untuk export
+        subjek: [],
+        indikator: [],
+        wilayah: [],
+        dataTerpilih: [], // Maksimal 2 item: { indikator_id, kode, label, satuan, jenis, tahun: [] }
+        lastPayload: null
     };
 
-    // Elemen DOM
-    const el = {
-        alertContainer: document.getElementById('td-alert-container'),
-        selectSubjek: document.getElementById('td-select-subjek'),
-        selectIndikator: document.getElementById('td-select-indikator'),
-        selectJenis: document.getElementById('td-select-jenis'),
-        indikatorInfo: document.getElementById('td-indikator-info'),
-        tahunContainer: document.getElementById('td-tahun-container'),
+    // Referensi Elemen DOM
+    const dom = {
+        alertBox: document.getElementById('td-alert-box'),
+        subjek: document.getElementById('td-subjek'),
+        cariIndikator: document.getElementById('td-cari-indikator'),
+        indikator: document.getElementById('td-indikator'),
+        infoIndikator: document.getElementById('td-info-indikator'),
+        jenis: document.getElementById('td-jenis'),
+        tahunList: document.getElementById('td-tahun-list'),
         btnTambah: document.getElementById('td-btn-tambah'),
-        selectedBox: document.getElementById('td-selected-box'),
-        selectedEmpty: document.getElementById('td-selected-empty'),
-        counterData: document.getElementById('td-counter-data'),
-        wilayahSemua: document.getElementById('td-wilayah-semua'),
-        wilayahContainer: document.getElementById('td-wilayah-container'),
+        dataCounter: document.getElementById('td-data-counter'),
+        dataTerpilih: document.getElementById('td-data-terpilih'),
+        terpilihKosong: document.getElementById('td-terpilih-kosong'),
+        semuaWilayah: document.getElementById('td-semua-wilayah'),
+        wilayahList: document.getElementById('td-wilayah-list'),
         btnSubmit: document.getElementById('td-btn-submit'),
         btnReset: document.getElementById('td-btn-reset'),
-        cardHasil: document.getElementById('td-card-hasil'),
-        tabelThead: document.getElementById('td-tabel-thead'),
-        tabelTbody: document.getElementById('td-tabel-tbody'),
-        btnExportXlsx: document.getElementById('td-btn-export-xlsx'),
-        btnExportCsv: document.getElementById('td-btn-export-csv')
+        hasilWrapper: document.getElementById('td-hasil-wrapper'),
+        tableHead: document.getElementById('td-table-head'),
+        tableBody: document.getElementById('td-table-body'),
+        exportXlsx: document.getElementById('td-export-xlsx'),
+        exportCsv: document.getElementById('td-export-csv')
     };
 
-    // Tampilkan Notifikasi Pesan / Alert
-    function showAlert(message, type = 'danger') {
-        const alertDiv = document.createElement('div');
-        alertDiv.className = `td-alert td-alert-${type === 'danger' ? 'error' : type}`;
-        alertDiv.textContent = message;
-        el.alertContainer.innerHTML = '';
-        el.alertContainer.appendChild(alertDiv);
+    // Helper Tampilkan Pesan Peringatan
+    function tampilkanPesan(pesan, tipe = 'error') {
+        dom.alertBox.innerHTML = `
+            <div class="td-alert td-alert-${tipe}">
+                ${pesan}
+            </div>
+        `;
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function clearAlert() {
-        el.alertContainer.innerHTML = '';
+    function bersihkanPesan() {
+        dom.alertBox.innerHTML = '';
     }
 
-    // Helper Fetch API
-    async function apiRequest(endpoint, options = {}) {
-        const defaultHeaders = {
-            'Accept': 'application/json',
-            'X-CSRF-TOKEN': CSRF_TOKEN
+    // Helper Debounce
+    function debounce(func, delay = 350) {
+        let timer;
+        return function(...args) {
+            clearTimeout(timer);
+            timer = setTimeout(() => func.apply(this, args), delay);
         };
+    }
+
+    // Helper Permintaan API dengan CSRF Header pada POST
+    async function requestApi(endpoint, options = {}) {
+        const defaultHeaders = {
+            'Accept': 'application/json'
+        };
+
+        // Sertakan token CSRF jika ada
+        if (CSRF_TOKEN) {
+            defaultHeaders['X-CSRF-TOKEN'] = CSRF_TOKEN;
+        }
+
         options.headers = { ...defaultHeaders, ...options.headers };
 
-        const response = await fetch(`${BASE_URL}/api${endpoint}`, options);
+        const response = await fetch(`${API_BASE}${endpoint}`, options);
         if (!response.ok) {
-            let errorMsg = 'Terjadi kesalahan sistem.';
+            let pesanKesalahan = 'Terjadi gangguan komunikasi dengan server.';
             try {
-                const errData = await response.json();
-                if (errData.message) errorMsg = errData.message;
-                if (errData.errors) {
-                    const firstError = Object.values(errData.errors)[0];
-                    if (Array.isArray(firstError)) errorMsg = firstError[0];
+                const jsonErr = await response.json();
+                if (jsonErr.message) pesanKesalahan = jsonErr.message;
+                if (jsonErr.errors) {
+                    const firstErr = Object.values(jsonErr.errors)[0];
+                    if (Array.isArray(firstErr)) pesanKesalahan = firstErr[0];
                 }
             } catch (e) {}
-            throw new Error(errorMsg);
+            throw new Error(pesanKesalahan);
         }
         return response.json();
     }
 
-    // 1. Inisialisasi: Muat Subjek & Wilayah
-    async function init() {
+    // 1. Inisialisasi: Ambil Subjek & Wilayah
+    async function inisialisasi() {
         try {
-            const [subjekRes, wilayahRes] = await Promise.all([
-                apiRequest('/subjek'),
-                apiRequest('/wilayah')
+            const [dataSubjek, dataWilayah] = await Promise.all([
+                requestApi('/subjek'),
+                requestApi('/wilayah')
             ]);
 
-            state.subjekList = subjekRes;
-            state.wilayahList = wilayahRes;
+            state.subjek = dataSubjek;
+            state.wilayah = dataWilayah;
 
-            renderSubjekOptions();
-            renderWilayahCheckboxes();
+            renderOpsiSubjek();
+            renderCentangWilayah();
         } catch (err) {
-            showAlert(`Gagal memuat data awal: ${err.message}`);
+            tampilkanPesan(`Gagal memuat data referensi: ${err.message}`);
         }
     }
 
-    function renderSubjekOptions() {
-        el.selectSubjek.innerHTML = '<option value="">-- Pilih Subjek --</option>';
-        state.subjekList.forEach(s => {
+    function renderOpsiSubjek() {
+        dom.subjek.innerHTML = '<option value="">-- Pilih Subjek / Sektor --</option>';
+        state.subjek.forEach(s => {
             const opt = document.createElement('option');
             opt.value = s.id;
             opt.textContent = s.nama;
-            el.selectSubjek.appendChild(opt);
+            dom.subjek.appendChild(opt);
         });
     }
 
-    function renderWilayahCheckboxes() {
-        el.wilayahContainer.innerHTML = '';
-        state.wilayahList.forEach(w => {
+    function renderCentangWilayah() {
+        dom.wilayahList.innerHTML = '';
+        state.wilayah.forEach(w => {
             const label = document.createElement('label');
-            label.className = 'td-checkbox-label';
+            label.className = 'td-checkbox-pill';
             label.innerHTML = `
-                <input type="checkbox" class="td-cb-wilayah" value="${w.id}" checked>
+                <input type="checkbox" class="td-cb-wil" value="${w.id}" checked>
                 <span>${w.nama}</span>
             `;
-            el.wilayahContainer.appendChild(label);
+            dom.wilayahList.appendChild(label);
         });
 
-        // Event listener centang wilayah
-        document.querySelectorAll('.td-cb-wilayah').forEach(cb => {
-            cb.addEventListener('change', updateWilayahSemuaState);
+        document.querySelectorAll('.td-cb-wil').forEach(cb => {
+            cb.addEventListener('change', sinkronisasiCentangSemuaWilayah);
         });
     }
 
-    function updateWilayahSemuaState() {
-        const all = document.querySelectorAll('.td-cb-wilayah');
-        const checked = document.querySelectorAll('.td-cb-wilayah:checked');
-        el.wilayahSemua.checked = (all.length > 0 && all.length === checked.length);
-        el.wilayahSemua.indeterminate = (checked.length > 0 && checked.length < all.length);
+    function sinkronisasiCentangSemuaWilayah() {
+        const total = document.querySelectorAll('.td-cb-wil').length;
+        const checked = document.querySelectorAll('.td-cb-wil:checked').length;
+        dom.semuaWilayah.checked = (total > 0 && total === checked);
+        dom.semuaWilayah.indeterminate = (checked > 0 && checked < total);
     }
 
-    el.wilayahSemua.addEventListener('change', function() {
-        const checkStatus = this.checked;
-        document.querySelectorAll('.td-cb-wilayah').forEach(cb => {
-            cb.checked = checkStatus;
+    dom.semuaWilayah.addEventListener('change', function() {
+        const isChecked = this.checked;
+        document.querySelectorAll('.td-cb-wil').forEach(cb => {
+            cb.checked = isChecked;
         });
     });
 
-    // 2. Event: Subjek Berubah -> Muat Indikator
-    el.selectSubjek.addEventListener('change', async function() {
+    // 2. Subjek Dipilih -> Muat Indikator
+    dom.subjek.addEventListener('change', async function() {
         const subjekId = this.value;
-        el.selectIndikator.innerHTML = '<option value="">-- Memuat Indikator... --</option>';
-        el.selectIndikator.disabled = true;
-        el.selectJenis.disabled = true;
-        el.btnTambah.disabled = true;
-        el.indikatorInfo.textContent = '';
-        el.tahunContainer.innerHTML = '<span style="color:#888; font-size:0.85rem;">Pilih indikator terlebih dahulu.</span>';
+        dom.cariIndikator.value = '';
+        dom.cariIndikator.disabled = !subjekId;
+        dom.indikator.innerHTML = '<option value="">-- Memuat Indikator... --</option>';
+        dom.indikator.disabled = true;
+        dom.jenis.disabled = true;
+        dom.btnTambah.disabled = true;
+        dom.infoIndikator.textContent = '';
+        dom.tahunList.innerHTML = '<span style="color: #94a3b8; font-size: 0.825rem;">Pilih indikator terlebih dahulu.</span>';
 
         if (!subjekId) {
-            el.selectIndikator.innerHTML = '<option value="">-- Pilih Subjek Terlebih Dahulu --</option>';
+            dom.indikator.innerHTML = '<option value="">-- Pilih Subjek Terlebih Dahulu --</option>';
             return;
         }
 
-        try {
-            const indikators = await apiRequest(`/indikator?subjek_id=${subjekId}`);
-            state.indikatorList = indikators;
-
-            el.selectIndikator.innerHTML = '<option value="">-- Pilih Indikator --</option>';
-            indikators.forEach(ind => {
-                const opt = document.createElement('option');
-                opt.value = ind.id;
-                opt.textContent = `${ind.kode} - ${ind.label}`;
-                el.selectIndikator.appendChild(opt);
-            });
-            el.selectIndikator.disabled = false;
-        } catch (err) {
-            showAlert(`Gagal memuat indikator: ${err.message}`);
-        }
+        await muatDaftarIndikator(subjekId, '');
     });
 
-    // 3. Event: Indikator atau Jenis Berubah -> Muat Tahun yang Tersedia
-    el.selectIndikator.addEventListener('change', handleIndikatorChange);
-    el.selectJenis.addEventListener('change', handleIndikatorChange);
+    // 3. Pencarian Indikator dengan Debounce
+    const debouncedCari = debounce(async function(keyword) {
+        const subjekId = dom.subjek.value;
+        if (!subjekId) return;
+        await muatDaftarIndikator(subjekId, keyword);
+    }, 350);
 
-    async function handleIndikatorChange() {
-        const indId = el.selectIndikator.value;
-        const jenis = el.selectJenis.value;
+    dom.cariIndikator.addEventListener('input', function() {
+        debouncedCari(this.value.trim());
+    });
 
-        if (!indId) {
-            el.selectJenis.disabled = true;
-            el.btnTambah.disabled = true;
-            el.indikatorInfo.textContent = '';
-            el.tahunContainer.innerHTML = '<span style="color:#888; font-size:0.85rem;">Pilih indikator terlebih dahulu.</span>';
-            return;
-        }
-
-        el.selectJenis.disabled = false;
-        const selectedInd = state.indikatorList.find(i => i.id == indId);
-        if (selectedInd) {
-            let info = [];
-            if (selectedInd.satuan) info.push(`Satuan: <strong>${selectedInd.satuan}</strong>`);
-            if (selectedInd.opd) info.push(`OPD: <strong>${selectedInd.opd}</strong>`);
-            el.indikatorInfo.innerHTML = info.join(' | ');
-        }
-
-        el.tahunContainer.innerHTML = '<span style="color:#888; font-size:0.85rem;">Memeriksa tahun data...</span>';
-
+    async function muatDaftarIndikator(subjekId, keyword) {
         try {
-            const tahunTersedia = await apiRequest(`/tahun?indikator_id=${indId}&jenis=${jenis}`);
-            renderTahunCheckboxes(tahunTersedia);
-            checkBtnTambahState();
+            const url = `/indikator?subjek_id=${encodeURIComponent(subjekId)}` + 
+                (keyword ? `&q=${encodeURIComponent(keyword)}` : '');
+            const indikators = await requestApi(url);
+            state.indikator = indikators;
+
+            dom.indikator.innerHTML = '<option value="">-- Pilih Indikator --</option>';
+            if (indikators.length === 0) {
+                dom.indikator.innerHTML = '<option value="">-- Tidak ada indikator yang cocok --</option>';
+            } else {
+                indikators.forEach(ind => {
+                    const opt = document.createElement('option');
+                    opt.value = ind.id;
+                    opt.textContent = `${ind.kode} - ${ind.label}`;
+                    dom.indikator.appendChild(opt);
+                });
+            }
+            dom.indikator.disabled = false;
         } catch (err) {
-            renderTahunCheckboxes([]);
-            checkBtnTambahState();
+            tampilkanPesan(`Gagal memuat indikator: ${err.message}`);
         }
     }
 
-    function renderTahunCheckboxes(tahunTersedia) {
-        el.tahunContainer.innerHTML = '';
-        for (let th = TAHUN_MIN; th <= TAHUN_MAX; th++) {
-            const adaData = tahunTersedia.includes(th);
-            const label = document.createElement('label');
-            label.className = 'td-checkbox-label';
-            label.innerHTML = `
-                <input type="checkbox" class="td-cb-tahun" value="${th}" ${adaData ? 'checked' : ''}>
-                <span>${th} ${adaData ? '✓' : ''}</span>
-            `;
-            el.tahunContainer.appendChild(label);
+    // 4. Indikator atau Jenis Dipilih -> Ambil Ketersediaan Tahun
+    dom.indikator.addEventListener('change', sinkronisasiIndikatorDanJenis);
+    dom.jenis.addEventListener('change', sinkronisasiIndikatorDanJenis);
+
+    async function sinkronisasiIndikatorDanJenis() {
+        const indId = dom.indikator.value;
+        const jenisVal = dom.jenis.value;
+
+        if (!indId) {
+            dom.jenis.disabled = true;
+            dom.btnTambah.disabled = true;
+            dom.infoIndikator.textContent = '';
+            dom.tahunList.innerHTML = '<span style="color: #94a3b8; font-size: 0.825rem;">Pilih indikator terlebih dahulu.</span>';
+            return;
         }
 
-        document.querySelectorAll('.td-cb-tahun').forEach(cb => {
-            cb.addEventListener('change', checkBtnTambahState);
+        dom.jenis.disabled = false;
+        const terpilih = state.indikator.find(i => i.id == indId);
+        if (terpilih) {
+            const meta = [];
+            if (terpilih.satuan) meta.push(`Satuan: <strong>${terpilih.satuan}</strong>`);
+            if (terpilih.opd) meta.push(`OPD: <strong>${terpilih.opd}</strong>`);
+            dom.infoIndikator.innerHTML = meta.join(' | ');
+        }
+
+        dom.tahunList.innerHTML = '<span style="color: #94a3b8; font-size: 0.825rem;">Memeriksa ketersediaan tahun...</span>';
+
+        try {
+            const tahunTersedia = await requestApi(`/tahun?indikator_id=${indId}&jenis=${jenisVal}`);
+            renderCentangTahun(tahunTersedia);
+            periksaStatusTombolTambah();
+        } catch (err) {
+            renderCentangTahun([]);
+            periksaStatusTombolTambah();
+        }
+    }
+
+    function renderCentangTahun(tahunTersedia) {
+        dom.tahunList.innerHTML = '';
+        for (let th = TAHUN_MIN; th <= TAHUN_MAX; th++) {
+            const adaData = Array.isArray(tahunTersedia) && tahunTersedia.includes(th);
+            const label = document.createElement('label');
+            label.className = 'td-checkbox-pill';
+            label.innerHTML = `
+                <input type="checkbox" class="td-cb-thn" value="${th}" ${adaData ? 'checked' : ''}>
+                <span>${th} ${adaData ? '✓' : ''}</span>
+            `;
+            dom.tahunList.appendChild(label);
+        }
+
+        document.querySelectorAll('.td-cb-thn').forEach(cb => {
+            cb.addEventListener('change', periksaStatusTombolTambah);
         });
     }
 
-    function checkBtnTambahState() {
-        const indId = el.selectIndikator.value;
-        const tahunChecked = document.querySelectorAll('.td-cb-tahun:checked').length;
-        const reachLimit = state.selectedData.length >= MAKS_DATA;
-        el.btnTambah.disabled = (!indId || tahunChecked === 0 || reachLimit);
+    function periksaStatusTombolTambah() {
+        const indId = dom.indikator.value;
+        const thnChecked = document.querySelectorAll('.td-cb-thn:checked').length;
+        const penuh = state.dataTerpilih.length >= MAKS_DATA;
+        dom.btnTambah.disabled = (!indId || thnChecked === 0 || penuh);
     }
 
-    // 4. Tambah ke Data Terpilih
-    el.btnTambah.addEventListener('click', function() {
-        clearAlert();
-        if (state.selectedData.length >= MAKS_DATA) {
-            showAlert(`Maksimal hanya dapat memilih ${MAKS_DATA} indikator/data.`, 'warning');
+    // 5. Tambah ke Data Terpilih (Maksimal 2 Data)
+    dom.btnTambah.addEventListener('click', function() {
+        bersihkanPesan();
+
+        if (state.dataTerpilih.length >= MAKS_DATA) {
+            tampilkanPesan('Hanya dapat memilih maksimal 2 data', 'warning');
             return;
         }
 
-        const indId = parseInt(el.selectIndikator.value, 10);
-        const selectedInd = state.indikatorList.find(i => i.id == indId);
-        const jenis = el.selectJenis.value;
-        const tahunChecked = Array.from(document.querySelectorAll('.td-cb-tahun:checked'))
+        const indId = parseInt(dom.indikator.value, 10);
+        const itemInd = state.indikator.find(i => i.id == indId);
+        const jenisVal = dom.jenis.value;
+        const thnDipilih = Array.from(document.querySelectorAll('.td-cb-thn:checked'))
             .map(cb => parseInt(cb.value, 10))
             .sort((a, b) => a - b);
 
-        if (!selectedInd || tahunChecked.length === 0) {
-            showAlert('Pilih minimal satu tahun.', 'warning');
+        if (!itemInd || thnDipilih.length === 0) {
+            tampilkanPesan('Pilih minimal satu tahun.', 'warning');
             return;
         }
 
         // Cek duplikasi indikator + jenis
-        const duplicate = state.selectedData.find(item => item.indikator_id === indId && item.jenis === jenis);
-        if (duplicate) {
-            showAlert(`Kombinasi indikator "${selectedInd.label}" dengan jenis "${jenis}" sudah ada di data terpilih.`, 'warning');
+        const duplikat = state.dataTerpilih.find(d => d.indikator_id === indId && d.jenis === jenisVal);
+        if (duplikat) {
+            tampilkanPesan(`Indikator "${itemInd.label}" dengan jenis "${jenisVal}" sudah ada dalam Data Terpilih.`, 'warning');
             return;
         }
 
-        state.selectedData.push({
+        state.dataTerpilih.push({
             indikator_id: indId,
-            kode: selectedInd.kode,
-            label: selectedInd.label,
-            satuan: selectedInd.satuan || null,
-            opd: selectedInd.opd || null,
-            jenis: jenis,
-            tahun: tahunChecked
+            kode: itemInd.kode,
+            label: itemInd.label,
+            satuan: itemInd.satuan || null,
+            jenis: jenisVal,
+            tahun: thnDipilih
         });
 
-        renderSelectedData();
-        checkBtnTambahState();
+        renderDataTerpilih();
+        periksaStatusTombolTambah();
     });
 
-    function renderSelectedData() {
-        el.selectedBox.innerHTML = '';
-        el.counterData.textContent = `(${state.selectedData.length} / ${MAKS_DATA})`;
+    function renderDataTerpilih() {
+        dom.dataTerpilih.innerHTML = '';
+        dom.dataCounter.textContent = `(${state.dataTerpilih.length} / ${MAKS_DATA})`;
 
-        if (state.selectedData.length === 0) {
-            el.selectedBox.appendChild(el.selectedEmpty);
-            el.btnSubmit.disabled = true;
+        if (state.dataTerpilih.length === 0) {
+            dom.dataTerpilih.appendChild(dom.terpilihKosong);
+            dom.btnSubmit.disabled = true;
             return;
         }
 
-        el.btnSubmit.disabled = false;
+        dom.btnSubmit.disabled = false;
 
-        state.selectedData.forEach((item, idx) => {
-            const div = document.createElement('div');
-            div.className = 'td-selected-item';
-            div.innerHTML = `
-                <div class="td-selected-info">
-                    <strong>[${item.jenis}] ${item.label}</strong>
-                    <div class="td-selected-meta">Tahun: ${item.tahun.join(', ')} ${item.satuan ? `(${item.satuan})` : ''}</div>
+        state.dataTerpilih.forEach((item, index) => {
+            const box = document.createElement('div');
+            box.className = 'td-selected-item';
+            box.innerHTML = `
+                <div style="flex: 1;">
+                    <div class="td-selected-title">[${item.jenis}] ${item.label}</div>
+                    <div class="td-selected-meta">Tahun: <strong>${item.tahun.join(', ')}</strong> ${item.satuan ? `(${item.satuan})` : ''}</div>
                 </div>
-                <button type="button" class="td-chip-hapus" title="Hapus" data-index="${idx}" style="background:none; border:none;">✖</button>
+                <button type="button" class="td-btn-delete" title="Hapus Data" data-index="${index}">✖</button>
             `;
-            el.selectedBox.appendChild(div);
+            dom.dataTerpilih.appendChild(box);
         });
 
-        document.querySelectorAll('.td-chip-hapus').forEach(btn => {
+        // Event listener hapus
+        dom.dataTerpilih.querySelectorAll('.td-btn-delete').forEach(btn => {
             btn.addEventListener('click', function() {
                 const idx = parseInt(this.getAttribute('data-index'), 10);
-                state.selectedData.splice(idx, 1);
-                renderSelectedData();
-                checkBtnTambahState();
+                state.dataTerpilih.splice(idx, 1);
+                renderDataTerpilih();
+                periksaStatusTombolTambah();
             });
         });
     }
 
-    // 5. Submit Tampilkan Tabel
-    el.btnSubmit.addEventListener('click', async function() {
-        clearAlert();
+    // 6. Tombol Atur Ulang (Reset)
+    dom.btnReset.addEventListener('click', function() {
+        state.dataTerpilih = [];
+        state.lastPayload = null;
+        renderDataTerpilih();
+        periksaStatusTombolTambah();
+        dom.hasilWrapper.classList.add('td-hidden');
+        bersihkanPesan();
+    });
 
-        if (state.selectedData.length === 0) {
-            showAlert('Pilih minimal 1 data indikator terlebih dahulu.', 'warning');
+    // 7. Tombol Submit: Kirim Permintaan Tabel Dinamis via POST dengan CSRF
+    dom.btnSubmit.addEventListener('click', async function() {
+        bersihkanPesan();
+
+        if (state.dataTerpilih.length === 0) {
+            tampilkanPesan('Pilih minimal 1 data indikator sebelum submit.', 'warning');
             return;
         }
 
-        // Kumpulkan Wilayah
-        const cbWilayahChecked = Array.from(document.querySelectorAll('.td-cb-wilayah:checked'));
-        if (cbWilayahChecked.length === 0) {
-            showAlert('Pilih minimal 1 wilayah.', 'warning');
+        if (state.dataTerpilih.length > MAKS_DATA) {
+            tampilkanPesan('Hanya dapat memilih maksimal 2 data', 'warning');
             return;
         }
 
-        const wilayahIds = el.wilayahSemua.checked && cbWilayahChecked.length === state.wilayahList.length
-            ? null 
-            : cbWilayahChecked.map(cb => parseInt(cb.value, 10));
+        const checkedWil = Array.from(document.querySelectorAll('.td-cb-wil:checked'));
+        if (checkedWil.length === 0) {
+            tampilkanPesan('Pilih minimal 1 wilayah.', 'warning');
+            return;
+        }
+
+        const wilayahIds = (dom.semuaWilayah.checked && checkedWil.length === state.wilayah.length)
+            ? null
+            : checkedWil.map(cb => parseInt(cb.value, 10));
 
         const payload = {
             wilayah_ids: wilayahIds,
-            data: state.selectedData.map(item => ({
-                indikator_id: item.indikator_id,
-                jenis: item.jenis,
-                tahun: item.tahun
+            data: state.dataTerpilih.map(d => ({
+                indikator_id: d.indikator_id,
+                jenis: d.jenis,
+                tahun: d.tahun
             }))
         };
 
-        el.btnSubmit.disabled = true;
-        el.btnSubmit.innerHTML = '<span class="td-spinner"></span> Memuat Data...';
+        dom.btnSubmit.disabled = true;
+        dom.btnSubmit.innerHTML = '<span class="td-spinner"></span> Memuat...';
 
         try {
-            const tabelData = await apiRequest('/tabel', {
+            const hasilTabel = await requestApi('/tabel', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify(payload)
             });
 
             state.lastPayload = payload;
-            renderTabelHasil(tabelData);
-            el.cardHasil.classList.remove('td-hidden');
-            el.cardHasil.scrollIntoView({ behavior: 'smooth' });
+            renderTabelDuaTingkat(hasilTabel);
+            dom.hasilWrapper.classList.remove('td-hidden');
+            dom.hasilWrapper.scrollIntoView({ behavior: 'smooth' });
         } catch (err) {
-            showAlert(err.message, 'danger');
+            tampilkanPesan(err.message, 'error');
         } finally {
-            el.btnSubmit.disabled = false;
-            el.btnSubmit.innerHTML = '🚀 Tampilkan Tabel';
+            dom.btnSubmit.disabled = false;
+            dom.btnSubmit.innerHTML = '🚀 Submit';
         }
     });
 
-    // 6. Render Tabel Hasil Dinamis
-    function renderTabelHasil(tabelData) {
-        const { grup, baris } = tabelData;
+    // 8. Render Tabel Header Dua Tingkat & Format Angka Indonesia
+    function renderTabelDuaTingkat(hasilTabel) {
+        const { grup, baris } = hasilTabel;
 
-        // Susun Header
-        let thRow1 = '<tr><th rowspan="2" style="vertical-align: middle;">Kabupaten / Kota</th>';
-        let thRow2 = '<tr>';
+        // Baris Header 1 & Baris Header 2 (Header Dua Tingkat)
+        let thTingkat1 = '<tr><th rowspan="2" class="td-th-wilayah">Kabupaten / Kota</th>';
+        let thTingkat2 = '<tr>';
 
         grup.forEach(g => {
             const colSpan = g.tahun.length;
-            const satuanLabel = g.satuan ? ` (${g.satuan})` : '';
-            thRow1 += `<th colspan="${colSpan}" class="td-th-center">[${g.jenis}] ${g.judul}${satuanLabel}</th>`;
+            const satuanTeks = g.satuan ? ` (${g.satuan})` : '';
+            thTingkat1 += `<th colspan="${colSpan}">[${g.jenis}] ${g.judul}${satuanTeks}</th>`;
+
             g.tahun.forEach(th => {
-                thRow2 += `<th class="td-th-center" style="min-width: 90px;">${th}</th>`;
+                thTingkat2 += `<th style="min-width: 80px;">${th}</th>`;
             });
         });
 
-        thRow1 += '</tr>';
-        thRow2 += '</tr>';
-        el.tabelThead.innerHTML = thRow1 + thRow2;
+        thTingkat1 += '</tr>';
+        thTingkat2 += '</tr>';
+        dom.tableHead.innerHTML = thTingkat1 + thTingkat2;
 
-        // Susun Baris
-        let tbodyHtml = '';
-        if (baris.length === 0) {
-            tbodyHtml = `<tr><td colspan="100" style="text-align:center; padding:1.5rem; color:#888;">Tidak ada data ditemukan.</td></tr>`;
+        // Render Baris Wilayah dan Format Angka Indonesia
+        // Formatter angka standar Indonesia (titik untuk ribuan, koma untuk desimal)
+        const formatIndo = new Intl.NumberFormat('id-ID', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 4
+        });
+
+        let bodyHtml = '';
+        if (!baris || baris.length === 0) {
+            bodyHtml = `<tr><td colspan="100" class="td-align-center" style="padding: 1.5rem;">Tidak ada data ditemukan.</td></tr>`;
         } else {
             baris.forEach(b => {
-                tbodyHtml += `<tr><td style="font-weight: 600;">${b.wilayah}</td>`;
+                bodyHtml += `<tr><td style="font-weight: 600;">${b.wilayah}</td>`;
                 b.nilai.forEach(grupNilai => {
                     grupNilai.forEach(val => {
                         if (val === null || val === undefined) {
-                            tbodyHtml += `<td class="td-nilai-kosong td-td-right">-</td>`;
+                            // Null ditulis '-'
+                            bodyHtml += `<td class="td-align-center">-</td>`;
                         } else {
-                            // Format angka dengan pemisah desimal
-                            const formatted = Number(val).toLocaleString('id-ID', { maximumFractionDigits: 4 });
-                            tbodyHtml += `<td class="td-td-right">${formatted}</td>`;
+                            // Angka format Indonesia
+                            bodyHtml += `<td class="td-align-right">${formatIndo.format(val)}</td>`;
                         }
                     });
                 });
-                tbodyHtml += '</tr>';
+                bodyHtml += '</tr>';
             });
         }
-        el.tabelTbody.innerHTML = tbodyHtml;
+        dom.tableBody.innerHTML = bodyHtml;
     }
 
-    // 7. Reset Form
-    el.btnReset.addEventListener('click', function() {
-        state.selectedData = [];
-        renderSelectedData();
-        checkBtnTambahState();
-        el.cardHasil.classList.add('td-hidden');
-        clearAlert();
-    });
-
-    // 8. Export Handler (xlsx / csv)
-    function handleExport(format) {
+    // 9. Handler Unduh Berkas Export (POST dengan CSRF)
+    async function unduhBerkasExport(format) {
         if (!state.lastPayload) {
-            showAlert('Silakan tampilkan tabel terlebih dahulu sebelum mengunduh.', 'warning');
+            tampilkanPesan('Silakan lakukan submit tabel terlebih dahulu.', 'warning');
             return;
         }
 
-        // Form submit dinamis untuk download file biner
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = `${BASE_URL}/api/export?format=${format}`;
-        form.target = '_blank';
-
-        const csrfInput = document.createElement('input');
-        csrfInput.type = 'hidden';
-        csrfInput.name = '_token';
-        csrfInput.value = CSRF_TOKEN;
-        form.appendChild(csrfInput);
-
-        // Jika endpoint /api/export menerima JSON body via AJAX Blob
-        downloadBlobExport(format);
-    }
-
-    async function downloadBlobExport(format) {
         try {
-            const response = await fetch(`${BASE_URL}/api/export?format=${format}`, {
+            const response = await fetch(`${API_BASE}/export?format=${format}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -701,34 +826,32 @@
             });
 
             if (!response.ok) {
-                let errText = 'Gagal mengunduh file export.';
+                let errPesan = 'Gagal mengunduh berkas.';
                 try {
-                    const errJson = await response.json();
-                    if (errJson.message) errText = errJson.message;
+                    const errObj = await response.json();
+                    if (errObj.message) errPesan = errObj.message;
                 } catch(e) {}
-                throw new Error(errText);
+                throw new Error(errPesan);
             }
 
             const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = `tabel-dinamis-${new Date().toISOString().slice(0,10)}.${format}`;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            a.remove();
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = `tabel-dinamis-${new Date().toISOString().slice(0,10)}.${format}`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(link.href);
         } catch (err) {
-            showAlert(err.message, 'danger');
+            tampilkanPesan(err.message, 'error');
         }
     }
 
-    el.btnExportXlsx.addEventListener('click', () => handleExport('xlsx'));
-    el.btnExportCsv.addEventListener('click', () => handleExport('csv'));
+    dom.exportXlsx.addEventListener('click', () => unduhBerkasExport('xlsx'));
+    dom.exportCsv.addEventListener('click', () => unduhBerkasExport('csv'));
 
-    // Jalankan init
-    init();
+    // Jalankan
+    inisialisasi();
 })();
 </script>
 @endpush
