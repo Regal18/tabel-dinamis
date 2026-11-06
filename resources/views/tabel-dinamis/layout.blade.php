@@ -169,25 +169,20 @@
         .td-header-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.45rem;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: rgba(255, 255, 255, 0.88);
-            padding: 0.38rem 0.8rem;
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 0.42rem 0.95rem;
             border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.78rem;
+            font-weight: 700;
             letter-spacing: 0.02em;
-            backdrop-filter: blur(8px);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+            transition: all var(--transition);
         }
-        .td-badge-dot {
-            width: 6.5px;
-            height: 6.5px;
-            border-radius: 50%;
-            background: #38bdf8;
-            box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
-            display: inline-block;
+        .td-header-badge:hover {
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5);
+            transform: translateY(-1px);
         }
 
         /* ===== Container ===== */
@@ -427,7 +422,6 @@
                 <span>Admin Impor</span>
             </a>
             <span class="td-header-badge">
-                <span class="td-badge-dot"></span>
                 <span>BAPPEDA Maluku Utara</span>
             </span>
         </div>
