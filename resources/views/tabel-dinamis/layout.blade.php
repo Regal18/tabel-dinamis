@@ -91,22 +91,30 @@
             color: inherit;
         }
         .td-header-logo {
-            width: 34px;
-            height: 34px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
-            border: 1px solid rgba(255,255,255,0.18);
-            border-radius: 9px;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 48%, #0ea5e9 100%);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 11px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+            box-shadow: 0 4px 16px -2px rgba(14, 165, 233, 0.45),
+                        0 2px 6px -1px rgba(37, 99, 235, 0.35),
+                        inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
             flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+        .td-header-brand:hover .td-header-logo {
+            transform: translateY(-1px) scale(1.05);
+            box-shadow: 0 6px 20px -2px rgba(14, 165, 233, 0.6),
+                        0 3px 8px -1px rgba(37, 99, 235, 0.45),
+                        inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
         .td-header-logo svg {
-            width: 18px;
-            height: 18px;
-            stroke-width: 2.2;
+            width: 22px;
+            height: 22px;
+            display: block;
         }
         .td-header h1 {
             font-size: 1.25rem;
@@ -404,10 +412,30 @@
     <header class="td-header">
         <a href="{{ route('tabel-dinamis.index') }}" class="td-header-brand">
             <div class="td-header-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="20" x2="18" y2="10"></line>
-                    <line x1="12" y1="20" x2="12" y2="4"></line>
-                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
+                    <defs>
+                        <linearGradient id="kineraSpine" x1="4.5" y1="4.5" x2="8.5" y2="23.5" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="100%" stop-color="#bae6fd"/>
+                        </linearGradient>
+                        <linearGradient id="kineraArrow" x1="10" y1="4" x2="23" y2="17" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="60%" stop-color="#7dd3fc"/>
+                            <stop offset="100%" stop-color="#38bdf8"/>
+                        </linearGradient>
+                        <linearGradient id="kineraBase" x1="10" y1="13" x2="21" y2="24" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#e0f2fe"/>
+                            <stop offset="100%" stop-color="#93c5fd"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Tiang Kiri KINERA -->
+                    <rect x="4.5" y="4.5" width="4" height="19" rx="2" fill="url(#kineraSpine)"/>
+                    <!-- Sayap Atas KINERA (Indikator Kinerja Naik) -->
+                    <path d="M10.5 14L19.8 4.7C20.5 4 21.7 4 22.4 4.7C23.1 5.4 23.1 6.6 22.4 7.3L14.7 15L10.5 14Z" fill="url(#kineraArrow)"/>
+                    <!-- Sayap Bawah KINERA -->
+                    <path d="M11 12.8L19.5 21.3C20.2 22 20.2 23.1 19.5 23.8C18.8 24.5 17.7 24.5 17 23.8L9.5 16.3L11 12.8Z" fill="url(#kineraBase)"/>
+                    <!-- Simbol Titik Capaian Target -->
+                    <circle cx="21" cy="5.5" r="1.6" fill="#38bdf8"/>
                 </svg>
             </div>
             <h1>KINERA</h1>
