@@ -1,6 +1,6 @@
 @extends(config('tabel_dinamis.layout'))
 
-@section('title', 'KINERA — Tabel Dinamis Indikator Bidang IPW')
+@section('title', 'KINERA — Kinerja Informasi & Data Daerah Bidang IPW')
 
 @push('styles')
 <style>

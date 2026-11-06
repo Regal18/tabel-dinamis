@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'KINERA — Tabel Dinamis Indikator Bidang IPW') — BAPPEDA Maluku Utara</title>
+    <title>@yield('title', 'KINERA — Kinerja Informasi & Data Daerah Bidang IPW') — BAPPEDA Maluku Utara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -135,13 +135,20 @@
             display: inline-block;
         }
         .td-brand-sub {
-            font-size: 0.65rem;
+            font-size: 0.62rem;
             font-weight: 600;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.04em;
             color: #93c5fd;
             text-transform: uppercase;
-            line-height: 1;
+            line-height: 1.1;
             margin-top: 2px;
+            white-space: nowrap;
+        }
+        @media (max-width: 768px) {
+            .td-brand-sub {
+                font-size: 0.52rem;
+                letter-spacing: 0.02em;
+            }
         }
         .td-header-actions {
             display: flex;
@@ -439,7 +446,7 @@
             </div>
             <div class="td-brand-text">
                 <h1>KINERA</h1>
-                <span class="td-brand-sub">Indikator Bidang IPW</span>
+                <span class="td-brand-sub">Kinerja Informasi & Data Daerah Bidang IPW</span>
             </div>
         </a>
         <div class="td-header-actions">
@@ -461,7 +468,7 @@
     </main>
 
     <footer class="td-footer">
-        &copy; {{ date('Y') }} BAPPEDA Provinsi Maluku Utara — KINERA (Indikator Bidang IPW)
+        &copy; {{ date('Y') }} BAPPEDA Provinsi Maluku Utara — KINERA (Kinerja Informasi & Data Daerah Bidang IPW)
     </footer>
 
     @stack('scripts')
