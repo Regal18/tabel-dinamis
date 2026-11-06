@@ -118,15 +118,30 @@
             object-fit: contain;
             display: block;
         }
+        .td-brand-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         .td-header h1 {
             font-size: 1.25rem;
             font-weight: 800;
-            letter-spacing: 0.08em;
-            background: linear-gradient(135deg, #ffffff 40%, #cce7ff 100%);
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, #ffffff 40%, #cce7ff 80%, #90cdf4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 0;
+            line-height: 1.15;
             display: inline-block;
+        }
+        .td-brand-sub {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #93c5fd;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-top: 2px;
         }
         .td-header-actions {
             display: flex;
@@ -422,7 +437,10 @@
             <div class="td-header-logo">
                 <img src="{{ asset('images/kinera-logo.png') }}" alt="Logo KINERA">
             </div>
-            <h1>KINERA</h1>
+            <div class="td-brand-text">
+                <h1>KINERA</h1>
+                <span class="td-brand-sub">Indikator Bidang IPW</span>
+            </div>
         </a>
         <div class="td-header-actions">
             <a href="{{ route('tabel-dinamis.admin.impor.form') }}" class="td-header-link">

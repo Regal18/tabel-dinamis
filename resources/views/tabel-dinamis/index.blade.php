@@ -117,17 +117,44 @@
         border-color: rgba(29, 78, 216, 0.28);
     }
 
-    /* ===== Section Header ===== */
+    /* ===== Section Header & Typography ===== */
     .td-section-header {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: var(--deep-blue-800);
-        margin-bottom: 1rem;
+        margin-bottom: 1.15rem;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--gray-100);
+        gap: 0.85rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+    }
+    .td-section-title-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        flex: 1;
+        min-width: 0;
+    }
+    .td-section-title {
+        font-size: 0.975rem;
+        font-weight: 800;
+        letter-spacing: -0.015em;
+        line-height: 1.25;
+        background: linear-gradient(135deg, #091a38 0%, #153e7e 60%, #1d4ed8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+        transition: all 0.28s ease;
+    }
+    .td-section-desc {
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: #64748b;
+        letter-spacing: 0.01em;
+        line-height: 1.2;
+    }
+    .td-section-box:hover .td-section-title {
+        background: linear-gradient(135deg, #071731 0%, #1d4ed8 50%, #2563eb 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     /* ===== Step Badge (Luminous 3D Embossed Deep Blue Badge) ===== */
@@ -494,12 +521,16 @@
     /* ===== Counter Badge ===== */
     .td-counter-badge {
         margin-left: auto;
-        font-size: 0.75rem;
-        color: var(--gray-500);
-        font-weight: 500;
-        background: var(--gray-100);
-        padding: 0.15rem 0.5rem;
-        border-radius: 20px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #1d4ed8;
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        border: 1px solid #bfdbfe;
+        padding: 0.22rem 0.6rem;
+        border-radius: 9999px;
+        box-shadow: 0 1px 3px rgba(29, 78, 216, 0.1);
+        letter-spacing: 0.02em;
+        transition: all 0.2s ease;
     }
 
     /* ===== Helper Text ===== */
@@ -568,7 +599,10 @@
         <div class="td-section-box">
             <div class="td-section-header">
                 <span class="td-step-badge">1</span>
-                <span>Pilih Indikator & Periode</span>
+                <div class="td-section-title-wrap">
+                    <h3 class="td-section-title">Pilih Indikator & Periode</h3>
+                    <span class="td-section-desc">Pilih subjek, indikator, tipe data & rentang tahun</span>
+                </div>
             </div>
 
             <!-- Dropdown Subjek -->
@@ -624,7 +658,10 @@
         <div class="td-section-box">
             <div class="td-section-header">
                 <span class="td-step-badge">2</span>
-                <span>Data Terpilih</span>
+                <div class="td-section-title-wrap">
+                    <h3 class="td-section-title">Data Terpilih</h3>
+                    <span class="td-section-desc">Daftar seri indikator dalam tabel</span>
+                </div>
                 <span id="td-data-counter" class="td-counter-badge">(0 / 2)</span>
             </div>
 
@@ -640,7 +677,10 @@
         <div class="td-section-box">
             <div class="td-section-header">
                 <span class="td-step-badge">3</span>
-                <span>Judul Baris (Wilayah)</span>
+                <div class="td-section-title-wrap">
+                    <h3 class="td-section-title">Judul Baris (Wilayah)</h3>
+                    <span class="td-section-desc">Pilih kabupaten / kota Maluku Utara</span>
+                </div>
             </div>
 
             <div class="td-form-group">
