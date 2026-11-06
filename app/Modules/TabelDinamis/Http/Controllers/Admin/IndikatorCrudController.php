@@ -158,3 +158,4 @@ class IndikatorCrudController extends Controller
         Cache::forget('td_wilayah_list');
     }
 }
+

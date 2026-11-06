@@ -174,3 +174,4 @@ class AdminIndikatorCrudTest extends TestCase
         $this->assertDatabaseMissing('td_data_indikator', ['indikator_id' => $indikator->id]);
     }
 }
+

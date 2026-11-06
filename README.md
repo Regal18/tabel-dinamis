@@ -8,20 +8,30 @@ Modul ini dibangun sebagai aplikasi mandiri di Laravel yang siap diintegrasikan 
 
 ## 🚀 Fitur Utama
 
-1. **Penyajian Tabel Dinamis (Meniru BPS)**:
-   - Alur filter: Subjek -> Indikator (pencarian realtime dengan debounce) -> Jenis Data (`Realisasi` atau `Target`) -> Tahun (rentang 2021–2026) -> Tambah ke Data Terpilih (fleksibel tanpa batasan jumlah indikator) -> Judul Baris (Wilayah) -> Tabel Hasil.
-   - Tabel hasil dengan header dua tingkat yang responsif dan dapat digeser secara horizontal (*horizontal scroll*).
-   - Format angka lokal Indonesia (`.` untuk ribuan dan `,` untuk desimal), nilai kosong/null ditampilkan `'-'`.
-2. **Ekspor Data (XLSX & CSV)**:
+1. **Penyajian Tabel Dinamis (Meniru BPS & Enterprise Dashboard)**:
+   - Alur filter: Subjek -> Indikator (pencarian realtime dengan debounce) -> Jenis Data (`Realisasi` atau `Target`) -> Tahun (rentang 2021–2026 dengan penanda visual `Tersedia` vs `Nihil`) -> Tambah ke Data Terpilih (fleksibel multi-indikator) -> Judul Baris (Wilayah) -> Tabel Hasil.
+   - Tabel hasil dengan header dua tingkat, kolom pertama (*Kabupaten/Kota*) *sticky freeze*, format angka lokal Indonesia (`.` untuk ribuan dan `,` untuk desimal), nilai kosong/null ditampilkan `'-'`.
+   - Interaksi tabel interaktif: **Pencarian cepat baris wilayah** dan **Pengurutan (sorting) kolom naik/turun** berindikator panah visual.
+   - Baris ringkasan statistik otomatis di `<tfoot>`: **📊 Rata-rata Provinsi**, **▲ Nilai Tertinggi (Maks)**, dan **▼ Nilai Terendah (Min)**.
+2. **Visualisasi Grafik Dinamis (Chart.js Interaktif)**:
+   - Tab switcher instan antara **Tabel Data** dan **Visualisasi Grafik**.
+   - Mode Grafik Batang (*Bar Chart* perbandingan wilayah per tahun) dan Grafik Garis (*Line Chart* tren tahunan 2021–2026 dilengkapi garis putus-putus Rata-rata Provinsi Maluku Utara).
+   - Fitur unduh gambar grafik beresolusi tinggi format PNG.
+3. **Ekspor Data & Cetak Laporan Resmi**:
    - Format `.xlsx`: Menggabungkan sel header (*merged cells*), nilai angka tetap bertipe numerik asli, *freeze pane* pada sel `B3`, dan catatan kaki sumber data.
    - Format `.csv`: Dilengkapi UTF-8 BOM dan pemisah titik koma (`;`).
+   - Fitur **Cetak / PDF Resmi**: Dilengkapi Kop Surat Resmi Pemerintah Provinsi Maluku Utara - BAPPEDA Bidang IPW.
    - Dilindungi rate limiting 10 permintaan per menit.
-3. **Impor Berkas Excel Admin**:
+4. **Manajemen Master Data Indikator (CRUD Admin)**:
+   - Antarmuka web khusus admin untuk melihat, mencari, menambah, mengedit, dan menghapus data indikator secara aman.
+   - Terintegrasi dengan sistem caching referensi otomatis (`Cache::remember` & `Cache::forget`).
+5. **Impor Berkas Excel Admin & Audit Trail**:
    - Dilindungi autentikasi dan Gate `kelola-tabel-dinamis`.
    - Proses **atomik** (DB Transaction: jika ada 1 baris salah, seluruh proses dibatalkan) dan **idempoten** (*upsert*).
    - Pelaporan galat menyebutkan nomor baris Excel asli (maksimal 100 galat).
    - Menyediakan fitur unduh template berkas Excel resmi.
-4. **Kesiapan Mobile (Stateless Backend API)**:
+   - **Audit Trail Log Riwayat Impor**: Mencatat log setiap aktivitas unggah berkas (sukses/gagal, ukuran berkas, total baris, pengunggah).
+6. **Kesiapan Mobile (Stateless Backend API)**:
    - Seluruh logika bisnis dipusatkan pada Service layer (`TabelService`, `ImportExcelService`, `ExportService`).
    - Endpoint REST API bebas dari session state dan siap digunakan oleh aplikasi Flutter.
 
@@ -81,10 +91,10 @@ Akses aplikasi melalui peramban web:
 
 ## 🧪 Menjalankan Pengujian Otomatis
 
-Rangkaian tes otomatis mencakup tes Unit, Feature API, Web Page, dan Uji Penerimaan Kriteria SKPL Bagian 3.4.
+Rangkaian tes otomatis mencakup tes Unit, Feature API, Web Page, Uji Penerimaan Kriteria SKPL Bagian 3.4, dan Admin CRUD Master Data.
 
 ```powershell
-# Menjalankan seluruh pengujian (65 tests)
+# Menjalankan seluruh pengujian (86 tests, 100% PASS)
 php artisan test
 
 # Menjalankan uji penerimaan SKPL 3.4
