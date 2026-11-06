@@ -123,7 +123,7 @@ Membangun matriks tabel dinamis.
 ```
 *Aturan Validasi:*
 - `wilayah_ids`: Array integer ID wilayah. Kirim `null` atau kosong untuk memuat seluruh wilayah.
-- `data`: Array berisi **minimal 1 dan maksimal 2 item** (Aturan 2).
+- `data`: Array berisi **minimal 1 item** (tanpa batasan maksimal, atau dapat dibatasi via konfigurasi `maks_data_per_tabel`).
 - `data.*.jenis`: Harus `"Realisasi"` atau `"Target"` (Aturan 3).
 - `data.*.tahun`: Rentang integer **2021 s.d. 2026** (Aturan 1).
 

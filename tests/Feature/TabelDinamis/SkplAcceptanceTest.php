@@ -113,7 +113,7 @@ class SkplAcceptanceTest extends TestCase
     }
 
     /**
-     * Kriteria 2: Maksimal 2 data per tabel hasil (validasi server).
+     * Kriteria 2: Pemilihan indikator dapat lebih dari 2 data per tabel (tanpa batasan, atau sesuai konfigurasi).
      */
     public function test_skpl_3_4_kriteria_2_maksimal_2_data_per_tabel(): void
     {
@@ -126,7 +126,7 @@ class SkplAcceptanceTest extends TestCase
         ]);
         $res2->assertOk();
 
-        // 3 data ditolak
+        // 3 data juga diterima tanpa batasan (default konfigurasi bebas memilih > 2)
         $res3 = $this->postJson('/tabel-dinamis/api/tabel', [
             'data' => [
                 ['indikator_id' => $this->indikator1->id, 'jenis' => 'Realisasi', 'tahun' => [2022]],
@@ -134,7 +134,19 @@ class SkplAcceptanceTest extends TestCase
                 ['indikator_id' => $this->indikator3->id, 'jenis' => 'Realisasi', 'tahun' => [2024]],
             ]
         ]);
-        $res3->assertStatus(422);
+        $res3->assertOk();
+        $this->assertCount(3, $res3->json('grup'));
+
+        // Jika batas dikonfigurasi (misal 2), server memvalidasi dengan 422
+        config(['tabel_dinamis.maks_data_per_tabel' => 2]);
+        $resTolak = $this->postJson('/tabel-dinamis/api/tabel', [
+            'data' => [
+                ['indikator_id' => $this->indikator1->id, 'jenis' => 'Realisasi', 'tahun' => [2022]],
+                ['indikator_id' => $this->indikator2->id, 'jenis' => 'Target', 'tahun' => [2023]],
+                ['indikator_id' => $this->indikator3->id, 'jenis' => 'Realisasi', 'tahun' => [2024]],
+            ]
+        ]);
+        $resTolak->assertStatus(422);
     }
 
     /**

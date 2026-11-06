@@ -64,8 +64,10 @@ class WebPageTest extends TestCase
 
         $response->assertOk();
 
-        // 1. Banner 'Hanya dapat memilih maksimal 2 data'
-        $response->assertSee('Hanya dapat memilih maksimal 2 data');
+        // 1. Banner informasi jika batas dikonfigurasi
+        config(['tabel_dinamis.maks_data_per_tabel' => 2]);
+        $resBanner = $this->get('/tabel-dinamis');
+        $resBanner->assertSee('Hanya dapat memilih maksimal 2 data');
 
         // 2. Dropdown Subjek
         $response->assertSee('id="td-subjek"', false);
@@ -125,9 +127,25 @@ class WebPageTest extends TestCase
         $res2->assertOk();
     }
 
-    public function test_server_menolak_lebih_dari_2_data_dengan_status_422(): void
+    public function test_server_menerima_lebih_dari_2_data_tanpa_batasan(): void
     {
-        // 3 data ditolak di sisi server
+        // 3 data diterima tanpa batasan (default konfigurasi)
+        $response = $this->postJson('/tabel-dinamis/api/tabel', [
+            'data' => [
+                ['indikator_id' => $this->indikator1->id, 'jenis' => 'Realisasi', 'tahun' => [2022]],
+                ['indikator_id' => $this->indikator2->id, 'jenis' => 'Target', 'tahun' => [2023]],
+                ['indikator_id' => $this->indikator3->id, 'jenis' => 'Realisasi', 'tahun' => [2024]],
+            ]
+        ]);
+
+        $response->assertOk();
+        $this->assertCount(3, $response->json('grup'));
+    }
+
+    public function test_server_menolak_lebih_dari_batas_jika_dikonfigurasi(): void
+    {
+        config(['tabel_dinamis.maks_data_per_tabel' => 2]);
+
         $response = $this->postJson('/tabel-dinamis/api/tabel', [
             'data' => [
                 ['indikator_id' => $this->indikator1->id, 'jenis' => 'Realisasi', 'tahun' => [2022]],

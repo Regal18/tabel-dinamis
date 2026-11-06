@@ -60,8 +60,9 @@ return [
     |--------------------------------------------------------------------------
     | Jumlah maksimal item data (kombinasi indikator+jenis+tahun)
     | yang bisa diminta dalam satu permintaan tabel.
+    | Nilai null = tanpa batasan (bebas memilih lebih dari 2).
     */
-    'maks_data_per_tabel' => 2,
+    'maks_data_per_tabel' => env('TD_MAKS_DATA_PER_TABEL', null),
 
     /*
     |--------------------------------------------------------------------------

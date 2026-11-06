@@ -9,7 +9,7 @@ Modul ini dibangun sebagai aplikasi mandiri di Laravel yang siap diintegrasikan 
 ## 🚀 Fitur Utama
 
 1. **Penyajian Tabel Dinamis (Meniru BPS)**:
-   - Alur filter: Subjek -> Indikator (pencarian realtime dengan debounce) -> Jenis Data (`Realisasi` atau `Target`) -> Tahun (rentang 2021–2026) -> Tambah (maksimal 2 data terpilih) -> Judul Baris (Wilayah) -> Tabel Hasil.
+   - Alur filter: Subjek -> Indikator (pencarian realtime dengan debounce) -> Jenis Data (`Realisasi` atau `Target`) -> Tahun (rentang 2021–2026) -> Tambah ke Data Terpilih (fleksibel tanpa batasan jumlah indikator) -> Judul Baris (Wilayah) -> Tabel Hasil.
    - Tabel hasil dengan header dua tingkat yang responsif dan dapat digeser secara horizontal (*horizontal scroll*).
    - Format angka lokal Indonesia (`.` untuk ribuan dan `,` untuk desimal), nilai kosong/null ditampilkan `'-'`.
 2. **Ekspor Data (XLSX & CSV)**:

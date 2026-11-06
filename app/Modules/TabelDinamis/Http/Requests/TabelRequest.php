@@ -23,13 +23,18 @@ class TabelRequest extends FormRequest
     {
         $tahunMin = config('tabel_dinamis.tahun_min', 2021);
         $tahunMax = config('tabel_dinamis.tahun_max', 2026);
-        $maksData = config('tabel_dinamis.maks_data_per_tabel', 2);
+        $maksData = config('tabel_dinamis.maks_data_per_tabel', null);
+
+        $rulesData = 'required|array|min:1';
+        if ($maksData !== null && (int)$maksData > 0) {
+            $rulesData .= "|max:{$maksData}";
+        }
 
         return [
             'wilayah_ids' => 'nullable|array',
             'wilayah_ids.*' => 'integer|exists:td_wilayah,id',
 
-            'data' => "required|array|min:1|max:{$maksData}",
+            'data' => $rulesData,
             'data.*.indikator_id' => 'required|integer|exists:td_indikator,id',
             'data.*.jenis' => 'required|string|in:Realisasi,Target',
             'data.*.tahun' => 'required|array|min:1',
@@ -39,7 +44,7 @@ class TabelRequest extends FormRequest
 
     public function messages(): array
     {
-        $maksData = config('tabel_dinamis.maks_data_per_tabel', 2);
+        $maksData = config('tabel_dinamis.maks_data_per_tabel', null);
 
         return [
             'data.max' => "Maksimal {$maksData} data per permintaan tabel.",

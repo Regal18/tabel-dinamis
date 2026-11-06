@@ -583,11 +583,13 @@
 @section('content')
 <div id="td-alert-box"></div>
 
-<!-- Banner Kewajiban Maksimal 2 Data -->
+<!-- Banner Kewajiban Maksimal Data (Jika Dibatasi) -->
+@if(config('tabel_dinamis.maks_data_per_tabel'))
 <div class="td-banner-info">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
-    <span>Hanya dapat memilih maksimal 2 data per tabel</span>
+    <span>Hanya dapat memilih maksimal {{ config('tabel_dinamis.maks_data_per_tabel') }} data per tabel</span>
 </div>
+@endif
 
 <!-- Page Title -->
 <h1 class="td-page-title">Filter Tabel Dinamis</h1>
@@ -662,7 +664,7 @@
                     <h3 class="td-section-title">Data Terpilih</h3>
                     <span class="td-section-desc">Daftar seri indikator dalam tabel</span>
                 </div>
-                <span id="td-data-counter" class="td-counter-badge">(0 / 2)</span>
+                <span id="td-data-counter" class="td-counter-badge">(0 data)</span>
             </div>
 
             <div id="td-data-terpilih" class="td-selected-container">
@@ -744,7 +746,7 @@
 
     // Ambil Token CSRF dari meta tag
     const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
-    const MAKS_DATA = {{ config('tabel_dinamis.maks_data_per_tabel', 2) }};
+    const MAKS_DATA = {{ config('tabel_dinamis.maks_data_per_tabel') !== null ? (int)config('tabel_dinamis.maks_data_per_tabel') : 'null' }};
     const TAHUN_MIN = {{ config('tabel_dinamis.tahun_min', 2021) }};
     const TAHUN_MAX = {{ config('tabel_dinamis.tahun_max', 2026) }};
 
@@ -1020,16 +1022,16 @@
     function periksaStatusTombolTambah() {
         const indId = dom.indikator.value;
         const thnChecked = document.querySelectorAll('.td-cb-thn:checked').length;
-        const penuh = state.dataTerpilih.length >= MAKS_DATA;
+        const penuh = MAKS_DATA ? state.dataTerpilih.length >= MAKS_DATA : false;
         dom.btnTambah.disabled = (!indId || thnChecked === 0 || penuh);
     }
 
-    // 5. Tambah ke Data Terpilih (Maksimal 2 Data)
+    // 5. Tambah ke Data Terpilih
     dom.btnTambah.addEventListener('click', function() {
         bersihkanPesan();
 
-        if (state.dataTerpilih.length >= MAKS_DATA) {
-            tampilkanPesan('Hanya dapat memilih maksimal 2 data', 'warning');
+        if (MAKS_DATA && state.dataTerpilih.length >= MAKS_DATA) {
+            tampilkanPesan(`Hanya dapat memilih maksimal ${MAKS_DATA} data`, 'warning');
             return;
         }
 
@@ -1067,7 +1069,9 @@
 
     function renderDataTerpilih() {
         dom.dataTerpilih.innerHTML = '';
-        dom.dataCounter.textContent = `(${state.dataTerpilih.length} / ${MAKS_DATA})`;
+        dom.dataCounter.textContent = MAKS_DATA 
+            ? `(${state.dataTerpilih.length} / ${MAKS_DATA})` 
+            : `(${state.dataTerpilih.length} data)`;
 
         if (state.dataTerpilih.length === 0) {
             dom.dataTerpilih.appendChild(dom.terpilihKosong);
@@ -1120,8 +1124,8 @@
             return;
         }
 
-        if (state.dataTerpilih.length > MAKS_DATA) {
-            tampilkanPesan('Hanya dapat memilih maksimal 2 data', 'warning');
+        if (MAKS_DATA && state.dataTerpilih.length > MAKS_DATA) {
+            tampilkanPesan(`Hanya dapat memilih maksimal ${MAKS_DATA} data`, 'warning');
             return;
         }
 

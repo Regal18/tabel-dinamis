@@ -191,6 +191,7 @@ class ApiTest extends TestCase
 
     public function test_api_tabel_validasi_maks_2_data(): void
     {
+        // Default tanpa batasan, 3 data diterima (status 200)
         $response = $this->postJson('/tabel-dinamis/api/tabel', [
             'data' => [
                 ['indikator_id' => $this->indikator->id, 'jenis' => 'Realisasi', 'tahun' => [2022]],
@@ -198,8 +199,18 @@ class ApiTest extends TestCase
                 ['indikator_id' => $this->indikator->id, 'jenis' => 'Realisasi', 'tahun' => [2021]],
             ],
         ]);
+        $response->assertOk();
 
-        $response->assertStatus(422);
+        // Jika batas dikonfigurasi (misal 2), server memvalidasi dengan status 422
+        config(['tabel_dinamis.maks_data_per_tabel' => 2]);
+        $responseLimit = $this->postJson('/tabel-dinamis/api/tabel', [
+            'data' => [
+                ['indikator_id' => $this->indikator->id, 'jenis' => 'Realisasi', 'tahun' => [2022]],
+                ['indikator_id' => $this->indikator->id, 'jenis' => 'Target', 'tahun' => [2022]],
+                ['indikator_id' => $this->indikator->id, 'jenis' => 'Realisasi', 'tahun' => [2021]],
+            ],
+        ]);
+        $responseLimit->assertStatus(422);
     }
 
     public function test_api_tabel_validasi_jenis_invalid(): void
