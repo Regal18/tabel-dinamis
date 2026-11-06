@@ -57,8 +57,9 @@
 
     /* ===== Page Title ===== */
     .td-page-title {
-        font-size: 1.15rem;
-        font-weight: 700;
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
         color: var(--deep-blue-800);
         margin-bottom: 0.25rem;
     }

@@ -7,7 +7,7 @@
     <title>@yield('title', 'KINERA — Tabel Dinamis Indikator Bidang IPW') — BAPPEDA Maluku Utara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <style>
         /* ===== Reset & CSS Variables ===== */
         :root {
@@ -58,11 +58,12 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--gray-800);
             background: #f4f6fb;
             font-size: 14px;
+            letter-spacing: -0.01em;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -108,11 +109,14 @@
             stroke-width: 2.2;
         }
         .td-header h1 {
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            letter-spacing: 0.05em;
-            color: #ffffff;
+            letter-spacing: 0.08em;
+            background: linear-gradient(135deg, #ffffff 40%, #cce7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin: 0;
+            display: inline-block;
         }
         .td-header-actions {
             display: flex;
