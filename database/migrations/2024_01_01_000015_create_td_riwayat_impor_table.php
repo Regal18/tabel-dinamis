@@ -31,3 +31,4 @@ return new class extends Migration
         Schema::dropIfExists('td_riwayat_impor');
     }
 };
+

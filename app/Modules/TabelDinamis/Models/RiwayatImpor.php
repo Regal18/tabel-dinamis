@@ -27,3 +27,4 @@ class RiwayatImpor extends Model
         'updated_at' => 'datetime',
     ];
 }
+

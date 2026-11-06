@@ -605,6 +605,80 @@
         width: 230px;
     }
 
+    /* ===== View Switcher (Tabel vs Grafik) ===== */
+    .td-view-switcher {
+        display: inline-flex;
+        background: #f1f5f9;
+        border: 1px solid var(--gray-300);
+        border-radius: var(--radius-sm);
+        padding: 2px;
+        gap: 2px;
+    }
+    .td-switch-btn {
+        background: transparent;
+        border: none;
+        padding: 0.38rem 0.8rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--gray-600);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+    }
+    .td-switch-btn:hover {
+        color: var(--deep-blue-700);
+    }
+    .td-switch-btn.active {
+        background: var(--white);
+        color: var(--deep-blue-800);
+        box-shadow: 0 1px 3px rgba(10, 22, 40, 0.12);
+    }
+
+    /* ===== Chart Panel ===== */
+    .td-chart-panel {
+        padding: 1.25rem;
+        background: var(--white);
+    }
+    .td-chart-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid var(--gray-200);
+    }
+    .td-chart-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        align-items: flex-end;
+    }
+    .td-chart-select {
+        padding: 0.42rem 0.75rem;
+        border: 1.5px solid var(--gray-300);
+        border-radius: var(--radius-sm);
+        font-size: 0.82rem;
+        background: var(--white);
+        color: var(--gray-800);
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .td-chart-select:focus {
+        outline: none;
+        border-color: #1d4ed8;
+        box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+    }
+    .td-chart-canvas-container {
+        position: relative;
+        height: 420px;
+        width: 100%;
+    }
+
     /* ===== Sortable Header ===== */
     .td-sortable-th {
         cursor: pointer;
@@ -679,7 +753,8 @@
             font-size: 10.5pt !important;
         }
         .td-header, .td-layout-grid, .td-action-buttons, .td-banner-info,
-        .td-result-header, .td-footer, #td-alert-box, .td-page-title, .td-page-subtitle {
+        .td-result-header, .td-footer, #td-alert-box, .td-page-title, .td-page-subtitle,
+        .td-chart-panel, .td-view-switcher {
             display: none !important;
         }
         .td-container {
@@ -876,12 +951,24 @@
     </div>
 
     <div class="td-result-header">
-        <div class="td-result-title">
-            <span class="td-h2-icon" style="width:28px;height:28px;background:var(--deep-blue-50);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;font-size:0.9rem;">📋</span>
-            <span>Tabel Hasil Dinamis</span>
-            <span id="td-table-row-count" class="td-counter-badge" style="margin-left: 0.5rem; font-size: 0.7rem;"></span>
+        <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
+            <div class="td-result-title">
+                <span class="td-h2-icon" style="width:28px;height:28px;background:var(--deep-blue-50);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;font-size:0.9rem;">📋</span>
+                <span id="td-result-title-text">Hasil Analisis Data</span>
+                <span id="td-table-row-count" class="td-counter-badge" style="margin-left: 0.5rem; font-size: 0.7rem;"></span>
+            </div>
+            <!-- Toggle Switcher: Tabel Data vs Grafik Dinamis -->
+            <div class="td-view-switcher">
+                <button type="button" class="td-switch-btn active" id="td-switch-tabel">
+                    <span>📋</span> Tabel Data
+                </button>
+                <button type="button" class="td-switch-btn" id="td-switch-grafik">
+                    <span>📊</span> Visualisasi Grafik
+                </button>
+            </div>
         </div>
-        <div class="td-table-actions-toolbar">
+
+        <div class="td-table-actions-toolbar" id="td-tabel-toolbar">
             <input type="text" id="td-cari-tabel" placeholder="Cari wilayah..." class="td-table-search-input">
             <div class="td-export-group">
                 <button type="button" id="td-btn-cetak" class="td-btn td-btn-outline" style="font-size: 0.8rem;" title="Cetak atau Simpan sebagai PDF">
@@ -897,18 +984,50 @@
         </div>
     </div>
 
-    <!-- Tabel Header Dua Tingkat yang Bisa Digeser Horizontal -->
-    <div class="td-table-scroll">
+    <!-- Tampilan 1: Tabel Header Dua Tingkat (Bisa Digeser Horizontal) -->
+    <div id="td-view-tabel" class="td-table-scroll">
         <table class="td-table-dynamic" id="td-dynamic-table">
             <thead id="td-table-head"></thead>
             <tbody id="td-table-body"></tbody>
             <tfoot id="td-table-foot"></tfoot>
         </table>
     </div>
+
+    <!-- Tampilan 2: Visualisasi Grafik Interaktif -->
+    <div id="td-view-grafik" class="td-chart-panel td-hidden">
+        <div class="td-chart-toolbar">
+            <div class="td-chart-controls">
+                <div>
+                    <label style="font-size: 0.75rem; font-weight: 600; color: var(--gray-600); display: block; margin-bottom: 3px;">Indikator:</label>
+                    <select id="td-chart-indikator-select" class="td-chart-select"></select>
+                </div>
+                <div>
+                    <label style="font-size: 0.75rem; font-weight: 600; color: var(--gray-600); display: block; margin-bottom: 3px;">Bentuk Grafik:</label>
+                    <select id="td-chart-tipe-select" class="td-chart-select">
+                        <option value="bar">📊 Batang (Perbandingan Antar Kabupaten/Kota)</option>
+                        <option value="line">📈 Garis (Tren Tahunan 2021–2026)</option>
+                    </select>
+                </div>
+                <div id="td-chart-tahun-wrap">
+                    <label style="font-size: 0.75rem; font-weight: 600; color: var(--gray-600); display: block; margin-bottom: 3px;">Tahun:</label>
+                    <select id="td-chart-tahun-select" class="td-chart-select"></select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="td-btn-unduh-chart" class="td-btn td-btn-outline" style="font-size: 0.8rem;" title="Unduh gambar grafik dalam format PNG">
+                    🖼️ Unduh Grafik (PNG)
+                </button>
+            </div>
+        </div>
+        <div class="td-chart-canvas-container">
+            <canvas id="td-chart-canvas"></canvas>
+        </div>
+    </div>
 </div>
 @endsection
 
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
 (function() {
     'use strict';
@@ -923,6 +1042,13 @@
     const TAHUN_MIN = {{ config('tabel_dinamis.tahun_min', 2021) }};
     const TAHUN_MAX = {{ config('tabel_dinamis.tahun_max', 2026) }};
 
+    // Palet warna Deep Blue KINERA untuk chart
+    const PALET_WARNA = [
+        '#1d4ed8', '#0284c7', '#059669', '#d97706', '#dc2626', 
+        '#7c3aed', '#db2777', '#0891b2', '#4b5563', '#2563eb',
+        '#10b981', '#f59e0b'
+    ];
+
     // State Manajemen Klien
     let state = {
         subjek: [],
@@ -932,7 +1058,12 @@
         lastPayload: null,
         tabelRaw: null,
         sortCol: { colType: null, gIdx: null, tIdx: null, dir: null },
-        filterWilayahQuery: ''
+        filterWilayahQuery: '',
+        activeTab: 'tabel', // 'tabel' | 'grafik'
+        chartInstance: null,
+        selectedChartGrupIdx: 0,
+        selectedChartTipe: 'bar',
+        selectedChartTahun: null
     };
 
     // Referensi Elemen DOM
@@ -960,7 +1091,19 @@
         tableFoot: document.getElementById('td-table-foot'),
         btnCetak: document.getElementById('td-btn-cetak'),
         exportXlsx: document.getElementById('td-export-xlsx'),
-        exportCsv: document.getElementById('td-export-csv')
+        exportCsv: document.getElementById('td-export-csv'),
+        // DOM Switcher & Grafik
+        switchTabel: document.getElementById('td-switch-tabel'),
+        switchGrafik: document.getElementById('td-switch-grafik'),
+        viewTabel: document.getElementById('td-view-tabel'),
+        viewGrafik: document.getElementById('td-view-grafik'),
+        tabelToolbar: document.getElementById('td-tabel-toolbar'),
+        chartIndikatorSelect: document.getElementById('td-chart-indikator-select'),
+        chartTipeSelect: document.getElementById('td-chart-tipe-select'),
+        chartTahunSelect: document.getElementById('td-chart-tahun-select'),
+        chartTahunWrap: document.getElementById('td-chart-tahun-wrap'),
+        btnUnduhChart: document.getElementById('td-btn-unduh-chart'),
+        chartCanvas: document.getElementById('td-chart-canvas')
     };
 
     // Helper Tampilkan Pesan Peringatan (Floating Toast Notification)
@@ -1366,6 +1509,11 @@
 
         renderTabelHeader();
         updateTabelRowsAndStats();
+        syncChartControls();
+
+        if (state.activeTab === 'grafik') {
+            renderGrafik();
+        }
     }
 
     function renderTabelHeader() {
@@ -1560,6 +1708,273 @@
     if (dom.btnCetak) {
         dom.btnCetak.addEventListener('click', function() {
             window.print();
+        });
+    }
+
+    // ===== Tab Switching (Tabel Data vs Visualisasi Grafik) =====
+    function setTab(tab) {
+        state.activeTab = tab;
+        if (tab === 'tabel') {
+            dom.switchTabel.classList.add('active');
+            dom.switchGrafik.classList.remove('active');
+            dom.viewTabel.classList.remove('td-hidden');
+            dom.viewGrafik.classList.add('td-hidden');
+            if (dom.tabelToolbar) dom.tabelToolbar.classList.remove('td-hidden');
+        } else {
+            dom.switchGrafik.classList.add('active');
+            dom.switchTabel.classList.remove('active');
+            dom.viewGrafik.classList.remove('td-hidden');
+            dom.viewTabel.classList.add('td-hidden');
+            if (dom.tabelToolbar) dom.tabelToolbar.classList.add('td-hidden');
+            renderGrafik();
+        }
+    }
+
+    if (dom.switchTabel) dom.switchTabel.addEventListener('click', () => setTab('tabel'));
+    if (dom.switchGrafik) dom.switchGrafik.addEventListener('click', () => setTab('grafik'));
+
+    // Inisialisasi Kontrol Dropdown Grafik
+    function syncChartControls() {
+        if (!state.tabelRaw || !state.tabelRaw.grup || state.tabelRaw.grup.length === 0) return;
+
+        // 1. Opsi Indikator
+        if (dom.chartIndikatorSelect) {
+            dom.chartIndikatorSelect.innerHTML = '';
+            state.tabelRaw.grup.forEach((g, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = `[${g.jenis}] ${g.judul}${g.satuan ? ' (' + g.satuan + ')' : ''}`;
+                dom.chartIndikatorSelect.appendChild(opt);
+            });
+            state.selectedChartGrupIdx = 0;
+            dom.chartIndikatorSelect.value = '0';
+        }
+
+        // 2. Opsi Tahun
+        updateChartTahunOptions();
+    }
+
+    function updateChartTahunOptions() {
+        if (!dom.chartTahunSelect) return;
+        const g = state.tabelRaw?.grup?.[state.selectedChartGrupIdx];
+        if (!g) return;
+
+        dom.chartTahunSelect.innerHTML = '';
+        g.tahun.forEach(th => {
+            const opt = document.createElement('option');
+            opt.value = th;
+            opt.textContent = `Tahun ${th}`;
+            dom.chartTahunSelect.appendChild(opt);
+        });
+
+        // Default ke tahun paling baru yang ada
+        const defaultTh = g.tahun[g.tahun.length - 1];
+        state.selectedChartTahun = defaultTh;
+        dom.chartTahunSelect.value = defaultTh;
+    }
+
+    if (dom.chartIndikatorSelect) {
+        dom.chartIndikatorSelect.addEventListener('change', function() {
+            state.selectedChartGrupIdx = parseInt(this.value, 10);
+            updateChartTahunOptions();
+            renderGrafik();
+        });
+    }
+
+    if (dom.chartTipeSelect) {
+        dom.chartTipeSelect.addEventListener('change', function() {
+            state.selectedChartTipe = this.value;
+            renderGrafik();
+        });
+    }
+
+    if (dom.chartTahunSelect) {
+        dom.chartTahunSelect.addEventListener('change', function() {
+            state.selectedChartTahun = parseInt(this.value, 10);
+            renderGrafik();
+        });
+    }
+
+    // Fungsi Utama Render Grafik Menggunakan Chart.js
+    function renderGrafik() {
+        if (!state.tabelRaw || typeof Chart === 'undefined' || !dom.chartCanvas) return;
+        const { grup, baris } = state.tabelRaw;
+        const gIdx = state.selectedChartGrupIdx;
+        const g = grup?.[gIdx];
+        if (!g) return;
+
+        if (state.chartInstance) {
+            state.chartInstance.destroy();
+            state.chartInstance = null;
+        }
+
+        const tipe = state.selectedChartTipe;
+        const ctx = dom.chartCanvas.getContext('2d');
+        const satuanLabel = g.satuan ? ` (${g.satuan})` : '';
+
+        if (tipe === 'bar') {
+            if (dom.chartTahunWrap) dom.chartTahunWrap.style.display = 'block';
+            const tIdx = g.tahun.indexOf(parseInt(state.selectedChartTahun, 10));
+            const safeTIdx = tIdx >= 0 ? tIdx : 0;
+            const tahunAktif = g.tahun[safeTIdx];
+
+            const labels = (baris || []).map(b => b.wilayah);
+            const values = (baris || []).map(b => b.nilai[gIdx]?.[safeTIdx] ?? null);
+
+            state.chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: `[${g.jenis}] ${g.judul} — ${tahunAktif}${satuanLabel}`,
+                        data: values,
+                        backgroundColor: labels.map((_, i) => PALET_WARNA[i % PALET_WARNA.length] + 'cc'),
+                        borderColor: labels.map((_, i) => PALET_WARNA[i % PALET_WARNA.length]),
+                        borderWidth: 1.5,
+                        borderRadius: 6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                font: { family: "'Plus Jakarta Sans', sans-serif", weight: '600', size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw;
+                                    return val === null ? 'Data Nihil (-)' : `${formatIndo.format(val)}${satuanLabel}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
+                                maxRotation: 40,
+                                minRotation: 15
+                            },
+                            grid: { display: false }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: val => formatIndo.format(val),
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 }
+                            },
+                            grid: { color: 'rgba(15, 34, 64, 0.06)' }
+                        }
+                    }
+                }
+            });
+        } else {
+            // Line Chart (Tren Waktu 2021–2026)
+            if (dom.chartTahunWrap) dom.chartTahunWrap.style.display = 'none';
+            const labels = g.tahun.map(t => `${t}`);
+            const datasets = [];
+
+            // Garis rata-rata provinsi (paling kontras di atas)
+            const avgData = g.tahun.map((_, tIdx) => {
+                const vals = [];
+                (baris || []).forEach(b => {
+                    const v = b.nilai[gIdx]?.[tIdx];
+                    if (v !== null && v !== undefined && !isNaN(v)) vals.push(Number(v));
+                });
+                return vals.length > 0 ? (vals.reduce((a, c) => a + c, 0) / vals.length) : null;
+            });
+
+            datasets.push({
+                label: '📊 Rata-rata Provinsi Maluku Utara',
+                data: avgData,
+                borderColor: '#0f2240',
+                backgroundColor: '#0f2240',
+                borderWidth: 3.5,
+                borderDash: [6, 4],
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                tension: 0.2,
+                fill: false
+            });
+
+            // Garis per wilayah
+            (baris || []).forEach((b, bIdx) => {
+                const dataPoin = g.tahun.map((_, tIdx) => b.nilai[gIdx]?.[tIdx] ?? null);
+                const color = PALET_WARNA[bIdx % PALET_WARNA.length];
+                datasets.push({
+                    label: b.wilayah,
+                    data: dataPoin,
+                    borderColor: color,
+                    backgroundColor: color + '22',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.25,
+                    fill: false
+                });
+            });
+
+            state.chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11, weight: '600' }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw;
+                                    return `${context.dataset.label}: ${val === null ? '-' : formatIndo.format(val)}${satuanLabel}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 12, weight: '600' }
+                            },
+                            grid: { color: 'rgba(15, 34, 64, 0.04)' }
+                        },
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: val => formatIndo.format(val),
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 }
+                            },
+                            grid: { color: 'rgba(15, 34, 64, 0.06)' }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    // Unduh Gambar Grafik PNG
+    if (dom.btnUnduhChart) {
+        dom.btnUnduhChart.addEventListener('click', function() {
+            if (!state.chartInstance) {
+                tampilkanPesan('Belum ada grafik yang siap diunduh.', 'warning');
+                return;
+            }
+            const link = document.createElement('a');
+            link.download = `grafik-kinera-${new Date().toISOString().slice(0,10)}.png`;
+            link.href = state.chartInstance.toBase64Image('image/png', 1.0);
+            link.click();
+            tampilkanPesan('Gambar grafik berhasil diunduh.', 'success');
         });
     }
 

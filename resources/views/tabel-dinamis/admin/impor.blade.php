@@ -127,10 +127,46 @@
         font-weight: 500;
         font-size: 0.78rem;
     }
+    .td-admin-nav-tabs {
+        display: flex;
+        gap: 0.5rem;
+        border-bottom: 2px solid var(--gray-200);
+        margin-bottom: 1.25rem;
+    }
+    .td-admin-nav-tab {
+        padding: 0.6rem 1.1rem;
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: var(--gray-600);
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+    .td-admin-nav-tab:hover {
+        color: var(--deep-blue-700);
+    }
+    .td-admin-nav-tab.active {
+        color: var(--deep-blue-700);
+        border-bottom-color: var(--deep-blue-600);
+    }
 </style>
 @endpush
 
 @section('content')
+<!-- Nav Tabs Admin -->
+<div class="td-admin-nav-tabs">
+    <a href="{{ route('tabel-dinamis.admin.impor.form') }}" class="td-admin-nav-tab active">
+        <span>📥</span> Impor Berkas Excel
+    </a>
+    <a href="{{ route('tabel-dinamis.admin.indikator.index') }}" class="td-admin-nav-tab">
+        <span>📋</span> Master Data Indikator
+    </a>
+</div>
+
 <div class="td-admin-toolbar">
     <a href="{{ route('tabel-dinamis.index') }}" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
         ← Kembali ke Tabel Dinamis
