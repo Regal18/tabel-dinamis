@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Tabel Dinamis Indikator Bidang IPW') — BAPPEDA Maluku Utara</title>
+    <title>@yield('title', 'KINERA — Tabel Dinamis Indikator Bidang IPW') — BAPPEDA Maluku Utara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -108,9 +108,9 @@
             stroke-width: 2.2;
         }
         .td-header h1 {
-            font-size: 0.975rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
             color: #ffffff;
             margin: 0;
         }
@@ -406,7 +406,7 @@
                     <line x1="6" y1="20" x2="6" y2="14"></line>
                 </svg>
             </div>
-            <h1>Tabel Dinamis Indikator Bidang IPW</h1>
+            <h1>KINERA</h1>
         </a>
         <div class="td-header-actions">
             <a href="{{ route('tabel-dinamis.admin.impor.form') }}" class="td-header-link">
@@ -428,7 +428,7 @@
     </main>
 
     <footer class="td-footer">
-        &copy; {{ date('Y') }} BAPPEDA Provinsi Maluku Utara — Modul Tabel Dinamis Indikator Bidang IPW
+        &copy; {{ date('Y') }} BAPPEDA Provinsi Maluku Utara — KINERA (Indikator Bidang IPW)
     </footer>
 
     @stack('scripts')

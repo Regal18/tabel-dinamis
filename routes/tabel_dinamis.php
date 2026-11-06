@@ -61,4 +61,3 @@ Route::prefix('admin')->middleware($middlewareAdmin)->group(function () {
     Route::post('/impor', [ImportController::class, 'proses'])->name('tabel-dinamis.admin.impor.proses');
     Route::get('/impor/template', [ImportController::class, 'template'])->name('tabel-dinamis.admin.impor.template');
 });
-
