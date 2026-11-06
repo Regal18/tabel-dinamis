@@ -9,20 +9,24 @@ use App\Modules\TabelDinamis\Models\Wilayah;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Controller API Filter referensi (subjek, indikator, tahun, wilayah).
- * Stateless & controller tipis.
+ * Stateless & controller tipis dengan caching cerdas pada referensi statis.
  */
 class FilterController extends Controller
 {
     /**
      * GET /subjek -> [{id, nama}]
+     * Dicache selama 1 jam (3600 detik) untuk respon cepat instan (<50ms).
      */
     public function subjek(): JsonResponse
     {
-        $data = Subjek::orderBy('nama')
-            ->get(['id', 'nama']);
+        $data = Cache::remember('td_subjek_list', 3600, function () {
+            return Subjek::orderBy('nama')
+                ->get(['id', 'nama']);
+        });
 
         return response()->json($data);
     }
@@ -87,11 +91,14 @@ class FilterController extends Controller
 
     /**
      * GET /wilayah -> [{id, nama}]
+     * Dicache selama 1 jam (3600 detik) untuk skalabilitas tinggi.
      */
     public function wilayah(): JsonResponse
     {
-        $data = Wilayah::orderBy('nama')
-            ->get(['id', 'nama']);
+        $data = Cache::remember('td_wilayah_list', 3600, function () {
+            return Wilayah::orderBy('nama')
+                ->get(['id', 'nama']);
+        });
 
         return response()->json($data);
     }

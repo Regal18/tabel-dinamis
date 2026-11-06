@@ -263,4 +263,69 @@
         </table>
     </div>
 </div>
+
+<div class="td-import-card">
+    <h2>
+        <span class="td-h2-icon">🕒</span>
+        Riwayat & Log Impor Data (Audit Trail)
+    </h2>
+    <p style="font-size: 0.85rem; color: var(--gray-500); margin-bottom: 0.85rem;">
+        Catatan 10 aktivitas impor terakhir untuk transparansi dan akuntabilitas pembaruan data daerah:
+    </p>
+
+    @if(isset($riwayat) && $riwayat->count() > 0)
+        <div class="td-table-wrap">
+            <table class="td-table">
+                <thead>
+                    <tr>
+                        <th>Waktu Unggah</th>
+                        <th>Nama Berkas</th>
+                        <th>Ukuran</th>
+                        <th>Oleh</th>
+                        <th>Baris Masuk</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($riwayat as $r)
+                        <tr>
+                            <td style="white-space: nowrap; font-size: 0.8rem; color: var(--gray-600);">
+                                {{ $r->created_at->format('d/m/Y H:i') }} WIT
+                            </td>
+                            <td>
+                                <strong style="color: var(--deep-blue-800);">{{ $r->nama_berkas }}</strong>
+                            </td>
+                            <td>{{ $r->ukuran_kb }} KB</td>
+                            <td>
+                                <span style="font-size: 0.8rem; color: var(--gray-600);">{{ $r->diunggah_oleh ?? 'Admin' }}</span>
+                            </td>
+                            <td>
+                                @if($r->status === 'SUKSES')
+                                    <span style="font-weight: 700; color: var(--success);">{{ number_format($r->total_baris, 0, ',', '.') }} data</span>
+                                @else
+                                    <span style="color: var(--danger);">-</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($r->status === 'SUKSES')
+                                    <span style="background: var(--success-bg); color: var(--success); border: 1px solid var(--success-border); padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700;">
+                                        ✓ SUKSES
+                                    </span>
+                                @else
+                                    <span style="background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger-border); padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700;" title="{{ $r->pesan }}">
+                                        ✕ GAGAL
+                                    </span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @else
+        <div style="text-align: center; padding: 1.5rem; color: var(--gray-400); font-size: 0.85rem; border: 1.5px dashed var(--gray-200); border-radius: var(--radius-sm);">
+            Belum ada riwayat aktivitas impor berkas yang tercatat.
+        </div>
+    @endif
+</div>
 @endsection

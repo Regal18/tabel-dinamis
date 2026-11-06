@@ -111,6 +111,10 @@ class AdminImporTest extends TestCase
             ]);
 
         $response->assertSessionHas('success');
+        $this->assertDatabaseHas('td_riwayat_impor', [
+            'status' => 'SUKSES',
+            'nama_berkas' => 'data_uji.xlsx',
+        ]);
         $this->assertDatabaseHas('td_data_indikator', [
             'indikator_id' => $this->indikator->id,
             'wilayah_id' => $this->wilayah->id,
@@ -134,6 +138,10 @@ class AdminImporTest extends TestCase
 
         $response->assertSessionHas('error');
         $response->assertSessionHas('import_errors');
+        $this->assertDatabaseHas('td_riwayat_impor', [
+            'status' => 'GAGAL',
+            'nama_berkas' => 'data_uji.xlsx',
+        ]);
     }
 
     public function test_file_bukan_xlsx_ditolak_validasi(): void

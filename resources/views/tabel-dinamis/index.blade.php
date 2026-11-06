@@ -577,6 +577,153 @@
         height: 3.5px;
         background: linear-gradient(90deg, var(--deep-blue-600) 0%, var(--deep-blue-400) 100%);
     }
+
+    /* ===== Table Toolbar & Search ===== */
+    .td-table-actions-toolbar {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        flex-wrap: wrap;
+    }
+    .td-table-search-input {
+        padding: 0.42rem 0.75rem 0.42rem 2rem;
+        border: 1.5px solid var(--gray-300);
+        border-radius: var(--radius-sm);
+        font-size: 0.82rem;
+        width: 190px;
+        background-color: var(--white);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: left 0.6rem center;
+        background-size: 13px 13px;
+        transition: all 0.2s ease;
+    }
+    .td-table-search-input:focus {
+        outline: none;
+        border-color: #1d4ed8;
+        box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+        width: 230px;
+    }
+
+    /* ===== Sortable Header ===== */
+    .td-sortable-th {
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.2s ease;
+    }
+    .td-sortable-th:hover {
+        background-color: #163e7d !important;
+    }
+    .td-sort-icon {
+        display: inline-block;
+        margin-left: 0.35rem;
+        font-size: 0.75rem;
+        opacity: 0.6;
+        vertical-align: middle;
+    }
+    .td-sort-active {
+        background-color: #163e7d !important;
+    }
+    .td-sort-active .td-sort-icon {
+        opacity: 1;
+        color: #38bdf8;
+    }
+
+    /* ===== TFoot Statistical Summary ===== */
+    .td-table-dynamic tfoot tr {
+        font-weight: 600;
+        border-top: 2px solid var(--deep-blue-300);
+    }
+    .td-table-dynamic tfoot td {
+        padding: 0.55rem 0.75rem;
+        border: 1px solid var(--gray-200);
+        font-size: 0.82rem;
+    }
+    .td-tfoot-avg {
+        background: #f0f7ff !important;
+        color: #1e40af;
+    }
+    .td-tfoot-max {
+        background: #f0fdf4 !important;
+        color: #166534;
+    }
+    .td-tfoot-min {
+        background: #fffbeb !important;
+        color: #92400e;
+    }
+
+    /* ===== Badge Empty (Year Filter) ===== */
+    .td-badge-empty {
+        font-size: 0.65rem;
+        background: #f1f5f9;
+        color: #94a3b8;
+        border: 1px solid #e2e8f0;
+        padding: 0.05rem 0.35rem;
+        border-radius: 10px;
+        font-weight: 500;
+        margin-left: 0.2rem;
+    }
+
+    /* ===== Official Print Styles ===== */
+    .td-print-only {
+        display: none;
+    }
+    @media print {
+        @page {
+            size: landscape;
+            margin: 10mm 12mm;
+        }
+        body {
+            background: #ffffff !important;
+            color: #000000 !important;
+            font-size: 10.5pt !important;
+        }
+        .td-header, .td-layout-grid, .td-action-buttons, .td-banner-info,
+        .td-result-header, .td-footer, #td-alert-box, .td-page-title, .td-page-subtitle {
+            display: none !important;
+        }
+        .td-container {
+            padding: 0 !important;
+            max-width: 100% !important;
+        }
+        #td-hasil-wrapper {
+            box-shadow: none !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: block !important;
+        }
+        #td-hasil-wrapper::before {
+            display: none !important;
+        }
+        .td-print-only {
+            display: block !important;
+            margin-bottom: 12pt;
+        }
+        .td-table-scroll {
+            overflow: visible !important;
+        }
+        .td-table-dynamic {
+            width: 100% !important;
+            border-collapse: collapse !important;
+        }
+        .td-table-dynamic th, .td-table-dynamic td {
+            border: 1px solid #333333 !important;
+            padding: 4pt 6pt !important;
+            color: #000000 !important;
+            font-size: 9pt !important;
+        }
+        .td-table-dynamic th {
+            background: #f1f5f9 !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .td-th-wilayah, .td-td-wilayah {
+            position: static !important;
+            box-shadow: none !important;
+            border-right: 1px solid #333333 !important;
+        }
+    }
 </style>
 @endpush
 
@@ -710,26 +857,52 @@
 
 <!-- Kartu Tabel Hasil Dinamis Header Dua Tingkat -->
 <div id="td-hasil-wrapper" class="td-card td-hidden" style="margin-top: 1.5rem;">
+    <!-- Kop Cetak Resmi (Hanya Tampil Saat Dicetak / PDF) -->
+    <div class="td-print-only">
+        <div style="text-align: center; border-bottom: 2.5px double #000000; padding-bottom: 6px; margin-bottom: 10px;">
+            <h2 style="font-size: 13pt; font-weight: 800; margin: 0; text-transform: uppercase;">PEMERINTAH PROVINSI MALUKU UTARA</h2>
+            <h3 style="font-size: 12pt; font-weight: 700; margin: 2px 0 0 0;">BADAN PERENCANAAN PEMBANGUNAN DAERAH (BAPPEDA)</h3>
+            <p style="font-size: 8.5pt; margin: 2px 0 0 0; color: #333;">Jl. Raya Lintas Halmahera, Gosale Puncak, Sofifi, Maluku Utara</p>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;">
+            <div>
+                <h4 style="font-size: 10.5pt; font-weight: 700; margin: 0; color: #111;">KINERA — KINERJA INFORMASI & DATA DAERAH BIDANG IPW</h4>
+                <p style="font-size: 8.5pt; color: #444; margin: 1px 0 0 0;">Laporan Penyajian Data Tabel Dinamis</p>
+            </div>
+            <div style="text-align: right; font-size: 8pt; color: #444;">
+                <div>Dicetak: <strong>{{ date('d/m/Y H:i') }} WIT</strong></div>
+            </div>
+        </div>
+    </div>
+
     <div class="td-result-header">
         <div class="td-result-title">
             <span class="td-h2-icon" style="width:28px;height:28px;background:var(--deep-blue-50);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;font-size:0.9rem;">📋</span>
-            Tabel Hasil Dinamis
+            <span>Tabel Hasil Dinamis</span>
+            <span id="td-table-row-count" class="td-counter-badge" style="margin-left: 0.5rem; font-size: 0.7rem;"></span>
         </div>
-        <div class="td-export-group">
-            <button type="button" id="td-export-xlsx" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
-                📥 Unduh Excel
-            </button>
-            <button type="button" id="td-export-csv" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
-                📄 Unduh CSV
-            </button>
+        <div class="td-table-actions-toolbar">
+            <input type="text" id="td-cari-tabel" placeholder="Cari wilayah..." class="td-table-search-input">
+            <div class="td-export-group">
+                <button type="button" id="td-btn-cetak" class="td-btn td-btn-outline" style="font-size: 0.8rem;" title="Cetak atau Simpan sebagai PDF">
+                    🖨️ Cetak / PDF
+                </button>
+                <button type="button" id="td-export-xlsx" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
+                    📥 Unduh Excel
+                </button>
+                <button type="button" id="td-export-csv" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
+                    📄 Unduh CSV
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Tabel Header Dua Tingkat yang Bisa Digeser Horizontal -->
     <div class="td-table-scroll">
-        <table class="td-table-dynamic">
+        <table class="td-table-dynamic" id="td-dynamic-table">
             <thead id="td-table-head"></thead>
             <tbody id="td-table-body"></tbody>
+            <tfoot id="td-table-foot"></tfoot>
         </table>
     </div>
 </div>
@@ -755,8 +928,11 @@
         subjek: [],
         indikator: [],
         wilayah: [],
-        dataTerpilih: [], // Maksimal 2 item: { indikator_id, kode, label, satuan, jenis, tahun: [] }
-        lastPayload: null
+        dataTerpilih: [], // { indikator_id, kode, label, satuan, jenis, tahun: [] }
+        lastPayload: null,
+        tabelRaw: null,
+        sortCol: { colType: null, gIdx: null, tIdx: null, dir: null },
+        filterWilayahQuery: ''
     };
 
     // Referensi Elemen DOM
@@ -777,8 +953,12 @@
         btnSubmit: document.getElementById('td-btn-submit'),
         btnReset: document.getElementById('td-btn-reset'),
         hasilWrapper: document.getElementById('td-hasil-wrapper'),
+        cariTabel: document.getElementById('td-cari-tabel'),
+        tableRowCount: document.getElementById('td-table-row-count'),
         tableHead: document.getElementById('td-table-head'),
         tableBody: document.getElementById('td-table-body'),
+        tableFoot: document.getElementById('td-table-foot'),
+        btnCetak: document.getElementById('td-btn-cetak'),
         exportXlsx: document.getElementById('td-export-xlsx'),
         exportCsv: document.getElementById('td-export-csv')
     };
@@ -1005,11 +1185,11 @@
             const adaData = Array.isArray(tahunTersedia) && tahunTersedia.includes(th);
             const label = document.createElement('label');
             label.className = 'td-checkbox-pill';
-            label.title = adaData ? `Data tahun ${th} tersedia di sistem` : `Data tahun ${th} belum tersedia`;
+            label.title = adaData ? `Data tahun ${th} tersedia di sistem` : `Data tahun ${th} belum ada data (nihil)`;
             label.innerHTML = `
                 <input type="checkbox" class="td-cb-thn" value="${th}" ${adaData ? 'checked' : ''}>
                 <span>${th}</span>
-                ${adaData ? '<span class="td-badge-available">Tersedia</span>' : ''}
+                ${adaData ? '<span class="td-badge-available">Tersedia</span>' : '<span class="td-badge-empty">Nihil</span>'}
             `;
             dom.tahunList.appendChild(label);
         }
@@ -1172,22 +1352,51 @@
         }
     });
 
-    // 8. Render Tabel Header Dua Tingkat & Format Angka Indonesia
+    // 8. Render Tabel Header Dua Tingkat, Sorting, Search, dan Ringkasan Statistik
+    const formatIndo = new Intl.NumberFormat('id-ID', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 4
+    });
+
     function renderTabelDuaTingkat(hasilTabel) {
-        const { grup, baris } = hasilTabel;
+        state.tabelRaw = hasilTabel;
+        state.sortCol = { colType: null, gIdx: null, tIdx: null, dir: null };
+        state.filterWilayahQuery = '';
+        if (dom.cariTabel) dom.cariTabel.value = '';
+
+        renderTabelHeader();
+        updateTabelRowsAndStats();
+    }
+
+    function renderTabelHeader() {
+        if (!state.tabelRaw) return;
+        const { grup } = state.tabelRaw;
 
         // Baris Header 1 & Baris Header 2 (Header Dua Tingkat)
-        let thTingkat1 = '<tr><th rowspan="2" class="td-th-wilayah">Kabupaten / Kota</th>';
+        let wilSortIcon = '↕';
+        let wilActive = '';
+        if (state.sortCol.colType === 'wilayah') {
+            wilSortIcon = state.sortCol.dir === 'asc' ? '▲' : '▼';
+            wilActive = 'td-sort-active';
+        }
+
+        let thTingkat1 = `<tr><th rowspan="2" class="td-th-wilayah td-sortable-th ${wilActive}" id="td-th-sort-wilayah" title="Klik untuk mengurutkan nama wilayah">Kabupaten / Kota <span class="td-sort-icon">${wilSortIcon}</span></th>`;
         let thTingkat2 = '<tr>';
 
-        grup.forEach(g => {
+        grup.forEach((g, gIdx) => {
             const colSpan = g.tahun.length;
             const satuanTeks = g.satuan ? ` (${g.satuan})` : '';
             const tagClass = g.jenis.toLowerCase() === 'target' ? 'td-tag-target' : 'td-tag-realisasi';
             thTingkat1 += `<th colspan="${colSpan}"><span class="td-table-tag ${tagClass}">[${g.jenis}]</span> ${g.judul}${satuanTeks}</th>`;
 
-            g.tahun.forEach(th => {
-                thTingkat2 += `<th style="min-width: 85px;">${th}</th>`;
+            g.tahun.forEach((th, tIdx) => {
+                let mSortIcon = '↕';
+                let mActive = '';
+                if (state.sortCol.colType === 'metric' && state.sortCol.gIdx === gIdx && state.sortCol.tIdx === tIdx) {
+                    mSortIcon = state.sortCol.dir === 'asc' ? '▲' : '▼';
+                    mActive = 'td-sort-active';
+                }
+                thTingkat2 += `<th style="min-width: 85px;" class="td-sortable-th ${mActive}" data-gidx="${gIdx}" data-tidx="${tIdx}" title="Klik untuk mengurutkan nilai ${th}">${th} <span class="td-sort-icon">${mSortIcon}</span></th>`;
             });
         });
 
@@ -1195,34 +1404,163 @@
         thTingkat2 += '</tr>';
         dom.tableHead.innerHTML = thTingkat1 + thTingkat2;
 
-        // Render Baris Wilayah dan Format Angka Indonesia
-        // Formatter angka standar Indonesia (titik untuk ribuan, koma untuk desimal)
-        const formatIndo = new Intl.NumberFormat('id-ID', {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 4
-        });
+        // Pasang event listener sorting
+        const thWil = document.getElementById('td-th-sort-wilayah');
+        if (thWil) {
+            thWil.addEventListener('click', () => toggleSort('wilayah'));
+        }
 
-        let bodyHtml = '';
-        if (!baris || baris.length === 0) {
-            bodyHtml = `<tr><td colspan="100" class="td-align-center" style="padding: 2rem;">Tidak ada data ditemukan.</td></tr>`;
+        dom.tableHead.querySelectorAll('.td-sortable-th[data-gidx]').forEach(th => {
+            th.addEventListener('click', function() {
+                const gIdx = parseInt(this.getAttribute('data-gidx'), 10);
+                const tIdx = parseInt(this.getAttribute('data-tidx'), 10);
+                toggleSort('metric', gIdx, tIdx);
+            });
+        });
+    }
+
+    function toggleSort(type, gIdx = null, tIdx = null) {
+        if (type === 'wilayah') {
+            if (state.sortCol.colType === 'wilayah') {
+                state.sortCol.dir = state.sortCol.dir === 'asc' ? 'desc' : 'asc';
+            } else {
+                state.sortCol = { colType: 'wilayah', gIdx: null, tIdx: null, dir: 'asc' };
+            }
         } else {
-            baris.forEach(b => {
-                bodyHtml += `<tr><td class="td-td-wilayah">${b.wilayah}</td>`;
-                b.nilai.forEach(grupNilai => {
-                    grupNilai.forEach(val => {
-                        if (val === null || val === undefined) {
-                            // Null ditulis '-'
-                            bodyHtml += `<td class="td-align-center">-</td>`;
-                        } else {
-                            // Angka format Indonesia
-                            bodyHtml += `<td class="td-align-right">${formatIndo.format(val)}</td>`;
-                        }
-                    });
-                });
-                bodyHtml += '</tr>';
+            if (state.sortCol.colType === 'metric' && state.sortCol.gIdx === gIdx && state.sortCol.tIdx === tIdx) {
+                state.sortCol.dir = state.sortCol.dir === 'asc' ? 'desc' : 'asc';
+            } else {
+                state.sortCol = { colType: 'metric', gIdx, tIdx, dir: 'desc' }; // Metric default desc (nilai tertinggi di atas)
+            }
+        }
+        renderTabelHeader();
+        updateTabelRowsAndStats();
+    }
+
+    function updateTabelRowsAndStats() {
+        if (!state.tabelRaw) return;
+        const { grup, baris } = state.tabelRaw;
+
+        // 1. Filter baris wilayah
+        let filtered = (baris || []).slice();
+        if (state.filterWilayahQuery) {
+            filtered = filtered.filter(b => b.wilayah.toLowerCase().includes(state.filterWilayahQuery));
+        }
+
+        // 2. Urutkan baris
+        if (state.sortCol.colType === 'wilayah') {
+            filtered.sort((a, b) => {
+                const cmp = a.wilayah.localeCompare(b.wilayah, 'id');
+                return state.sortCol.dir === 'asc' ? cmp : -cmp;
+            });
+        } else if (state.sortCol.colType === 'metric') {
+            const g = state.sortCol.gIdx;
+            const t = state.sortCol.tIdx;
+            filtered.sort((a, b) => {
+                const valA = a.nilai[g]?.[t] ?? null;
+                const valB = b.nilai[g]?.[t] ?? null;
+                if (valA === null && valB === null) return 0;
+                if (valA === null) return 1; // null selalu di urutan paling bawah
+                if (valB === null) return -1;
+                return state.sortCol.dir === 'asc' ? (valA - valB) : (valB - valA);
             });
         }
+
+        // Update indikator jumlah baris
+        if (dom.tableRowCount) {
+            if (filtered.length !== (baris ? baris.length : 0)) {
+                dom.tableRowCount.textContent = `${filtered.length} dari ${baris.length} wilayah`;
+            } else {
+                dom.tableRowCount.textContent = `${baris.length} wilayah`;
+            }
+        }
+
+        // 3. Render tbody
+        if (filtered.length === 0) {
+            dom.tableBody.innerHTML = `<tr><td colspan="100" class="td-align-center" style="padding: 2rem;">Tidak ada wilayah yang cocok dengan pencarian "${state.filterWilayahQuery}".</td></tr>`;
+            if (dom.tableFoot) dom.tableFoot.innerHTML = '';
+            return;
+        }
+
+        let bodyHtml = '';
+        filtered.forEach(b => {
+            bodyHtml += `<tr><td class="td-td-wilayah">${b.wilayah}</td>`;
+            b.nilai.forEach(grupNilai => {
+                grupNilai.forEach(val => {
+                    if (val === null || val === undefined) {
+                        bodyHtml += `<td class="td-align-center">-</td>`;
+                    } else {
+                        bodyHtml += `<td class="td-align-right">${formatIndo.format(val)}</td>`;
+                    }
+                });
+            });
+            bodyHtml += '</tr>';
+        });
         dom.tableBody.innerHTML = bodyHtml;
+
+        // 4. Hitung Ringkasan Statistik tfoot (Rata-rata, Tertinggi, Terendah)
+        if (dom.tableFoot) {
+            let statCellsAvg = '';
+            let statCellsMax = '';
+            let statCellsMin = '';
+
+            grup.forEach((g, gIdx) => {
+                g.tahun.forEach((th, tIdx) => {
+                    const values = [];
+                    filtered.forEach(b => {
+                        const v = b.nilai[gIdx]?.[tIdx];
+                        if (v !== null && v !== undefined && !isNaN(v)) {
+                            values.push(Number(v));
+                        }
+                    });
+
+                    if (values.length === 0) {
+                        statCellsAvg += `<td class="td-align-center">-</td>`;
+                        statCellsMax += `<td class="td-align-center">-</td>`;
+                        statCellsMin += `<td class="td-align-center">-</td>`;
+                    } else {
+                        const sum = values.reduce((acc, cur) => acc + cur, 0);
+                        const avg = sum / values.length;
+                        const max = Math.max(...values);
+                        const min = Math.min(...values);
+
+                        statCellsAvg += `<td class="td-align-right" style="font-weight:700;">${formatIndo.format(avg)}</td>`;
+                        statCellsMax += `<td class="td-align-right" style="font-weight:700;">${formatIndo.format(max)}</td>`;
+                        statCellsMin += `<td class="td-align-right" style="font-weight:700;">${formatIndo.format(min)}</td>`;
+                    }
+                });
+            });
+
+            dom.tableFoot.innerHTML = `
+                <tr class="td-tfoot-avg">
+                    <td class="td-td-wilayah" style="font-weight:700;">📊 Rata-rata Provinsi</td>
+                    ${statCellsAvg}
+                </tr>
+                <tr class="td-tfoot-max">
+                    <td class="td-td-wilayah" style="font-weight:700;">▲ Nilai Tertinggi (Maks)</td>
+                    ${statCellsMax}
+                </tr>
+                <tr class="td-tfoot-min">
+                    <td class="td-td-wilayah" style="font-weight:700;">▼ Nilai Terendah (Min)</td>
+                    ${statCellsMin}
+                </tr>
+            `;
+        }
+    }
+
+    // Event Listener Live Search Wilayah di Tabel
+    if (dom.cariTabel) {
+        dom.cariTabel.addEventListener('input', function() {
+            state.filterWilayahQuery = this.value.trim().toLowerCase();
+            updateTabelRowsAndStats();
+        });
+    }
+
+    // Event Listener Tombol Cetak / PDF Resmi
+    if (dom.btnCetak) {
+        dom.btnCetak.addEventListener('click', function() {
+            window.print();
+        });
     }
 
     // 9. Handler Unduh Berkas Export (POST dengan CSRF)
