@@ -291,14 +291,22 @@
             text-decoration: none;
         }
         .td-btn-primary {
-            background: var(--deep-blue-600);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 45%, #0f2e6b 100%);
             color: var(--white);
-            box-shadow: 0 1px 3px rgba(26,68,128,0.3);
+            box-shadow: 0 4px 12px -2px rgba(15, 46, 107, 0.45),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .td-btn-primary:hover {
-            background: var(--deep-blue-700);
-            box-shadow: 0 2px 6px rgba(26,68,128,0.4);
-            transform: translateY(-1px);
+        .td-btn-primary:hover:not(:disabled) {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 45%, #143ca3 100%);
+            box-shadow: 0 6px 18px -2px rgba(15, 46, 107, 0.55),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transform: translateY(-1.5px);
+        }
+        .td-btn-primary:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(15, 46, 107, 0.4),
+                        inset 0 1.5px 3px rgba(0, 0, 0, 0.25);
         }
         .td-btn-secondary {
             background: var(--deep-blue-800);
@@ -308,13 +316,16 @@
             background: var(--deep-blue-900);
         }
         .td-btn-outline {
-            background: transparent;
-            border: 1.5px solid var(--deep-blue-500);
-            color: var(--deep-blue-600);
+            background: var(--white);
+            border: 1.5px solid #cbd5e1;
+            color: var(--gray-700);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
         }
         .td-btn-outline:hover {
-            background: var(--deep-blue-50);
-            border-color: var(--deep-blue-600);
+            background: #f8fafc;
+            border-color: #94a3b8;
+            color: var(--gray-900);
+            transform: translateY(-1px);
         }
         .td-btn:disabled {
             opacity: 0.45;

@@ -87,16 +87,16 @@
     /* ===== Section Box (Efek Timbul / 3D Elevated Card) ===== */
     .td-section-box {
         background: var(--white);
-        border: 1px solid rgba(15, 34, 64, 0.08);
+        border: 1px solid rgba(20, 52, 100, 0.1);
         border-radius: var(--radius-lg);
         padding: 1.4rem;
         margin-bottom: 1.25rem;
-        box-shadow: 0 4px 6px -1px rgba(10, 22, 40, 0.04),
-                    0 10px 24px -4px rgba(10, 22, 40, 0.08),
+        box-shadow: 0 3px 6px -1px rgba(10, 25, 60, 0.04),
+                    0 10px 28px -4px rgba(10, 35, 90, 0.09),
                     inset 0 1px 0 rgba(255, 255, 255, 1);
         transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
                     box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.2s ease;
+                    border-color 0.25s ease;
         position: relative;
         overflow: hidden;
     }
@@ -106,45 +106,60 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 3.5px;
-        background: linear-gradient(90deg, var(--deep-blue-600) 0%, var(--deep-blue-400) 100%);
+        height: 4px;
+        background: linear-gradient(90deg, #0d286d 0%, #1d4ed8 40%, #2563eb 75%, #38bdf8 100%);
     }
     .td-section-box:hover {
         transform: translateY(-4px);
-        box-shadow: 0 16px 32px -4px rgba(10, 22, 40, 0.12),
-                    0 6px 14px -2px rgba(10, 22, 40, 0.06),
+        box-shadow: 0 18px 36px -4px rgba(10, 35, 90, 0.16),
+                    0 8px 16px -2px rgba(10, 25, 60, 0.08),
                     inset 0 1px 0 rgba(255, 255, 255, 1);
-        border-color: rgba(26, 68, 128, 0.22);
+        border-color: rgba(29, 78, 216, 0.28);
     }
 
     /* ===== Section Header ===== */
     .td-section-header {
-        font-size: 0.925rem;
+        font-size: 0.95rem;
         font-weight: 700;
         color: var(--deep-blue-800);
         margin-bottom: 1rem;
         display: flex;
         align-items: center;
-        gap: 0.65rem;
+        gap: 0.75rem;
         padding-bottom: 0.75rem;
         border-bottom: 1px solid var(--gray-100);
     }
 
-    /* ===== Step Badge (Embossed 3D Badge) ===== */
+    /* ===== Step Badge (Luminous 3D Embossed Deep Blue Badge) ===== */
     .td-step-badge {
-        background: linear-gradient(135deg, var(--deep-blue-500) 0%, var(--deep-blue-700) 100%);
-        color: var(--white);
-        width: 28px;
-        height: 28px;
+        background: radial-gradient(circle at 32% 28%, #3b82f6 0%, #1d4ed8 35%, #10398e 70%, #091f54 100%);
+        color: #ffffff;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.75rem;
-        font-weight: 700;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
         flex-shrink: 0;
-        box-shadow: 0 3px 8px rgba(20, 52, 100, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        border: 1.5px solid rgba(255, 255, 255, 0.9);
+        border: 2px solid #ffffff;
+        outline: 1.5px solid rgba(29, 78, 216, 0.35);
+        box-shadow: 0 4px 10px -1px rgba(9, 31, 84, 0.5),
+                    0 2px 4px rgba(9, 31, 84, 0.25),
+                    inset 0 2px 2.5px rgba(255, 255, 255, 0.7),
+                    inset 0 -2px 3px rgba(3, 12, 38, 0.6);
+        text-shadow: 0 1px 2px rgba(3, 12, 38, 0.8);
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .td-section-box:hover .td-step-badge {
+        transform: translateY(-2px) scale(1.08);
+        box-shadow: 0 7px 16px -1px rgba(9, 31, 84, 0.6),
+                    0 3px 6px rgba(9, 31, 84, 0.3),
+                    inset 0 2px 2.5px rgba(255, 255, 255, 0.85),
+                    inset 0 -2px 3px rgba(3, 12, 38, 0.7);
     }
 
     /* ===== Search Input ===== */
@@ -213,16 +228,17 @@
         transform: translateY(-1px);
     }
     .td-checkbox-pill:has(input:checked) {
-        border-color: var(--deep-blue-500);
-        background: var(--deep-blue-50);
-        color: var(--deep-blue-800);
-        font-weight: 600;
-        box-shadow: 0 2px 8px rgba(26, 68, 128, 0.14);
+        border-color: #1d4ed8;
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        color: #0f2e6b;
+        font-weight: 700;
+        box-shadow: 0 3px 8px rgba(29, 78, 216, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transform: translateY(-1px);
     }
     .td-checkbox-pill input[type="checkbox"] {
         margin: 0;
         cursor: pointer;
-        accent-color: var(--deep-blue-600);
+        accent-color: #1d4ed8;
         width: 14px;
         height: 14px;
     }
@@ -230,8 +246,8 @@
     /* ===== Selected Data Container ===== */
     .td-selected-container {
         min-height: 90px;
-        background: var(--deep-blue-50);
-        border: 2px dashed var(--deep-blue-200);
+        background: #f0f5fc;
+        border: 2px dashed #bfdbfe;
         border-radius: var(--radius-md);
         padding: 0.85rem;
         display: flex;
@@ -240,19 +256,19 @@
     }
     .td-selected-item {
         background: var(--white);
-        border: 1px solid rgba(20, 52, 100, 0.1);
-        border-left: 4px solid var(--deep-blue-500);
+        border: 1px solid rgba(29, 78, 216, 0.15);
+        border-left: 4.5px solid #1d4ed8;
         padding: 0.75rem 0.95rem;
         border-radius: var(--radius-sm);
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         gap: 0.6rem;
-        box-shadow: 0 2px 8px rgba(10, 22, 40, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1);
+        box-shadow: 0 3px 10px rgba(13, 40, 109, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
         transition: all var(--transition);
     }
     .td-selected-item:hover {
-        box-shadow: 0 6px 16px rgba(10, 22, 40, 0.1);
+        box-shadow: 0 6px 18px rgba(13, 40, 109, 0.14);
         transform: translateY(-2px);
     }
     .td-selected-title {
