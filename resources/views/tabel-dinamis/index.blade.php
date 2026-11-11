@@ -157,36 +157,27 @@
         -webkit-text-fill-color: transparent;
     }
 
-    /* ===== Step Badge (Luminous 3D Embossed Deep Blue Badge) ===== */
+    /* ===== Step Badge (Clean & Modern Minimalist) ===== */
     .td-step-badge {
-        background: radial-gradient(circle at 32% 28%, #3b82f6 0%, #1d4ed8 35%, #10398e 70%, #091f54 100%);
+        background: #1d4ed8;
         color: #ffffff;
-        width: 30px;
-        height: 30px;
+        width: 26px;
+        height: 26px;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.85rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
+        font-size: 0.8rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.01em;
         flex-shrink: 0;
-        border: 2px solid #ffffff;
-        outline: 1.5px solid rgba(29, 78, 216, 0.35);
-        box-shadow: 0 4px 10px -1px rgba(9, 31, 84, 0.5),
-                    0 2px 4px rgba(9, 31, 84, 0.25),
-                    inset 0 2px 2.5px rgba(255, 255, 255, 0.7),
-                    inset 0 -2px 3px rgba(3, 12, 38, 0.6);
-        text-shadow: 0 1px 2px rgba(3, 12, 38, 0.8);
-        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 1px 3px rgba(29, 78, 216, 0.2);
+        transition: background-color 0.2s ease, transform 0.2s ease;
     }
     .td-section-box:hover .td-step-badge {
-        transform: translateY(-2px) scale(1.08);
-        box-shadow: 0 7px 16px -1px rgba(9, 31, 84, 0.6),
-                    0 3px 6px rgba(9, 31, 84, 0.3),
-                    inset 0 2px 2.5px rgba(255, 255, 255, 0.85),
-                    inset 0 -2px 3px rgba(3, 12, 38, 0.7);
+        background: #1e40af;
+        transform: scale(1.06);
     }
 
     /* ===== Search Input ===== */
