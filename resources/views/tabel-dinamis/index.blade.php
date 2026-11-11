@@ -35,38 +35,64 @@
 
     /* ===== Info Banner ===== */
     .td-banner-info {
-        background: var(--deep-blue-50);
-        border: 1px solid var(--deep-blue-200);
-        border-left: 4px solid var(--deep-blue-500);
-        color: var(--deep-blue-700);
-        padding: 0.7rem 1rem;
-        border-radius: var(--radius-sm);
-        font-size: 0.85rem;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e40af;
+        padding: 0.65rem 1rem;
+        border-radius: 10px;
+        font-size: 0.825rem;
         font-weight: 500;
         margin-bottom: 1.25rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.55rem;
+        box-shadow: 0 1px 3px rgba(37, 99, 235, 0.08);
     }
     .td-banner-info svg {
         flex-shrink: 0;
-        width: 18px;
-        height: 18px;
-        color: var(--deep-blue-500);
+        width: 17px;
+        height: 17px;
+        color: #2563eb;
     }
 
-    /* ===== Page Title ===== */
+    /* ===== Page Title Hero ===== */
+    .td-page-hero {
+        margin-bottom: 1.35rem;
+    }
+    .td-page-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: #eff6ff;
+        border: 1px solid #dbeafe;
+        color: #1d4ed8;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 0.2rem 0.65rem;
+        border-radius: 9999px;
+        margin-bottom: 0.45rem;
+        letter-spacing: 0.02em;
+    }
+    .td-tag-dot {
+        width: 6px;
+        height: 6px;
+        background: #1d4ed8;
+        border-radius: 50%;
+        display: inline-block;
+    }
     .td-page-title {
-        font-size: 1.25rem;
+        font-size: 1.45rem;
         font-weight: 800;
-        letter-spacing: -0.02em;
-        color: var(--deep-blue-800);
+        letter-spacing: -0.025em;
+        color: #0f172a;
         margin-bottom: 0.25rem;
+        line-height: 1.25;
     }
     .td-page-subtitle {
-        font-size: 0.825rem;
-        color: var(--gray-500);
-        margin-bottom: 1.25rem;
+        font-size: 0.85rem;
+        color: #64748b;
+        margin: 0;
+        line-height: 1.5;
     }
 
     /* ===== Two-Column Layout ===== */
@@ -84,19 +110,16 @@
         }
     }
 
-    /* ===== Section Box (Efek Timbul / 3D Elevated Card) ===== */
+    /* ===== Section Box (Modern Elevated Card) ===== */
     .td-section-box {
         background: var(--white);
-        border: 1px solid rgba(20, 52, 100, 0.1);
-        border-radius: var(--radius-lg);
-        padding: 1.4rem;
+        border: 1px solid rgba(226, 232, 240, 0.95);
+        border-radius: 12px;
+        padding: 1.35rem;
         margin-bottom: 1.25rem;
-        box-shadow: 0 3px 6px -1px rgba(10, 25, 60, 0.04),
-                    0 10px 28px -4px rgba(10, 35, 90, 0.09),
-                    inset 0 1px 0 rgba(255, 255, 255, 1);
-        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.25s ease;
+        box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04),
+                    0 6px 16px -4px rgba(15, 23, 42, 0.06);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
         position: relative;
         overflow: hidden;
     }
@@ -110,11 +133,9 @@
         background: #1d4ed8;
     }
     .td-section-box:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 18px 36px -4px rgba(10, 35, 90, 0.16),
-                    0 8px 16px -2px rgba(10, 25, 60, 0.08),
-                    inset 0 1px 0 rgba(255, 255, 255, 1);
-        border-color: rgba(29, 78, 216, 0.28);
+        border-color: rgba(147, 197, 253, 0.8);
+        box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05),
+                    0 10px 24px -4px rgba(15, 23, 42, 0.08);
     }
 
     /* ===== Section Header & Typography ===== */
@@ -124,7 +145,7 @@
         align-items: center;
         gap: 0.85rem;
         padding-bottom: 0.85rem;
-        border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+        border-bottom: 1px solid #f1f5f9;
     }
     .td-section-title-wrap {
         display: flex;
@@ -135,16 +156,16 @@
     }
     .td-section-title {
         font-size: 0.975rem;
-        font-weight: 800;
+        font-weight: 700;
         letter-spacing: -0.015em;
         line-height: 1.25;
-        color: #0f2d59;
+        color: #0f172a;
         margin: 0;
         transition: color 0.2s ease;
     }
     .td-section-desc {
-        font-size: 0.72rem;
-        font-weight: 500;
+        font-size: 0.74rem;
+        font-weight: 400;
         color: #64748b;
         letter-spacing: 0.01em;
         line-height: 1.2;
@@ -157,18 +178,17 @@
     .td-step-badge {
         background: #1d4ed8;
         color: #ffffff;
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        border-radius: 7px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         font-weight: 700;
         line-height: 1;
-        letter-spacing: -0.01em;
         flex-shrink: 0;
-        box-shadow: 0 1px 3px rgba(29, 78, 216, 0.2);
+        box-shadow: 0 1px 3px rgba(29, 78, 216, 0.25);
         transition: background-color 0.2s ease, transform 0.2s ease;
     }
     .td-section-box:hover .td-step-badge {
@@ -223,31 +243,30 @@
     .td-checkbox-pill {
         display: inline-flex;
         align-items: center;
-        gap: 0.4rem;
+        gap: 0.45rem;
         background: var(--white);
-        border: 1.5px solid var(--gray-200);
+        border: 1px solid #cbd5e1;
         padding: 0.45rem 0.75rem;
-        border-radius: var(--radius-sm);
+        border-radius: 8px;
         font-size: 0.8rem;
-        color: var(--gray-700);
+        font-weight: 500;
+        color: #334155;
         cursor: pointer;
         user-select: none;
-        box-shadow: 0 1px 3px rgba(10, 22, 40, 0.04);
-        transition: all 0.2s ease;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+        transition: all 0.15s ease;
     }
     .td-checkbox-pill:hover {
-        border-color: var(--deep-blue-300);
-        background: var(--deep-blue-50);
-        box-shadow: 0 3px 8px rgba(10, 22, 40, 0.07);
-        transform: translateY(-1px);
+        border-color: #93c5fd;
+        background: #f8fafc;
+        color: #0f172a;
     }
     .td-checkbox-pill:has(input:checked) {
-        border-color: #1d4ed8;
+        border-color: #2563eb;
         background: #eff6ff;
         color: #1d4ed8;
-        font-weight: 700;
-        box-shadow: 0 2px 6px rgba(29, 78, 216, 0.12);
-        transform: translateY(-1px);
+        font-weight: 600;
+        box-shadow: 0 1px 3px rgba(37, 99, 235, 0.14);
     }
     .td-checkbox-pill input[type="checkbox"] {
         margin: 0;
@@ -259,31 +278,33 @@
 
     /* ===== Selected Data Container ===== */
     .td-selected-container {
-        min-height: 90px;
-        background: #f0f5fc;
-        border: 2px dashed #bfdbfe;
-        border-radius: var(--radius-md);
+        min-height: 85px;
+        background: #f8fafc;
+        border: 1.5px dashed #cbd5e1;
+        border-radius: 10px;
         padding: 0.85rem;
         display: flex;
         flex-direction: column;
         gap: 0.65rem;
+        transition: border-color 0.2s ease;
     }
     .td-selected-item {
         background: var(--white);
-        border: 1px solid rgba(29, 78, 216, 0.15);
-        border-left: 4.5px solid #1d4ed8;
+        border: 1px solid #e2e8f0;
+        border-left: 3.5px solid #1d4ed8;
         padding: 0.75rem 0.95rem;
-        border-radius: var(--radius-sm);
+        border-radius: 8px;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         gap: 0.6rem;
-        box-shadow: 0 3px 10px rgba(13, 40, 109, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
-        transition: all var(--transition);
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+        transition: all 0.2s ease;
     }
     .td-selected-item:hover {
-        box-shadow: 0 6px 18px rgba(13, 40, 109, 0.14);
-        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        border-color: #cbd5e1;
+        border-left-color: #1d4ed8;
     }
     .td-selected-title {
         font-weight: 600;
@@ -1008,9 +1029,15 @@
 </div>
 @endif
 
-<!-- Page Title -->
-<h1 class="td-page-title">Filter Tabel Dinamis</h1>
-<p class="td-page-subtitle">Pilih indikator, periode, dan wilayah untuk membentuk tabel data.</p>
+<!-- Page Title Hero -->
+<div class="td-page-hero">
+    <div class="td-page-tag">
+        <span class="td-tag-dot"></span>
+        <span>Eksplorasi Data & Indikator Bidang IPW</span>
+    </div>
+    <h1 class="td-page-title">Filter Tabel Dinamis</h1>
+    <p class="td-page-subtitle">Rancang dan sajikan komparasi capaian indikator Provinsi Maluku Utara secara fleksibel, akurat, dan mudah dianalisis.</p>
+</div>
 
 <div class="td-layout-grid">
     <!-- ====== Kolom 1: Pemilihan Subjek, Indikator, Jenis & Tahun ====== -->

@@ -14,13 +14,12 @@
     }
     .td-import-card {
         background: var(--white);
-        border: 1px solid rgba(15, 34, 64, 0.08);
-        border-radius: var(--radius-lg);
+        border: 1px solid rgba(226, 232, 240, 0.95);
+        border-radius: 12px;
         padding: 1.5rem;
         margin-bottom: 1.25rem;
-        box-shadow: 0 4px 6px -1px rgba(10, 22, 40, 0.04),
-                    0 10px 24px -4px rgba(10, 22, 40, 0.08),
-                    inset 0 1px 0 rgba(255, 255, 255, 1);
+        box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04),
+                    0 6px 16px -4px rgba(15, 23, 42, 0.06);
         position: relative;
         overflow: hidden;
     }
