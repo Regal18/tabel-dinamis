@@ -61,10 +61,46 @@
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--gray-800);
-            background: #f4f6fb;
+            background-color: #f6f8fc;
+            background-image: 
+                linear-gradient(to right, rgba(29, 78, 216, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(29, 78, 216, 0.035) 1px, transparent 1px),
+                radial-gradient(rgba(29, 78, 216, 0.08) 1.25px, transparent 1.25px);
+            background-size: 40px 40px, 40px 40px, 20px 20px;
+            background-position: 0 0, 0 0, 10px 10px;
             font-size: 14px;
             letter-spacing: -0.01em;
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* ===== Decorative Background Ambient Elements ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(circle 650px at 8% 18%, rgba(29, 78, 216, 0.055), transparent 70%),
+                radial-gradient(circle 550px at 92% 22%, rgba(56, 189, 248, 0.065), transparent 70%),
+                radial-gradient(circle 750px at 50% 95%, rgba(30, 58, 138, 0.04), transparent 75%);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 320px;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(29, 78, 216, 0.07), transparent 70%);
         }
 
         /* ===== Header (Clean, Elegant & Modern) ===== */
@@ -400,10 +436,12 @@
         .td-footer {
             text-align: center;
             padding: 1.5rem 1rem;
-            color: var(--gray-400);
+            color: var(--gray-500);
             font-size: 0.75rem;
-            border-top: 1px solid var(--gray-200);
-            margin-top: 1rem;
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+            margin-top: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
         }
 
         /* ===== Utilities ===== */
@@ -434,6 +472,15 @@
             .td-card { padding: 1.5rem; margin-bottom: 1.5rem; }
             .td-table { font-size: 0.85rem; }
             .td-table th, .td-table td { padding: 0.6rem 0.85rem; }
+        }
+        /* ===== Print Media Query ===== */
+        @media print {
+            body {
+                background: #ffffff !important;
+            }
+            body::before, body::after {
+                display: none !important;
+            }
         }
     </style>
     @stack('styles')
