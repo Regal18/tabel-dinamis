@@ -1,0 +1,3004 @@
+[
+    {
+        "kode": "ESDM-IKU-01",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Proporsi rumah tangga menggunakan listrik",
+        "sub_indikator": "Indikator Kinerja Utama (IKU)",
+        "satuan": "%",
+        "targets": {
+            "2025": 98.2,
+            "2026": 98.9
+        },
+        "sumber": "Renstra DESDM Maluku Utara"
+    },
+    {
+        "kode": "ESDM-IKU-02",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Proporsi energi baru terbarukan dalam bauran energi daerah",
+        "sub_indikator": "Indikator Kinerja Utama (IKU)",
+        "satuan": "%",
+        "targets": {
+            "2025": 0.43,
+            "2026": 0.45
+        },
+        "sumber": "Renstra DESDM Maluku Utara"
+    },
+    {
+        "kode": "ESDM-IKU-03",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Rasio penetapan zona pemanfaatan dan konservasi pada CAT",
+        "sub_indikator": "Indikator Kinerja Utama (IKU)",
+        "satuan": "%",
+        "targets": {
+            "2025": 20,
+            "2026": 30
+        },
+        "sumber": "Renstra DESDM Maluku Utara"
+    },
+    {
+        "kode": "ESDM-IKU-04",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Persentase WIUP yang memenuhi ketentuan perundang-undangan",
+        "sub_indikator": "Indikator Kinerja Utama (IKU)",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 100
+        },
+        "sumber": "Renstra DESDM Maluku Utara"
+    },
+    {
+        "kode": "ESDM-IKU-05",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Rasio elektrifikasi",
+        "sub_indikator": "Indikator Kinerja Utama (IKU)",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 100
+        },
+        "sumber": "Renstra DESDM Maluku Utara"
+    },
+    {
+        "kode": "ESDM-IKU-06",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Porsi EBT dalam Bauran Energi",
+        "sub_indikator": "Indikator Kinerja Utama (IKU)",
+        "satuan": "%",
+        "targets": {
+            "2025": 80,
+            "2026": 82
+        },
+        "sumber": "Renstra DESDM Maluku Utara"
+    },
+    {
+        "kode": "ESDM-IKU-07",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Persentase Desa Teraliri Listrik \/ Rasio Desa Berlistrik",
+        "sub_indikator": "Indikator Kinerja Utama (IKU)",
+        "satuan": "%",
+        "targets": {
+            "2025": 94,
+            "2026": 95
+        },
+        "sumber": "Renstra DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Meningkatnya kualitas perencanaan PD",
+        "sub_indikator": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.01.0001",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Dokumen Perencanaan",
+        "sub_indikator": "Penyusunan Dokumen Perencanaan Perangkat Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.01.0002",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Dokumen RKA SKPD & Laporan Hasil Koordinasi",
+        "sub_indikator": "Koordinasi dan Penyusunan Dokumen RKA SKPD",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.01.0004",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Dokumen DPA SKPD",
+        "sub_indikator": "Koordinasi dan Penyusunan DPA-SKPD",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.01.0006",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Laporan Capaian Kinerja",
+        "sub_indikator": "Koordinasi dan Penyusunan Laporan Capaian Kinerja",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.01.0007",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Laporan Evaluasi Kinerja",
+        "sub_indikator": "Evaluasi Kinerja Perangkat Daerah",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.02.0001",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Orang Menerima Gaji & Tunjangan",
+        "sub_indikator": "Penyediaan Gaji dan Tunjangan ASN",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 72,
+            "2026": 78
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.02.0002",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Dokumen Hasil Penyediaan Administrasi",
+        "sub_indikator": "Penyediaan Administrasi Pelaksanaan Tugas ASN",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.02.0004",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Dokumen Hasil Akuntansi",
+        "sub_indikator": "Koordinasi dan Pelaksanaan Akuntansi SKPD",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.05.0003",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Dokumen Pendataan Kepegawaian",
+        "sub_indikator": "Pendataan dan Pengolahan Administrasi Kepegawaian",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.05.0005",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Dokumen Monev",
+        "sub_indikator": "Monitoring, Evaluasi, dan Penilaian Kinerja Pegawai",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.05.0009",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Pegawai Ikut Diklat",
+        "sub_indikator": "Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi",
+        "satuan": "Orang",
+        "targets": {
+            "2026": 12
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.06.0009",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Laporan Rapat",
+        "sub_indikator": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.08.0002",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Laporan Jasa Komunikasi, Air, Listrik",
+        "sub_indikator": "Penyediaan Jasa Komunikasi, Sumber Daya Air dan Listrik",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.01.1.09.0002",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Kendaraan Dipelihara",
+        "sub_indikator": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak Kendaraan Dinas Operasional",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 15
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.02",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Indeks Kualitas Lingkungan Hidup (IKLH)",
+        "sub_indikator": "PROGRAM PENGELOLAAN ASPEK KEGEOLOGIAN",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80.53,
+            "2026": 80.69
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.06",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Terbangunnya Sarana Listrik Desa\/Terpencil",
+        "sub_indikator": "PROGRAM PENGELOLAAN KETENAGALISTRIKAN",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 40
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.06.1.06.0006",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Sarana Listrik Terbangun",
+        "sub_indikator": "Pembangunan Sarana Penyediaan Tenaga Listrik Belum Berkembang, Terpencil dan Perdesaan",
+        "satuan": "Unit",
+        "targets": {
+            "2025": 28,
+            "2026": 37
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "3.29.06.1.06.0007",
+        "opd_id": 8,
+        "subjek_id": 6,
+        "nama": "Jumlah Laporan Hasil Pengendalian & Pengawasan",
+        "sub_indikator": "Pengendalian dan Pengawasan Pembangunan Sarana Penyediaan Tenaga Listrik",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Renja DESDM Maluku Utara"
+    },
+    {
+        "kode": "PAR-PRG-01",
+        "opd_id": 3,
+        "subjek_id": 3,
+        "nama": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+        "sub_indikator": "Program Strategis Pariwisata",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.9,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Pariwisata Maluku Utara"
+    },
+    {
+        "kode": "PAR-PRG-02",
+        "opd_id": 3,
+        "subjek_id": 3,
+        "nama": "PROGRAM PENINGKATAN DAYA TARIK DESTINASI PARIWISATA",
+        "sub_indikator": "Program Strategis Pariwisata",
+        "satuan": "Lokasi",
+        "targets": {
+            "2025": 1.8,
+            "2026": 2
+        },
+        "sumber": "Renja Dinas Pariwisata Maluku Utara"
+    },
+    {
+        "kode": "PAR-PRG-03",
+        "opd_id": 3,
+        "subjek_id": 3,
+        "nama": "PROGRAM PEMASARAN PARIWISATA",
+        "sub_indikator": "Program Strategis Pariwisata",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.9,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Pariwisata Maluku Utara"
+    },
+    {
+        "kode": "PAR-PRG-04",
+        "opd_id": 3,
+        "subjek_id": 3,
+        "nama": "PROGRAM PENGEMBANGAN EKONOMI KREATIF MELALUI HAKI",
+        "sub_indikator": "Program Strategis Pariwisata",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 0.9,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Pariwisata Maluku Utara"
+    },
+    {
+        "kode": "PAR-PRG-05",
+        "opd_id": 3,
+        "subjek_id": 3,
+        "nama": "PROGRAM PENGEMBANGAN SUMBER DAYA PARIWISATA DAN EKONOMI KREATIF",
+        "sub_indikator": "Program Strategis Pariwisata",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 45,
+            "2026": 50
+        },
+        "sumber": "Renja Dinas Pariwisata Maluku Utara"
+    },
+    {
+        "kode": "PUPR-IKU-01",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Persentase Kinerja Penyelenggaraan Penataan Ruang",
+        "sub_indikator": "Bidang Penataan Ruang",
+        "satuan": "%",
+        "targets": {
+            "2024": 76,
+            "2025": 77.6,
+            "2026": 80
+        },
+        "sumber": "Renstra Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "PUPR-IKU-02",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Proporsi Panjang Jalan Provinsi dalam Kondisi Mantap",
+        "sub_indikator": "Bidang Jalan & Jembatan",
+        "satuan": "%",
+        "targets": {
+            "2024": 64.89,
+            "2025": 66.26,
+            "2026": 68.31
+        },
+        "sumber": "Renstra Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "PUPR-IKU-03",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Indeks Kinerja Sistem Irigasi",
+        "sub_indikator": "Bidang Sumber Daya Air (SDA)",
+        "satuan": "%",
+        "targets": {
+            "2024": 53.56,
+            "2025": 54.69,
+            "2026": 56.38
+        },
+        "sumber": "Renstra Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "PUPR-IKU-04",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Proporsi Populasi Memiliki Akses Air Minum Layak dan Berkelanjutan",
+        "sub_indikator": "Bidang Cipta Karya & SPAM",
+        "satuan": "%",
+        "targets": {
+            "2024": 90.27,
+            "2025": 92.17,
+            "2026": 95.02
+        },
+        "sumber": "Renstra Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "PUPR-IKU-05",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Panjang Drainase Perkotaan Terbangun",
+        "sub_indikator": "Bidang Drainase",
+        "satuan": "Meter",
+        "targets": {
+            "2024": 25826.7,
+            "2025": 26370.42,
+            "2026": 27186
+        },
+        "sumber": "Renstra Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "PUPR-IKU-06",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Proporsi Rumah Tangga Memiliki Akses Sanitasi Layak",
+        "sub_indikator": "Bidang Air Limbah & Sanitasi",
+        "satuan": "%",
+        "targets": {
+            "2024": 81.86,
+            "2025": 83.58,
+            "2026": 86.17
+        },
+        "sumber": "Renstra Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "PUPR-IKU-07",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Jumlah Tenaga Kerja Konstruksi Kualifikasi Ahli Difasilitasi Sertifikasi",
+        "sub_indikator": "Bidang Jasa Konstruksi",
+        "satuan": "Orang",
+        "targets": {
+            "2024": 641.25,
+            "2025": 654.75,
+            "2026": 675
+        },
+        "sumber": "Renstra Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "PUPR-IKU-08",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Luasan Bangunan Gedung di Kawasan Strategis Provinsi Terbangun",
+        "sub_indikator": "Bidang Bangunan Gedung",
+        "satuan": "M²",
+        "targets": {
+            "2024": 39993.1,
+            "2025": 40835.06,
+            "2026": 42098
+        },
+        "sumber": "Renstra Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.01",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Efektivitas Pelaksanaan Penunjang Urusan Perangkat Daerah",
+        "sub_indikator": "Program Penunjang Urusan Pemerintahan Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 97.59
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "1.03.01.1.01.01",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Jumlah Dokumen Perencanaan Perangkat Daerah",
+        "sub_indikator": "Penyusunan Dokumen Perencanaan Perangkat Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 2,
+            "2026": 2
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.02",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Cakupan Implementasi Pengelolaan Sumber Daya Air",
+        "sub_indikator": "Program Pengelolaan Sumber Daya Air (SDA)",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 82.8
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "1.03.1.01.02.0009",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Panjang Tanggul Sungai yang Dibangun",
+        "sub_indikator": "Pembangunan Tanggul Sungai",
+        "satuan": "Km",
+        "targets": {
+            "2025": 0,
+            "2026": 0
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "1.03.1.01.02.0079",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Panjang Sungai yang Dinormalisasi\/Direstorasi",
+        "sub_indikator": "Normalisasi\/Restorasi Sungai",
+        "satuan": "Km",
+        "targets": {
+            "2025": 0.127,
+            "2026": 0.127
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.03",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Jumlah Rumah Tangga terlayani Air Minum Jaringan Perpipaan SPAM Regional",
+        "sub_indikator": "Program Pengelolaan & Pengembangan SPAM",
+        "satuan": "KK",
+        "targets": {
+            "2025": 1617,
+            "2026": 1533
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.04",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Persentase Peningkatan Sampah yang Dikelola di TPA\/TPST Regional",
+        "sub_indikator": "Program Pengembangan Sistem & Pengelolaan Persampahan Regional",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 59.61
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.05",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Cakupan Implementasi Pengelolaan & Pengembangan Sistem Air Limbah",
+        "sub_indikator": "Program Pengelolaan & Pengembangan Sistem Air Limbah",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 99.27
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.06",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Panjang Drainase Terbangun",
+        "sub_indikator": "Program Pengelolaan & Pengembangan Sistem Drainase",
+        "satuan": "Meter",
+        "targets": {
+            "2025": 516.013,
+            "2026": 407
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.07",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Cakupan Implementasi Pengembangan Permukiman",
+        "sub_indikator": "Program Pengembangan Permukiman",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 78.55
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.08",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Luasan Bangunan Gedung di Kawasan Strategis Provinsi yang Terbangun",
+        "sub_indikator": "Program Penataan Bangunan Gedung",
+        "satuan": "M²",
+        "targets": {
+            "2025": 7689,
+            "2026": 2256
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.09",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Cakupan Implementasi Penataan Bangunan dan Lingkungannya",
+        "sub_indikator": "Program Penataan Bangunan dan Lingkungannya",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 92.72
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.10",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Cakupan Implementasi Penyelenggaraan Jalan",
+        "sub_indikator": "Program Penyelenggaraan Jalan",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 88.86
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "1.03.1.01.10.0031",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Panjang Jalan yang Direkonstruksi",
+        "sub_indikator": "Rekonstruksi Jalan",
+        "satuan": "Km",
+        "targets": {
+            "2025": 12.81,
+            "2026": 6
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "1.03.1.01.10.0054",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Panjang Jembatan yang Dibangun",
+        "sub_indikator": "Pembangunan Jembatan",
+        "satuan": "Meter",
+        "targets": {
+            "2025": 125,
+            "2026": 95
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "1.03.1.01.10.0058",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Panjang Jalan yang Dibangun",
+        "sub_indikator": "Pembangunan Jalan",
+        "satuan": "Km",
+        "targets": {
+            "2025": 1.5,
+            "2026": 0.2
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.03.11",
+        "opd_id": 7,
+        "subjek_id": 1,
+        "nama": "Cakupan Implementasi Pengembangan Jasa Konstruksi",
+        "sub_indikator": "Program Pengembangan Jasa Konstruksi",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 99.98
+        },
+        "sumber": "Renja Dinas PUPR Maluku Utara"
+    },
+    {
+        "kode": "01.04.01",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+        "sub_indikator": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.01",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Penganggaran",
+        "sub_indikator": "Perencanaan",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.01.0007",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Laporan Evaluasi Kinerja Perangkat Daerah",
+        "sub_indikator": "Evaluasi Kinerja Perangkat Daerah",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.01.0008",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Data Statistik Sektoral Daerah yang Dikumpulkan",
+        "sub_indikator": "Pelaksanaan Pengumpulan Data Statistik Sektoral Daerah",
+        "satuan": "Dokumen \/ Unit",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.02",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Administrasi Keuangan Perangkat Daerah",
+        "sub_indikator": "Administrasi Keuangan Perangkat Daerah",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.02.0001",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Orang yang Menerima Gaji dan Tunjangan ASN",
+        "sub_indikator": "Penyediaan Gaji dan Tunjangan ASN",
+        "satuan": "Orang",
+        "targets": {
+            "2026": 100,
+            "2025": 100
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.02.0002",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Dokumen Hasil Penyediaan Administrasi",
+        "sub_indikator": "Penyediaan Administrasi Pelaksanaan Tugas ASN",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.02.0005",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Laporan Keuangan Akhir Tahun SKPD",
+        "sub_indikator": "Koordinasi dan Penyusunan Laporan Keuangan Akhir Tahun SKPD",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.05",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Administrasi Kepegawaian Perangkat Daerah",
+        "sub_indikator": "Administrasi Kepegawaian Perangkat Daerah",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.05.0002",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Paket Pakaian Dinas Beserta Atribut Kelengkapan",
+        "sub_indikator": "Pengadaan Pakaian Dinas Beserta Atribut Kelengkapannya",
+        "satuan": "Paket",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.06",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Administrasi Umum Perangkat Daerah",
+        "sub_indikator": "Administrasi Umum Perangkat Daerah",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.06.0002",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Paket Peralatan dan Perlengkapan Kantor",
+        "sub_indikator": "Penyediaan Peralatan dan Perlengkapan Kantor",
+        "satuan": "Paket",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.06.0005",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Paket Barang Cetakan dan Penggandaan",
+        "sub_indikator": "Penyediaan Barang Cetakan dan Penggandaan",
+        "satuan": "Paket",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.06.0009",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Laporan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+        "sub_indikator": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.07",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "sub_indikator": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.07.0002",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Unit Kendaraan Dinas Operasional atau Lapangan",
+        "sub_indikator": "Pengadaan Kendaraan Dinas Operasional atau Lapangan",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.08",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+        "sub_indikator": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.08.0002",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Sumber Daya Air dan Listrik",
+        "sub_indikator": "Penyediaan Jasa Komunikasi",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.08.0004",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Laporan Penyediaan Jasa Pelayanan Umum Kantor",
+        "sub_indikator": "Penyediaan Jasa Pelayanan Umum Kantor",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.09",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+        "sub_indikator": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.09.0002",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Biaya Pemeliharaan",
+        "sub_indikator": "Penyediaan Jasa Pemeliharaan",
+        "satuan": "Dokumen \/ Unit",
+        "targets": {
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.09.0007",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Aset Tetap Lainnya yang Dipelihara",
+        "sub_indikator": "Pemeliharaan Aset Tetap Lainnya",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.01.1.09.0009",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Gedung Kantor yang Dipelihara\/Direhabilitasi",
+        "sub_indikator": "Pemeliharaan\/Rehabilitasi Gedung Kantor dan Bangunan Lainnya",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "01.04.02",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "PROGRAM PENGEMBANGAN PERUMAHAN",
+        "sub_indikator": "PROGRAM PENGEMBANGAN PERUMAHAN",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.02.1.03",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Pembangunan dan Rehabilitasi Rumah Korban Bencana atau Relokasi Program Provinsi",
+        "sub_indikator": "Pembangunan dan Rehabilitasi Rumah Korban Bencana atau Relokasi Program Provinsi",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.02.1.03.0001",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Rumah Korban Bencana Provinsi yang Terehabilitasi",
+        "sub_indikator": "Rehabilitasi Rumah bagi Korban Bencana",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 50,
+            "2025": 50
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.02.1.03.0012",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Rumah Khusus beserta PSU bagi Korban Bencana",
+        "sub_indikator": "Pembangunan Rumah Khusus beserta PSU bagi Korban Bencana",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 20,
+            "2025": 50
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "01.04.03",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "PROGRAM KAWASAN PERMUKIMAN",
+        "sub_indikator": "PROGRAM KAWASAN PERMUKIMAN",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.03.1.02",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Peningkatan Kualitas Kawasan Permukiman Kumuh (10 - 15 Ha)",
+        "sub_indikator": "Peningkatan Kualitas Kawasan Permukiman Kumuh (10 - 15 Ha)",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.03.1.02.0011",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Rumah Baru Layak Huni untuk Peningkatan Kualitas Permukiman Kumuh",
+        "sub_indikator": "Pembangunan Rumah Baru Layak Huni di Kawasan Kumuh",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 1000,
+            "2025": 1000
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "01.04.05",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "SARANA DAN UTILITAS UMUM (PSU)",
+        "sub_indikator": "PROGRAM PENINGKATAN PRASARANA",
+        "satuan": "PSU",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.05.1.01",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Urusan Penyelenggaraan PSU Permukiman",
+        "sub_indikator": "Urusan Penyelenggaraan PSU Permukiman",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.05.1.01.0001",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Dokumen Perencanaan Penyediaan PSU Permukiman",
+        "sub_indikator": "Perencanaan Penyediaan PSU Permukiman",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "1.04.05.1.01.0009",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Sarana",
+        "sub_indikator": "Penyediaan Prasarana",
+        "satuan": "Lokasi",
+        "targets": {
+            "2025": 50
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "2.10.03",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "PROGRAM PENGADAAN TANAH UNTUK KEPENTINGAN UMUM",
+        "sub_indikator": "PROGRAM PENGADAAN TANAH UNTUK KEPENTINGAN UMUM",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "2.10.03.1.01",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Penetapan Lokasi Pengadaan Tanah untuk Kepentingan Umum di Wilayah Provinsi",
+        "sub_indikator": "Penetapan Lokasi Pengadaan Tanah untuk Kepentingan Umum di Wilayah Provinsi",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "2.10.03.1.01.0002",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Dokumen Penetapan Lokasi Pengadaan Tanah",
+        "sub_indikator": "Pemberitahuan Rencana Pembangunan \/ Penetapan Lokasi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 10,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "2.10.04",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "PROGRAM PENYELESAIAN SENGKETA TANAH GARAPAN",
+        "sub_indikator": "PROGRAM PENYELESAIAN SENGKETA TANAH GARAPAN",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "2.10.04.1.01",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Penyelesaian Sengketa Tanah Garapan Lintas Daerah Kabupaten\/Kota",
+        "sub_indikator": "Penyelesaian Sengketa Tanah Garapan Lintas Daerah Kabupaten\/Kota",
+        "satuan": "Dokumen \/ Unit",
+        "targets": [],
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "2.10.04.1.01.0003",
+        "opd_id": 6,
+        "subjek_id": 7,
+        "nama": "Jumlah Laporan Koordinasi dan Fasilitasi TORA",
+        "sub_indikator": "Koordinasi dan Fasilitasi Penyelesaian Sengketa Konflik TORA",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 5,
+            "2025": 1
+        },
+        "sumber": "Renja Dinas Perkim Maluku Utara"
+    },
+    {
+        "kode": "2.15.01",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Implementasi Penunjang Urusan Pemerintahan Daerah",
+        "sub_indikator": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.01",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Penganggaran",
+        "sub_indikator": "Perencanaan",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.02",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan pengelolaan administrasi keuangan",
+        "sub_indikator": "Administrasi Keuangan Perangkat Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.03",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Administrasi Barang Milik Daerah",
+        "sub_indikator": "Administrasi Barang Milik Daerah pada Perangkat Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.04",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Administrasi Pendapatan Daerah",
+        "sub_indikator": "Administrasi Pendapatan Daerah Kewenangan Perangkat Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.05",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Administrasi Kepegawaian",
+        "sub_indikator": "Administrasi Kepegawaian Perangkat Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.06",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Administrasi Umum",
+        "sub_indikator": "Administrasi Umum Perangkat Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.07",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Pengadaan Barang Milik Daerah Penunjang",
+        "sub_indikator": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.08",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penyediaan Jasa Penunjang",
+        "sub_indikator": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.01.1.09",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Pemeliharaan Barang Milik Daerah Penunjang",
+        "sub_indikator": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Penurunan kecelakaan LLAJ & Pertumbuhan penumpang angkutan umum",
+        "sub_indikator": "PROGRAM PENYELENGGARAAN LALU LINTAS DAN ANGKUTAN JALAN (LLAJ)",
+        "satuan": "%",
+        "targets": {
+            "2025": 70.3,
+            "2026": 74
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.01",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penetapan Rencana Induk Jaringan LLAJ Provinsi",
+        "sub_indikator": "Penetapan Rencana Induk Jaringan LLAJ Provinsi",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.02",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penyediaan Perlengkapan Jalan di Jalan Provinsi",
+        "sub_indikator": "Penyediaan Perlengkapan Jalan di Jalan Provinsi",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.03",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Pengelolaan Terminal Penumpang Tipe B",
+        "sub_indikator": "Pengelolaan Terminal Penumpang Tipe B",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.05",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Pelaksanaan Manajemen dan Rekayasa Lalu Lintas",
+        "sub_indikator": "Pelaksanaan Manajemen dan Rekayasa Lalu Lintas untuk Jaringan Jalan Provinsi",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.06",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Persetujuan Hasil Analisis Dampak Lalu Lintas",
+        "sub_indikator": "Persetujuan Hasil Analisis Dampak Lalu Lintas (Andalalin)",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.07",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Terpenuhinya Tenaga Auditor dan Inspektor LLAJ",
+        "sub_indikator": "Audit dan Inspeksi Keselamatan LLAJ di Jalan",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.08",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Terpenuhinya Penyediaan Angkutan Umum Antar Kota (4 Unit)",
+        "sub_indikator": "Penyediaan Angkutan Umum untuk Jasa Angkutan Antar Kota",
+        "satuan": "4 Unit",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.09",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penetapan Kawasan Perkotaan",
+        "sub_indikator": "Penetapan Kawasan Perkotaan untuk Pelayanan Angkutan Perkotaan",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.10",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penetapan Rencana Umum Jaringan Trayek Antarkota",
+        "sub_indikator": "Penetapan Rencana Umum Jaringan Trayek Antarkota",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.11",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Jumlah Dokumen kebijakan Rencana Umum Trayek Pedesaan",
+        "sub_indikator": "Penetapan Rencana Umum Jaringan Trayek Pedesaan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.95,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.13",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penerbitan Izin Trayek Angkutan Orang",
+        "sub_indikator": "Penerbitan Izin Penyelenggaraan Angkutan Orang dalam Trayek",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.02.1.15",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Perkotaan",
+        "sub_indikator": "Penetapan Tarif Kelas Ekonomi Angkutan Orang Antarkota",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Meningkatnya kualitas layanan transportasi laut (Pertumbuhan penumpang)",
+        "sub_indikator": "PROGRAM PENGELOLAAN PELAYARAN",
+        "satuan": "Pertumbuhan penumpang",
+        "targets": {
+            "2025": 71.25,
+            "2026": 75
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.01",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penerbitan Izin Usaha Angkutan Laut",
+        "sub_indikator": "Penerbitan Izin Usaha Angkutan Laut bagi Badan Usaha dalam Wilayah",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.02",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Jumlah Izin usaha angkutan laut pelayaran rakyat",
+        "sub_indikator": "Penerbitan Izin Usaha Angkutan Laut Pelayaran Rakyat",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.03",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penerbitan Izin Trayek Angkutan Sungai dan Danau",
+        "sub_indikator": "Penerbitan Izin Trayek Penyelenggaraan Angkutan Sungai dan Danau",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.05",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penetapan Lintas Penyeberangan",
+        "sub_indikator": "Penetapan Lintas Penyeberangan dan Persetujuan Pengoperasian Kapal",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.06",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "JPT",
+        "sub_indikator": "Penerbitan Izin Usaha Jasa Terkait (Bongkar Muat",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.07",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penetapan Tarif Angkutan Penyeberangan Kelas Ekonomi",
+        "sub_indikator": "Penetapan Tarif Angkutan Penyeberangan Penumpang Kelas Ekonomi",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.08",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penetapan Rencana Induk dan DLKR\/DLKP",
+        "sub_indikator": "Penetapan Rencana Induk dan DLKR\/DLKP Pelabuhan Pengumpan Regional",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.09",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Penerbitan Izin Pembangunan & Pengoperasian Pelabuhan",
+        "sub_indikator": "Pembangunan",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.10",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Pembangunan & Penerbitan Izin Pelabuhan Sungai & Danau",
+        "sub_indikator": "Pembangunan dan Penerbitan Izin Pelabuhan Sungai dan Danau",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.11",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penerbitan Izin Usaha BUP",
+        "sub_indikator": "Penerbitan Izin Usaha untuk Badan Usaha Pelabuhan (BUP)",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.12",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Jumlah Penerbitan Izin Pengembangan Pelabuhan",
+        "sub_indikator": "Penerbitan Izin Pengembangan Pelabuhan untuk Pelabuhan Pengumpan Regional",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.95,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.13",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Cakupan Penerbitan Izin Pengoperasian 24 Jam",
+        "sub_indikator": "Penerbitan Izin Pengoperasian Pelabuhan Selama 24 Jam",
+        "satuan": "%",
+        "targets": {
+            "2025": 95,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.15.03.1.16",
+        "opd_id": 4,
+        "subjek_id": 4,
+        "nama": "Penerbitan Izin Pengelolaan TUKS di DLKR\/DLKP",
+        "sub_indikator": "Penerbitan Izin Pengelolaan Terminal Untuk Kepentingan Sendiri (TUKS)",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.95,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Lingkungan Hidup Maluku Utara"
+    },
+    {
+        "kode": "2.16.01",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Cakupan Implementasi Penunjang Urusan Pemerintahan Daerah",
+        "sub_indikator": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.01.1.01",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Penganggaran",
+        "sub_indikator": "Perencanaan",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.01.1.02",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Dokumen & Gaji\/Tunjangan ASN (70 Orang Bulan)",
+        "sub_indikator": "Administrasi Keuangan Perangkat Daerah",
+        "satuan": "70 Orang Bulan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.01.1.03",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Dokumen Rekonsiliasi & Penatausahaan BMD",
+        "sub_indikator": "Administrasi Barang Milik Daerah pada Perangkat Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.01.1.05",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Dokumen Kepegawaian & Diklat Pegawai",
+        "sub_indikator": "Administrasi Kepegawaian Perangkat Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.01.1.06",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Dokumen Layanan Administrasi Umum & SPBE",
+        "sub_indikator": "Administrasi Umum Perangkat Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.01.1.07",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Aset Tetap",
+        "sub_indikator": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.01.1.09",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Kendaraan",
+        "sub_indikator": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintah",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.02",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Meningkatnya jangkauan dan kualitas komunikasi publik",
+        "sub_indikator": "PROGRAM PENGELOLAAN INFORMASI DAN KOMUNIKASI PUBLIK",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.02.1.01.0014",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah aktivitas relasi media terverifikasi dewan pers",
+        "sub_indikator": "Relasi Media",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 2.7,
+            "2026": 3
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.02.1.01.0026",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Persentase permohonan informasi publik diselesaikan",
+        "sub_indikator": "Pelayanan Informasi Publik & Penyelesaian Sengketa Informasi",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 72,
+            "2026": 80
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.02.1.01.0027",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah ASN bidang komunikasi publik mengikuti bimtek",
+        "sub_indikator": "Penguatan Kapasitas SDM Komunikasi Publik",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 4.5,
+            "2026": 5
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.02.1.01.0028",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Strategi Komunikasi Publik (tematik & isu daerah)",
+        "sub_indikator": "Penyusunan Strategi Komunikasi Publik",
+        "satuan": "tematik & isu daerah",
+        "targets": {
+            "2025": 2.7,
+            "2026": 3
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.02.1.01.0029",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah khalayak yang terpapar informasi publik",
+        "sub_indikator": "Sosialisasi\/Diseminasi Informasi & Pengelolaan Media",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 256.5,
+            "2026": 285
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.02.1.01.0031",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Konten Komunikasi Publik",
+        "sub_indikator": "Penyusunan Konten",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 135,
+            "2026": 150
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.02.1.01.0033",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah KIM di Kab\/Kota yang aktif",
+        "sub_indikator": "Kemitraan Komunikasi dengan Komunitas Informasi Masyarakat (KIM)",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 0.9,
+            "2026": 1
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.03",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Meningkatnya kualitas pengelolaan aplikasi informatika & SPBE",
+        "sub_indikator": "PROGRAM PENGELOLAAN APLIKASI INFORMATIKA",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.03.1.01.0004",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Dokumen Pengelolaan Nama Domain Pemda",
+        "sub_indikator": "Pengelolaan Nama Domain & Sub Domain",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1.8,
+            "2026": 2
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.03.1.02.0035",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Laporan Fasilitasi Promosi Literasi SPBE",
+        "sub_indikator": "Koordinasi & Fasilitasi Promosi Literasi SPBE",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1.8,
+            "2026": 2
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.03.1.02.0038",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Data & Layanan Terintegrasi",
+        "sub_indikator": "Koordinasi Pengelolaan Aplikasi",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.03.1.02.0039",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Perangkat Daerah & UPTD memanfaatkan internet",
+        "sub_indikator": "Penyediaan Akses Internet",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 45,
+            "2026": 50
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.03.1.02.0040",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Aplikasi SPBE Pemda di Ekosistem Pusat Data Nasional",
+        "sub_indikator": "Koordinasi Pemanfaatan Pusat Data Nasional & Pusat Kendali",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 40.5,
+            "2026": 45
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.03.1.02.0041",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah dokumen kebijakan tata kelola SPBE",
+        "sub_indikator": "Koordinasi Pelaksanaan SPBE (Pemerintah Digital)",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1.8,
+            "2026": 2
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.16.03.1.02.0042",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Perangkat Daerah \/ Kab\/Kota terhubung Jaringan Intra",
+        "sub_indikator": "Penyelenggaraan Jaringan Intra Pemerintah Daerah",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 1.8,
+            "2026": 2
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.20.02",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Meningkatnya kualitas statistik sektoral & Satu Data Indonesia",
+        "sub_indikator": "PROGRAM PENYELENGGARAAN STATISTIK SEKTORAL",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.20.02.1.01.0016",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Persentase kegiatan statistik memenuhi standar metadata",
+        "sub_indikator": "Pemenuhan Prinsip Satu Data Indonesia",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 18,
+            "2026": 20
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.20.02.1.01.0019",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Persentase kegiatan statistik sektoral dapat diakses pengguna",
+        "sub_indikator": "Peningkatan Kualitas Statistik Sektoral",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 45,
+            "2026": 50
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.20.02.1.01.0020",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah pegawai mendapatkan pelatihan di bidang statistik",
+        "sub_indikator": "Peningkatan Kapasitas Kelembagaan Statistik Sektoral",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 6.3,
+            "2026": 7
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.20.02.1.01.0021",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah laporan penyelenggaraan forum satu data daerah",
+        "sub_indikator": "Koordinasi dan Fasilitasi Forum Satu Data Daerah",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 0.9,
+            "2026": 1
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.20.02.1.01.0022",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Persentase kegiatan statistik sektoral mendapat rekomendasi",
+        "sub_indikator": "Pengelolaan Kapasitas Nasional dalam Sistem Statistik Nasional",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 13.5,
+            "2026": 15
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.21.02",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Meningkatnya pengamanan informasi pemerintah daerah",
+        "sub_indikator": "PROGRAM PENYELENGGARAAN PERSANDIAN UNTUK PENGAMANAN INFORMASI",
+        "satuan": "Layanan",
+        "targets": {
+            "2025": 90,
+            "2026": 100
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.21.02.1.01.0006",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Laporan Pelaksanaan Keamanan Informasi Pemda",
+        "sub_indikator": "Pelaksanaan Keamanan Informasi Pemda Berbasis Elektronik & Non",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 3.6,
+            "2026": 4
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.21.02.1.01.0007",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Laporan Pengelolaan Sumber Daya Keamanan Informasi",
+        "sub_indikator": "Pengelolaan Sumber Daya Keamanan Informasi & Persandian",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1.8,
+            "2026": 2
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.21.02.1.01.0008",
+        "opd_id": 1,
+        "subjek_id": 5,
+        "nama": "Jumlah Kebijakan Tata Kelola Keamanan Informasi \/ Pergub",
+        "sub_indikator": "Penetapan Kebijakan Tata Kelola Keamanan Informasi & Persandian",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.9,
+            "2026": 1
+        },
+        "sumber": "Renja Diskominfo Maluku Utara"
+    },
+    {
+        "kode": "2.11.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Efektivitas Pelaksanaan Penunjang Urusan Perangkat Daerah",
+        "sub_indikator": "PROGRAM PENUNJANG URUSAN PEMERINTAHAN DAERAH PROVINSI",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 73.6,
+            "2026": 80
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Penganggaran",
+        "sub_indikator": "Perencanaan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.01.0001",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Dokumen Perencanaan Perangkat Daerah",
+        "sub_indikator": "Penyusunan Dokumen Perencanaan Perangkat Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.01.0007",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Laporan Evaluasi Kinerja Perangkat Daerah",
+        "sub_indikator": "Evaluasi Kinerja Perangkat Daerah",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.02",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan pengelolaan administrasi keuangan perangkat daerah",
+        "sub_indikator": "Administrasi Keuangan Perangkat Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.02.0001",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Orang yang Menerima Gaji dan Tunjangan ASN",
+        "sub_indikator": "Penyediaan Gaji dan Tunjangan ASN",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 82.8,
+            "2026": 90
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.02.0002",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Dokumen Hasil Penyediaan Administrasi Pelaksanaan Tugas ASN",
+        "sub_indikator": "Penyediaan Administrasi Pelaksanaan Tugas ASN",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.02.0007",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Laporan Keuangan Bulanan\/Triwulanan\/Semesteran SKPD",
+        "sub_indikator": "Koordinasi dan Penyusunan Laporan Keuangan Bulanan\/Triwulanan\/Semesteran SKPD",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 11.04,
+            "2026": 12
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.03",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan pengelolaan Barang Milik Daerah pada Perangkat Daerah",
+        "sub_indikator": "Administrasi Barang Milik Daerah pada Perangkat Daerah",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.03.0004",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Laporan Hasil Pembinaan",
+        "sub_indikator": "Pembinaan, Pengawasan, dan Pengendalian Barang Milik Daerah pada SKPD",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.05",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan Pengelolaan Administrasi Kepegawaian Perangkat Daerah",
+        "sub_indikator": "Administrasi Kepegawaian Perangkat Daerah",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 9.2,
+            "2026": 10
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.05.0009",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Pegawai Berdasarkan Tugas dan Fungsi yang Mengikuti Pendidikan dan Pelatihan",
+        "sub_indikator": "Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 9.2,
+            "2026": 10
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.06",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan Pengelolaan Administrasi Umum Perangkat Daerah",
+        "sub_indikator": "Administrasi Umum Perangkat Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.06.0001",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Paket Komponen Instalasi Listrik\/Penerangan Bangunan Kantor yang Disediakan",
+        "sub_indikator": "Penyediaan Komponen Instalasi Listrik\/Penerangan Bangunan Kantor",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.06.0002",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Paket Peralatan dan Perlengkapan Kantor yang Disediakan",
+        "sub_indikator": "Penyediaan Peralatan dan Perlengkapan Kantor",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.06.0003",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Paket Peralatan Rumah Tangga yang Disediakan",
+        "sub_indikator": "Penyediaan Peralatan Rumah Tangga",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.06.0005",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Paket Barang Cetakan dan Penggandaan yang Disediakan",
+        "sub_indikator": "Penyediaan Barang Cetakan dan Penggandaan",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.06.0006",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Dokumen Bahan Bacaan dan Peraturan Perundang-Undangan yang Disediakan",
+        "sub_indikator": "Penyediaan Bahan Bacaan dan Peraturan Perundang-Undangan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.06.0008",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Laporan Fasilitasi Kunjungan Tamu",
+        "sub_indikator": "Fasilitasi Kunjungan Tamu",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.06.0009",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Laporan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+        "sub_indikator": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.07",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "sub_indikator": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.07.0005",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Paket Mebel yang Disediakan",
+        "sub_indikator": "Pengadaan Mebel",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.08",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+        "sub_indikator": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.08.0002",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Sumber Daya Air dan Listrik",
+        "sub_indikator": "Penyediaan Jasa Komunikasi",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.08.0004",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Laporan Penyediaan Jasa Pelayanan Umum Kantor yang Disediakan",
+        "sub_indikator": "Penyediaan Jasa Pelayanan Umum Kantor",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.09",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+        "sub_indikator": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.09.0001",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Biaya Pemeliharaan dan Pajak Kendaraan Perorangan Dinas atau Kendaraan Dinas Jabatan",
+        "sub_indikator": "Penyediaan Jasa Pemeliharaan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.09.0002",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Biaya Pemeliharaan",
+        "sub_indikator": "Penyediaan Jasa Pemeliharaan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.01.1.09.0003",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Biaya Pemeliharaan dan Perizinan Alat Besar",
+        "sub_indikator": "Penyediaan Jasa Pemeliharaan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.02",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Persentase Rekomendasi Kajian Lingkungan Hidup yang Ditindaklanjuti",
+        "sub_indikator": "PROGRAM PERENCANAAN LINGKUNGAN HIDUP",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 82.8,
+            "2026": 90
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.02.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Dokumen RPPLH Provinsi yang ditetapkan",
+        "sub_indikator": "Rencana Perlindungan dan Pengelolaan Lingkungan Hidup (RPPLH) Provinsi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.02.1.01.0004",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Dokumen RPPLH Provinsi",
+        "sub_indikator": "Penyusunan RPPLH Provinsi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.02.1.01.0005",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Dokumen RPPLH Provinsi yang ditetapkan",
+        "sub_indikator": "Penetapan RPPLH Provinsi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.03",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Indeks Kualitas Air & Indeks Kualitas Udara",
+        "sub_indikator": "PROGRAM PENGENDALIAN PENCEMARAN DAN\/ATAU KERUSAKAN LINGKUNGAN HIDUP",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.03.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan Pencegahan Pencemaran dan\/atau Kerusakan Lingkungan Hidup",
+        "sub_indikator": "Pencegahan Pencemaran dan\/atau Kerusakan Lingkungan Hidup",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.03.1.01.0004",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah pengambilan contoh uji dan pengujian parameter kualitas lingkungan yang dilaksanakan",
+        "sub_indikator": "Pengambilan contoh uji dan pengujian parameter kualitas lingkungan",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.03.1.01.0009",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Air",
+        "sub_indikator": "Pelaksanaan pemantauan kualitas Lingkungan Hidup terhadap Media Tanah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.03.1.01.0011",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah dokumen data inventarisasi GRK dan profil emisi GRK",
+        "sub_indikator": "Pelaksanaan inventarisasi GRK dan penyusunan profil emisi GRK",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.03.1.01.0012",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah dokumen status lingkungan hidup daerah yang disusun",
+        "sub_indikator": "Penyusunan dokumen status lingkungan hidup daerah",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.04",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Persentase RTH",
+        "sub_indikator": "PROGRAM PENGELOLAAN KEANEKARAGAMAN HAYATI (KEHATI)",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 92,
+            "2026": 100
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.04.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan Pengelolaan Keanekaragaman Hayati Provinsi",
+        "sub_indikator": "Pengelolaan Keanekaragaman Hayati Provinsi",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 46,
+            "2026": 50
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.04.1.01.0006",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Orang yang Meningkat Kapasitasnya dalam Pengelolaan Keanekaragaman Hayati",
+        "sub_indikator": "Pengembangan Kapasitas Kelembagaan dan SDM dalam Pengelolaan Keanekaragaman Hayati",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 46,
+            "2026": 50
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.05",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Persentase Limbah B3 yang Terkelola",
+        "sub_indikator": "PROGRAM PENGENDALIAN BAHAN BERBAHAYA DAN BERACUN (B3) DAN LIMBAH B3",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 71.76,
+            "2026": 78
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.05.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah pembinaan dan pemantauan pelaksanaan pengumpulan limbah B3 skala Provinsi",
+        "sub_indikator": "Pengumpulan Limbah B3 Lintas Daerah Kabupaten\/Kota dalam 1 (satu) Daerah Provinsi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 71.76,
+            "2026": 78
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.05.1.01.0004",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah pembinaan dan pemantauan pelaksanaan pengumpulan limbah B3 skala Provinsi yang dilakukan",
+        "sub_indikator": "Pembinaan dan pemantauan pelaksanaan pengumpulan limbah B3 skala provinsi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 71.76,
+            "2026": 78
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.06",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Ketaatan penanggung jawab usaha dan\/atau kegiatan terhadap izin lingkungan",
+        "sub_indikator": "PROGRAM PEMBINAAN DAN PENGAWASAN TERHADAP IZIN LINGKUNGAN DAN IZIN PPLH",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80.5,
+            "2026": 87.5
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.06.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Badan usaha dan\/atau kegiatan yang diawasi",
+        "sub_indikator": "Pembinaan dan Pengawasan Izin Lingkungan dan Izin PPLH yang diterbitkan oleh Pemerintah Daerah Provinsi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 46,
+            "2026": 50
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.06.1.01.0001",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Rekomendasi dan\/atau Persetujuan teknis yang diberikan",
+        "sub_indikator": "Fasilitasi Pemenuhan Ketentuan dan Kewajiban Izin Lingkungan dan\/atau Izin PPLH",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.06.1.01.0009",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Seluruh Perizinan Berusaha atau Persetujuan Pemerintah yang diawasi",
+        "sub_indikator": "Pengawasan Perizinan Berusaha atau Persetujuan Pemerintah terkait Persetujuan Lingkungan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 46,
+            "2026": 50
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.08",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "PELATIHAN DAN PENYULUHAN LINGKUNGAN HIDUP UNTUK MASYARAKAT",
+        "sub_indikator": "PROGRAM PENINGKATAN PENDIDIKAN",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.08.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Pelatihan",
+        "sub_indikator": "Penyelenggaraan Pendidikan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.08.1.01.0003",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Masyarakat\/Kelompok Masyarakat yang Terlibat",
+        "sub_indikator": "Penyelenggaraan Penyuluhan dan Kampanye Lingkungan Hidup Tingkat Daerah Provinsi",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 27.6,
+            "2026": 30
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.08.1.01.0007",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah pembinaan dan pendampingan Gerakan Peduli dan Berbudaya Lingkungan Hidup yang dilaksanakan",
+        "sub_indikator": "Pendampingan Gerakan Peduli Lingkungan Hidup",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0.92,
+            "2026": 1
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.09",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Persentase Partisipasi Masyarakat dalam Perlindungan dan Pengelolaan Lingkungan Hidup",
+        "sub_indikator": "PROGRAM PENGHARGAAN LINGKUNGAN HIDUP UNTUK MASYARAKAT",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 89.7,
+            "2026": 97.5
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.09.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Masyarakat\/Lembaga Masyarakat\/Dunia Usaha yang Dinilai Kinerjanya",
+        "sub_indikator": "Pemberian Penghargaan Lingkungan Hidup Tingkat Daerah Provinsi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 23,
+            "2026": 25
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.09.1.01.0001",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Masyarakat\/Lembaga Masyarakat yang Dinilai Kinerjanya",
+        "sub_indikator": "Penilaian Kinerja Masyarakat\/Lembaga Masyarakat\/Dunia Usaha\/Dunia Pendidikan\/Filantropi dalam PPLH",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 23,
+            "2026": 25
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.10",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Persentase Penyelesaian Sengketa\/Kasus Tindak Pidana Lingkungan Hidup",
+        "sub_indikator": "PROGRAM PENANGANAN PENGADUAN LINGKUNGAN HIDUP",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 87.4,
+            "2026": 95
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.10.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah pengaduan permasalahan Pencemaran dan Perusakan Lingkungan Hidup yang dikelola",
+        "sub_indikator": "Penyelesaian Pengaduan Masyarakat di Bidang PPLH Provinsi",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 4.6,
+            "2026": 5
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.10.1.01.0009",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah pengaduan permasalahan Pencemaran dan Perusakan Lingkungan Hidup yang dikelola ditindaklanjuti",
+        "sub_indikator": "Pengelolaan Pengaduan permasalahan Pencemaran dan Perusakan Lingkungan Hidup tingkat Provinsi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 4.6,
+            "2026": 5
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.10.1.01.0011",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah PPNS Daerah bidang Lingkungan Hidup yang dibentuk dan ditingkatkan kapasitasnya",
+        "sub_indikator": "Pembentukan dan Peningkatan Kapasitas PPNS Daerah Bidang Lingkungan Hidup",
+        "satuan": "Orang",
+        "targets": {
+            "2025": 3.68,
+            "2026": 4
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Persentase Peningkatan Sampah yang Dikelola di TPA\/TPST Regional",
+        "sub_indikator": "PROGRAM PENGELOLAAN PERSAMPAHAN",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 89.7,
+            "2026": 97.5
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11.1.01",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Cakupan Penanganan Sampah di TPA\/TPST Regional",
+        "sub_indikator": "Penanganan Sampah di TPA\/TPST Regional",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11.1.01.0003",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Fasilitas TPA\/TPST Regional yang Beroperasi dan Terpelihara",
+        "sub_indikator": "Pengoperasian dan Pemeliharaan TPA\/TPST Regional",
+        "satuan": "Unit",
+        "targets": {
+            "2025": 5.52,
+            "2026": 6
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11.1.01.0007",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah Sarana dan Prasarana Penanganan sampah di TPA\/TPST Regional yang Tersedia",
+        "sub_indikator": "Penyediaan Sarana dan Prasarana Penanganan Sampah di TPA\/TPST Regional",
+        "satuan": "Unit",
+        "targets": {
+            "2025": 1.84,
+            "2026": 2
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11.1.01.0009",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Kebijakan dan Strategi Daerah Pengelolaan Sampah Provinsi",
+        "sub_indikator": "Penyusunan Rencana",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11.1.01.0010",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah laporan pemantauan pembinaan",
+        "sub_indikator": "Pelaksanaan pemantauan, pembinaan, verifikasi dan pengawasan atas penerapan Rencana, Kebijakan dan Teknis pengelolaan Sampah Regional",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11.1.01.0011",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah sampah regional yang dikelola",
+        "sub_indikator": "Pengelolaan sampah Regional",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 9.07,
+            "2026": 9.855
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11.1.01.0012",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "Jumlah sarana dan prasarana pengelolaan sampah regional",
+        "sub_indikator": "Pengadaan sarana dan prasarana pengelolaan sampah regional",
+        "satuan": "Unit",
+        "targets": {
+            "2025": 5.52,
+            "2026": 6
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "2.11.11.1.01.0014",
+        "opd_id": 9,
+        "subjek_id": 9,
+        "nama": "sinkronisasi dan pemantauan pelaksanaan pengelolaan sampah di kabupaten\/kota",
+        "sub_indikator": "Koordinasi",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 80,
+            "2026": 85
+        },
+        "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    }
+]
