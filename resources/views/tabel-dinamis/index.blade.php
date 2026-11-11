@@ -750,6 +750,189 @@
         margin-left: 0.2rem;
     }
 
+    /* ===== Scroll Reveal Animation (Fade Up) Khusus Menu Tabel Output ===== */
+    .td-reveal-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+    }
+    .td-reveal-up.td-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Stagger delay classes for smoother cascading appearance */
+    .td-delay-1 { transition-delay: 0.08s; }
+    .td-delay-2 { transition-delay: 0.16s; }
+    .td-delay-3 { transition-delay: 0.24s; }
+    .td-delay-4 { transition-delay: 0.32s; }
+
+    /* Output Card Entrance Animation */
+    @keyframes tdOutputFadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(28px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    #td-hasil-wrapper:not(.td-hidden) {
+        animation: tdOutputFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Table Rows Staggered Fade Up */
+    .td-table-dynamic tbody tr {
+        animation: tdTableRowFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes tdTableRowFadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .td-table-dynamic tbody tr:nth-child(1)  { animation-delay: 0.02s; }
+    .td-table-dynamic tbody tr:nth-child(2)  { animation-delay: 0.04s; }
+    .td-table-dynamic tbody tr:nth-child(3)  { animation-delay: 0.06s; }
+    .td-table-dynamic tbody tr:nth-child(4)  { animation-delay: 0.08s; }
+    .td-table-dynamic tbody tr:nth-child(5)  { animation-delay: 0.10s; }
+    .td-table-dynamic tbody tr:nth-child(6)  { animation-delay: 0.12s; }
+    .td-table-dynamic tbody tr:nth-child(7)  { animation-delay: 0.14s; }
+    .td-table-dynamic tbody tr:nth-child(8)  { animation-delay: 0.16s; }
+    .td-table-dynamic tbody tr:nth-child(9)  { animation-delay: 0.18s; }
+    .td-table-dynamic tbody tr:nth-child(10) { animation-delay: 0.20s; }
+    .td-table-dynamic tbody tr:nth-child(11) { animation-delay: 0.22s; }
+    .td-table-dynamic tbody tr:nth-child(12) { animation-delay: 0.24s; }
+
+    /* Summary tfoot rows fade up */
+    .td-table-dynamic tfoot tr {
+        animation: tdTableRowFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .td-table-dynamic tfoot tr.td-tfoot-avg { animation-delay: 0.25s; }
+    .td-table-dynamic tfoot tr.td-tfoot-max { animation-delay: 0.29s; }
+    .td-table-dynamic tfoot tr.td-tfoot-min { animation-delay: 0.33s; }
+
+    /* Metadata & Information Cards Section Styling */
+    .td-output-metadata {
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--gray-200);
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+    .td-output-meta-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .td-output-meta-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--deep-blue-800);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+    }
+    .td-output-meta-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+    @media (min-width: 768px) {
+        .td-output-meta-grid {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+    }
+    .td-meta-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--radius-sm);
+        padding: 0.9rem 1.1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        border-left: 3px solid #1d4ed8;
+    }
+    .td-meta-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 34, 64, 0.06);
+        border-color: #cbd5e1;
+    }
+    .td-meta-card-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--deep-blue-900);
+        margin-bottom: 0.45rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+    }
+    .td-meta-card-kode {
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.15rem 0.45rem;
+        border-radius: 4px;
+        border: 1px solid #bfdbfe;
+    }
+    .td-meta-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        font-size: 0.775rem;
+        color: var(--gray-600);
+        margin-bottom: 0.45rem;
+    }
+    .td-meta-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    .td-meta-item strong {
+        color: var(--gray-800);
+    }
+    .td-meta-desc {
+        font-size: 0.75rem;
+        color: var(--gray-600);
+        line-height: 1.4;
+        background: #ffffff;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        border: 1px solid #e2e8f0;
+        margin-top: 0.4rem;
+    }
+    .td-meta-notes {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--radius-sm);
+        padding: 0.75rem 1rem;
+        font-size: 0.75rem;
+        color: #64748b;
+        line-height: 1.5;
+        border-left: 3px solid #64748b;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .td-reveal-up,
+        #td-hasil-wrapper:not(.td-hidden),
+        .td-table-dynamic tbody tr,
+        .td-table-dynamic tfoot tr {
+            animation: none !important;
+            transition: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
+
     /* ===== Official Print Styles ===== */
     .td-print-only {
         display: none;
@@ -962,7 +1145,7 @@
         </div>
     </div>
 
-    <div class="td-result-header">
+    <div class="td-result-header td-reveal-up">
         <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
             <div class="td-result-title">
                 <span class="td-h2-icon">
@@ -1034,7 +1217,7 @@
     </div>
 
     <!-- Tampilan 1: Tabel Header Dua Tingkat (Bisa Digeser Horizontal) -->
-    <div id="td-view-tabel" class="td-table-scroll">
+    <div id="td-view-tabel" class="td-table-scroll td-reveal-up">
         <table class="td-table-dynamic" id="td-dynamic-table">
             <thead id="td-table-head"></thead>
             <tbody id="td-table-body"></tbody>
@@ -1042,9 +1225,12 @@
         </table>
     </div>
 
+    <!-- Informasi & Metadata Indikator (Scroll Reveal Fade-Up) -->
+    <div id="td-output-metadata" class="td-output-metadata td-hidden"></div>
+
     <!-- Tampilan 2: Visualisasi Grafik Interaktif -->
     <div id="td-view-grafik" class="td-chart-panel td-hidden">
-        <div class="td-chart-toolbar">
+        <div class="td-chart-toolbar td-reveal-up">
             <div class="td-chart-controls">
                 <div>
                     <label style="font-size: 0.75rem; font-weight: 600; color: var(--gray-600); display: block; margin-bottom: 3px;">Indikator:</label>
@@ -1073,7 +1259,7 @@
                 </button>
             </div>
         </div>
-        <div class="td-chart-canvas-container">
+        <div class="td-chart-canvas-container td-reveal-up td-delay-1">
             <canvas id="td-chart-canvas"></canvas>
         </div>
     </div>
@@ -1163,7 +1349,8 @@
         chartTahunSelect: document.getElementById('td-chart-tahun-select'),
         chartTahunWrap: document.getElementById('td-chart-tahun-wrap'),
         btnUnduhChart: document.getElementById('td-btn-unduh-chart'),
-        chartCanvas: document.getElementById('td-chart-canvas')
+        chartCanvas: document.getElementById('td-chart-canvas'),
+        outputMetadata: document.getElementById('td-output-metadata')
     };
 
     // Helper Tampilkan Pesan Peringatan (Floating Toast Notification)
@@ -1243,6 +1430,7 @@
 
     // 1. Inisialisasi: Ambil Subjek & Wilayah
     async function inisialisasi() {
+        initScrollReveal();
         try {
             const [dataSubjek, dataWilayah] = await Promise.all([
                 requestApi('/subjek'),
@@ -1569,6 +1757,131 @@
         }
     });
 
+    // ===== Scroll Reveal Animation (Fade Up) Khusus Menu Tabel Output =====
+    let scrollRevealObserver = null;
+    function initScrollReveal() {
+        if (!('IntersectionObserver' in window)) {
+            // Fallback untuk browser tanpa dukungan IntersectionObserver
+            document.querySelectorAll('.td-reveal-up').forEach(el => el.classList.add('td-revealed'));
+            return;
+        }
+
+        scrollRevealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('td-revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -25px 0px',
+            threshold: 0.05
+        });
+    }
+
+    function triggerScrollReveal() {
+        if (!dom.hasilWrapper) return;
+        const elements = dom.hasilWrapper.querySelectorAll('.td-reveal-up:not(.td-revealed)');
+        if (!elements || elements.length === 0) return;
+
+        if (scrollRevealObserver) {
+            elements.forEach(el => scrollRevealObserver.observe(el));
+        } else {
+            elements.forEach(el => el.classList.add('td-revealed'));
+        }
+    }
+
+    // Render Kartu Informasi & Metadata Indikator di Bawah Tabel
+    function renderInformasiMetadataOutput() {
+        if (!dom.outputMetadata) return;
+
+        if (!state.lastPayload || !state.lastPayload.data || state.lastPayload.data.length === 0) {
+            dom.outputMetadata.innerHTML = '';
+            dom.outputMetadata.classList.add('td-hidden');
+            return;
+        }
+
+        dom.outputMetadata.classList.remove('td-hidden');
+
+        let cardsHtml = '';
+        state.lastPayload.data.forEach((item, idx) => {
+            const terpilih = state.dataTerpilih.find(d => d.indikator_id === item.indikator_id);
+            const refInd = state.indikator.find(i => i.id === item.indikator_id);
+
+            const kode = terpilih?.kode || refInd?.kode || `IND-0${idx + 1}`;
+            const label = terpilih?.label || refInd?.label || 'Indikator Daerah';
+            const satuan = terpilih?.satuan || refInd?.satuan || '-';
+            const jenis = item.jenis || 'Realisasi';
+            const opd = refInd?.opd || 'BAPPEDA Provinsi Maluku Utara';
+            const tahunSorted = item.tahun && item.tahun.length ? [...item.tahun].sort((a,b) => a - b).join(', ') : '-';
+
+            cardsHtml += `
+                <div class="td-meta-card td-reveal-up td-delay-${idx + 1}">
+                    <div class="td-meta-card-title">
+                        <span class="td-meta-card-kode">${kode}</span>
+                        <span>${label}</span>
+                    </div>
+                    <div class="td-meta-details">
+                        <div class="td-meta-item">
+                            <span>Satuan:</span>
+                            <strong>${satuan}</strong>
+                        </div>
+                        <div class="td-meta-item">
+                            <span>Tipe Data:</span>
+                            <strong>${jenis}</strong>
+                        </div>
+                        <div class="td-meta-item">
+                            <span>Tahun:</span>
+                            <strong>${tahunSorted}</strong>
+                        </div>
+                        <div class="td-meta-item">
+                            <span>OPD Pengampu:</span>
+                            <strong>${opd}</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        const notesHtml = `
+            <div class="td-meta-notes td-reveal-up td-delay-3">
+                <div style="font-weight: 700; color: #1e293b; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.35rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    Catatan Informasi & Keterangan Simbol:
+                </div>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                    <li>Tanda strip (<code>-</code>) menunjukkan data belum tersedia atau belum dilaporkan oleh OPD pengampu.</li>
+                    <li>Ringkasan statistik (Rata-rata, Tertinggi, Terendah) dihitung secara dinamis dari seluruh wilayah yang tercantum pada tabel.</li>
+                    <li>Seluruh data dikelola melalui Sistem Informasi <strong>KINERA</strong> (Kinerja Informasi & Data Daerah Bidang IPW) Pemerintah Provinsi Maluku Utara.</li>
+                </ul>
+            </div>
+        `;
+
+        dom.outputMetadata.innerHTML = `
+            <div class="td-output-meta-header td-reveal-up">
+                <h3 class="td-output-meta-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #1d4ed8;">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                    </svg>
+                    Informasi & Metadata Indikator
+                </h3>
+            </div>
+            <div class="td-output-meta-grid">
+                ${cardsHtml}
+            </div>
+            ${notesHtml}
+        `;
+    }
+
     // 8. Render Tabel Header Dua Tingkat, Sorting, Search, dan Ringkasan Statistik
     const formatIndo = new Intl.NumberFormat('id-ID', {
         minimumFractionDigits: 0,
@@ -1583,11 +1896,14 @@
 
         renderTabelHeader();
         updateTabelRowsAndStats();
+        renderInformasiMetadataOutput();
         syncChartControls();
 
         if (state.activeTab === 'grafik') {
             renderGrafik();
         }
+
+        triggerScrollReveal();
     }
 
     function renderTabelHeader() {
@@ -1768,6 +2084,8 @@
                 </tr>
             `;
         }
+
+        triggerScrollReveal();
     }
 
     // Event Listener Live Search Wilayah di Tabel
@@ -1794,6 +2112,7 @@
             dom.viewTabel.classList.remove('td-hidden');
             dom.viewGrafik.classList.add('td-hidden');
             if (dom.tabelToolbar) dom.tabelToolbar.classList.remove('td-hidden');
+            triggerScrollReveal();
         } else {
             dom.switchGrafik.classList.add('active');
             dom.switchTabel.classList.remove('active');
@@ -1801,6 +2120,7 @@
             dom.viewTabel.classList.add('td-hidden');
             if (dom.tabelToolbar) dom.tabelToolbar.classList.add('td-hidden');
             renderGrafik();
+            triggerScrollReveal();
         }
     }
 

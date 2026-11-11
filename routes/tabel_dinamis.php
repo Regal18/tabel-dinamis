@@ -70,3 +70,4 @@ Route::prefix('admin')->middleware($middlewareAdmin)->group(function () {
         ->except(['create', 'show', 'edit'])
         ->names('tabel-dinamis.admin.indikator');
 });
+
