@@ -207,10 +207,22 @@
 <!-- Nav Tabs Admin -->
 <div class="td-admin-nav-tabs">
     <a href="{{ route('tabel-dinamis.admin.impor.form') }}" class="td-admin-nav-tab">
-        <span>📥</span> Impor Berkas Excel
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Impor Berkas Excel</span>
     </a>
     <a href="{{ route('tabel-dinamis.admin.indikator.index') }}" class="td-admin-nav-tab active">
-        <span>📋</span> Master Data Indikator
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px;">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>Master Data Indikator</span>
     </a>
 </div>
 
@@ -233,7 +245,15 @@
 <div class="td-admin-card">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 2px solid var(--deep-blue-100); padding-bottom: 0.6rem;">
         <h2 style="font-size: 1.1rem; font-weight: 700; color: var(--deep-blue-800); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-            <span class="td-h2-icon" style="width:28px;height:28px;background:var(--deep-blue-50);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;font-size:0.9rem;">📋</span>
+            <span class="td-h2-icon" style="width:28px;height:28px;background:var(--deep-blue-50);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;color:var(--deep-blue-700);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            </span>
             <span>Master Data Indikator Pembangunan Daerah IPW</span>
         </h2>
         <button type="button" class="td-btn td-btn-primary" id="td-btn-buka-tambah" style="font-size: 0.82rem;">

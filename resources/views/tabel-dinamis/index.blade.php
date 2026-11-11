@@ -499,6 +499,31 @@
         align-items: center;
         gap: 0.5rem;
     }
+    .td-h2-icon {
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        border: 1px solid #bfdbfe;
+        border-radius: var(--radius-sm);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #1d4ed8;
+        flex-shrink: 0;
+        box-shadow: 0 1px 2px rgba(29, 78, 216, 0.08);
+    }
+    .td-h2-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+    .td-switch-btn svg,
+    .td-export-group .td-btn svg {
+        width: 14px;
+        height: 14px;
+        margin-right: 0.35rem;
+        vertical-align: -2px;
+        flex-shrink: 0;
+    }
     .td-export-group {
         display: flex;
         gap: 0.5rem;
@@ -953,17 +978,37 @@
     <div class="td-result-header">
         <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
             <div class="td-result-title">
-                <span class="td-h2-icon" style="width:28px;height:28px;background:var(--deep-blue-50);border-radius:var(--radius-sm);display:inline-flex;align-items:center;justify-content:center;font-size:0.9rem;">📋</span>
+                <span class="td-h2-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                    </svg>
+                </span>
                 <span id="td-result-title-text">Hasil Analisis Data</span>
                 <span id="td-table-row-count" class="td-counter-badge" style="margin-left: 0.5rem; font-size: 0.7rem;"></span>
             </div>
             <!-- Toggle Switcher: Tabel Data vs Grafik Dinamis -->
             <div class="td-view-switcher">
                 <button type="button" class="td-switch-btn active" id="td-switch-tabel">
-                    <span>📋</span> Tabel Data
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="3" y1="15" x2="21" y2="15"></line>
+                        <line x1="9" y1="9" x2="9" y2="21"></line>
+                        <line x1="15" y1="9" x2="15" y2="21"></line>
+                    </svg>
+                    <span>Tabel Data</span>
                 </button>
                 <button type="button" class="td-switch-btn" id="td-switch-grafik">
-                    <span>📊</span> Visualisasi Grafik
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Visualisasi Grafik</span>
                 </button>
             </div>
         </div>
@@ -972,13 +1017,30 @@
             <input type="text" id="td-cari-tabel" placeholder="Cari wilayah..." class="td-table-search-input">
             <div class="td-export-group">
                 <button type="button" id="td-btn-cetak" class="td-btn td-btn-outline" style="font-size: 0.8rem;" title="Cetak atau Simpan sebagai PDF">
-                    🖨️ Cetak / PDF
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    <span>Cetak / PDF</span>
                 </button>
-                <button type="button" id="td-export-xlsx" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
-                    📥 Unduh Excel
+                <button type="button" id="td-export-xlsx" class="td-btn td-btn-outline" style="font-size: 0.8rem;" title="Unduh berkas Excel (.xlsx)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="8" y1="13" x2="16" y2="17"></line>
+                        <line x1="16" y1="13" x2="8" y2="17"></line>
+                    </svg>
+                    <span>Unduh Excel</span>
                 </button>
-                <button type="button" id="td-export-csv" class="td-btn td-btn-outline" style="font-size: 0.8rem;">
-                    📄 Unduh CSV
+                <button type="button" id="td-export-csv" class="td-btn td-btn-outline" style="font-size: 0.8rem;" title="Unduh berkas CSV (.csv)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                    <span>Unduh CSV</span>
                 </button>
             </div>
         </div>
@@ -1004,8 +1066,8 @@
                 <div>
                     <label style="font-size: 0.75rem; font-weight: 600; color: var(--gray-600); display: block; margin-bottom: 3px;">Bentuk Grafik:</label>
                     <select id="td-chart-tipe-select" class="td-chart-select">
-                        <option value="bar">📊 Batang (Perbandingan Antar Kabupaten/Kota)</option>
-                        <option value="line">📈 Garis (Tren Tahunan 2021–2026)</option>
+                        <option value="bar">Grafik Batang (Perbandingan Antar Wilayah)</option>
+                        <option value="line">Grafik Garis (Tren Tahunan 2021–2026)</option>
                     </select>
                 </div>
                 <div id="td-chart-tahun-wrap">
@@ -1015,7 +1077,12 @@
             </div>
             <div>
                 <button type="button" id="td-btn-unduh-chart" class="td-btn td-btn-outline" style="font-size: 0.8rem;" title="Unduh gambar grafik dalam format PNG">
-                    🖼️ Unduh Grafik (PNG)
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                    <span>Unduh Grafik (PNG)</span>
                 </button>
             </div>
         </div>
@@ -1681,15 +1748,15 @@
 
             dom.tableFoot.innerHTML = `
                 <tr class="td-tfoot-avg">
-                    <td class="td-td-wilayah" style="font-weight:700;">📊 Rata-rata Provinsi</td>
+                    <td class="td-td-wilayah" style="font-weight:700;">Rata-rata Provinsi</td>
                     ${statCellsAvg}
                 </tr>
                 <tr class="td-tfoot-max">
-                    <td class="td-td-wilayah" style="font-weight:700;">▲ Nilai Tertinggi (Maks)</td>
+                    <td class="td-td-wilayah" style="font-weight:700;">Tertinggi (Maks)</td>
                     ${statCellsMax}
                 </tr>
                 <tr class="td-tfoot-min">
-                    <td class="td-td-wilayah" style="font-weight:700;">▼ Nilai Terendah (Min)</td>
+                    <td class="td-td-wilayah" style="font-weight:700;">Terendah (Min)</td>
                     ${statCellsMin}
                 </tr>
             `;
@@ -1891,7 +1958,7 @@
             });
 
             datasets.push({
-                label: '📊 Rata-rata Provinsi Maluku Utara',
+                label: 'Rata-rata Provinsi Maluku Utara',
                 data: avgData,
                 borderColor: '#0f2240',
                 backgroundColor: '#0f2240',

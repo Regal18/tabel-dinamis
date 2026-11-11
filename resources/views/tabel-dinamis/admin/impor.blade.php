@@ -160,10 +160,22 @@
 <!-- Nav Tabs Admin -->
 <div class="td-admin-nav-tabs">
     <a href="{{ route('tabel-dinamis.admin.impor.form') }}" class="td-admin-nav-tab active">
-        <span>📥</span> Impor Berkas Excel
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Impor Berkas Excel</span>
     </a>
     <a href="{{ route('tabel-dinamis.admin.indikator.index') }}" class="td-admin-nav-tab">
-        <span>📋</span> Master Data Indikator
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px;">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>Master Data Indikator</span>
     </a>
 </div>
 
@@ -172,7 +184,12 @@
         ← Kembali ke Tabel Dinamis
     </a>
     <a href="{{ route('tabel-dinamis.admin.impor.template') }}" class="td-btn td-btn-secondary" style="font-size: 0.8rem;">
-        📥 Unduh Template Excel (.xlsx)
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 0.3rem;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Unduh Template Excel (.xlsx)</span>
     </a>
 </div>
 
