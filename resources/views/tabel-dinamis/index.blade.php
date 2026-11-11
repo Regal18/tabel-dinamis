@@ -1090,8 +1090,14 @@
     const ROUTE_PREFIX = '{{ trim(config("tabel_dinamis.prefix", "tabel-dinamis"), "/") }}';
     const API_BASE = (ROUTE_PREFIX === '' ? '' : '/' + ROUTE_PREFIX) + '/api';
 
-    // Ambil Token CSRF dari meta tag
-    const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+    // Ambil Token CSRF dari meta tag atau cookie XSRF-TOKEN
+    function getCsrfToken() {
+        const meta = document.querySelector('meta[name="csrf-token"]');
+        if (meta && meta.content) return meta.content;
+        const match = document.cookie.match(/(?:^|;\s*)XSRF-TOKEN=([^;]+)/);
+        return match ? decodeURIComponent(match[1]) : '';
+    }
+    const CSRF_TOKEN = getCsrfToken();
     const MAKS_DATA = {{ config('tabel_dinamis.maks_data_per_tabel') !== null ? (int)config('tabel_dinamis.maks_data_per_tabel') : 'null' }};
     const TAHUN_MIN = {{ config('tabel_dinamis.tahun_min', 2021) }};
     const TAHUN_MAX = {{ config('tabel_dinamis.tahun_max', 2026) }};
@@ -1198,24 +1204,38 @@
             'Accept': 'application/json'
         };
 
-        // Sertakan token CSRF jika ada
-        if (CSRF_TOKEN) {
-            defaultHeaders['X-CSRF-TOKEN'] = CSRF_TOKEN;
+        // Sertakan token CSRF dinamis jika ada
+        const token = getCsrfToken();
+        if (token) {
+            defaultHeaders['X-CSRF-TOKEN'] = token;
         }
 
         options.headers = { ...defaultHeaders, ...options.headers };
+        if (!options.credentials) {
+            options.credentials = 'same-origin';
+        }
 
         const response = await fetch(`${API_BASE}${endpoint}`, options);
         if (!response.ok) {
             let pesanKesalahan = 'Terjadi gangguan komunikasi dengan server.';
-            try {
-                const jsonErr = await response.json();
-                if (jsonErr.message) pesanKesalahan = jsonErr.message;
-                if (jsonErr.errors) {
-                    const firstErr = Object.values(jsonErr.errors)[0];
-                    if (Array.isArray(firstErr)) pesanKesalahan = firstErr[0];
-                }
-            } catch (e) {}
+            if (response.status === 419) {
+                pesanKesalahan = 'Sesi Anda telah berakhir. Silakan muat ulang halaman (F5) untuk memperbarui data.';
+            } else {
+                try {
+                    const jsonErr = await response.json();
+                    if (jsonErr.message) {
+                        if (jsonErr.message.toLowerCase().includes('csrf')) {
+                            pesanKesalahan = 'Sesi Anda telah berakhir. Silakan muat ulang halaman (F5) untuk memperbarui data.';
+                        } else {
+                            pesanKesalahan = jsonErr.message;
+                        }
+                    }
+                    if (jsonErr.errors) {
+                        const firstErr = Object.values(jsonErr.errors)[0];
+                        if (Array.isArray(firstErr)) pesanKesalahan = firstErr[0];
+                    }
+                } catch (e) {}
+            }
             throw new Error(pesanKesalahan);
         }
         return response.json();
@@ -2050,17 +2070,28 @@
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/octet-stream, application/json',
-                    'X-CSRF-TOKEN': CSRF_TOKEN
+                    'X-CSRF-TOKEN': getCsrfToken()
                 },
+                credentials: 'same-origin',
                 body: JSON.stringify(state.lastPayload)
             });
 
             if (!response.ok) {
                 let errPesan = 'Gagal mengunduh berkas.';
-                try {
-                    const errObj = await response.json();
-                    if (errObj.message) errPesan = errObj.message;
-                } catch(e) {}
+                if (response.status === 419) {
+                    errPesan = 'Sesi Anda telah berakhir. Silakan muat ulang halaman (F5) untuk memperbarui data.';
+                } else {
+                    try {
+                        const errObj = await response.json();
+                        if (errObj.message) {
+                            if (errObj.message.toLowerCase().includes('csrf')) {
+                                errPesan = 'Sesi Anda telah berakhir. Silakan muat ulang halaman (F5) untuk memperbarui data.';
+                            } else {
+                                errPesan = errObj.message;
+                            }
+                        }
+                    } catch(e) {}
+                }
                 throw new Error(errPesan);
             }
 

@@ -32,10 +32,12 @@ Route::middleware($middlewareBaca)->group(function () {
 | Endpoint API (JSON & Export)
 | Awalan: /{prefix}/api
 | Dilindungi middleware_baca. Endpoint query throttle 60/menit, export 10/menit.
+| Dikecualikan dari validasi CSRF karena merupakan endpoint query data publik & export.
 |--------------------------------------------------------------------------
 */
 Route::prefix('api')
     ->middleware($middlewareBaca)
+    ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class])
     ->group(function () {
         Route::middleware('throttle:60,1')->group(function () {
             Route::get('/subjek', [FilterController::class, 'subjek'])->name('tabel-dinamis.api.subjek');

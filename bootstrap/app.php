@@ -12,7 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->validateCsrfTokens(except: [
+            'api/*',
+            'tabel-dinamis/api/*',
+            '*/api/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
