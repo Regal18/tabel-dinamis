@@ -334,8 +334,9 @@
             font-weight: 600;
             font-family: inherit;
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
             text-decoration: none;
+            user-select: none;
         }
         .td-btn-primary {
             background: #1d4ed8;
@@ -346,10 +347,11 @@
         .td-btn-primary:hover:not(:disabled) {
             background: #1e40af;
             box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
-            transform: translateY(-1px);
+            transform: translateY(-1.5px);
         }
         .td-btn-primary:active:not(:disabled) {
-            transform: scale(0.99);
+            transform: scale(0.975);
+            box-shadow: 0 1px 3px rgba(29, 78, 216, 0.2);
         }
         .td-btn-secondary {
             background: #334155;
@@ -358,6 +360,10 @@
         }
         .td-btn-secondary:hover {
             background: #1e293b;
+            transform: translateY(-1px);
+        }
+        .td-btn-secondary:active {
+            transform: scale(0.975);
         }
         .td-btn-outline {
             background: var(--white);
@@ -371,6 +377,9 @@
             border-color: #94a3b8;
             color: #0f172a;
             transform: translateY(-1px);
+        }
+        .td-btn-outline:active:not(:disabled) {
+            transform: scale(0.975);
         }
         .td-btn:disabled {
             opacity: 0.45;
@@ -460,6 +469,62 @@
             .td-table { font-size: 0.85rem; }
             .td-table th, .td-table td { padding: 0.6rem 0.85rem; }
         }
+        /* ===== Subtle Micro-Animations ===== */
+        @keyframes tdFadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes tdPulseLive {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.45);
+            }
+            50% {
+                transform: scale(1.18);
+                box-shadow: 0 0 0 4px rgba(29, 78, 216, 0);
+            }
+        }
+        @keyframes tdItemPopIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-8px) scale(0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes tdViewFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes tdBadgePop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ===== Accessibility: Prefers Reduced Motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
         /* ===== Print Media Query ===== */
         @media print {
             body {

@@ -58,6 +58,7 @@
     /* ===== Page Title Hero ===== */
     .td-page-hero {
         margin-bottom: 1.35rem;
+        animation: tdFadeInUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .td-page-tag {
         display: inline-flex;
@@ -72,6 +73,11 @@
         border-radius: 9999px;
         margin-bottom: 0.45rem;
         letter-spacing: 0.02em;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .td-page-tag:hover {
+        background: #dbeafe;
+        border-color: #bfdbfe;
     }
     .td-tag-dot {
         width: 6px;
@@ -79,6 +85,7 @@
         background: #1d4ed8;
         border-radius: 50%;
         display: inline-block;
+        animation: tdPulseLive 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
     .td-page-title {
         font-size: 1.45rem;
@@ -119,10 +126,15 @@
         margin-bottom: 1.25rem;
         box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04),
                     0 6px 16px -4px rgba(15, 23, 42, 0.06);
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         overflow: hidden;
+        animation: tdFadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
+    .td-layout-grid > div:first-child .td-section-box { animation-delay: 0.04s; }
+    .td-layout-grid > div:last-child .td-section-box:first-child { animation-delay: 0.1s; }
+    .td-layout-grid > div:last-child .td-section-box:last-child { animation-delay: 0.16s; }
+
     .td-section-box::before {
         content: '';
         position: absolute;
@@ -133,9 +145,10 @@
         background: #1d4ed8;
     }
     .td-section-box:hover {
-        border-color: rgba(147, 197, 253, 0.8);
+        border-color: rgba(147, 197, 253, 0.9);
         box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05),
                     0 10px 24px -4px rgba(15, 23, 42, 0.08);
+        transform: translateY(-2px);
     }
 
     /* ===== Section Header & Typography ===== */
@@ -189,11 +202,11 @@
         line-height: 1;
         flex-shrink: 0;
         box-shadow: 0 1px 3px rgba(29, 78, 216, 0.25);
-        transition: background-color 0.2s ease, transform 0.2s ease;
+        transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .td-section-box:hover .td-step-badge {
         background: #1e40af;
-        transform: scale(1.06);
+        transform: scale(1.08);
     }
 
     /* ===== Search Input ===== */
@@ -204,21 +217,24 @@
     .td-search-input {
         width: 100%;
         padding: 0.55rem 0.75rem 0.55rem 2.25rem;
-        border: 1.5px solid var(--gray-300);
-        border-radius: var(--radius-sm);
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
         font-size: 0.85rem;
         font-family: inherit;
-        color: var(--gray-800);
+        color: #0f172a;
         background: var(--white);
-        transition: all var(--transition);
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        transition: border-color 0.18s ease, box-shadow 0.18s ease;
     }
     .td-search-input:focus {
         outline: none;
-        border-color: var(--deep-blue-500);
-        box-shadow: 0 0 0 3px rgba(30,82,153,0.12);
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
     }
     .td-search-input:disabled {
-        background: var(--gray-100);
+        background: #f1f5f9;
+        color: #94a3b8;
+        border-color: #e2e8f0;
         cursor: not-allowed;
     }
     .td-search-icon {
@@ -254,12 +270,16 @@
         cursor: pointer;
         user-select: none;
         box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
-        transition: all 0.15s ease;
+        transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
     }
     .td-checkbox-pill:hover {
         border-color: #93c5fd;
         background: #f8fafc;
         color: #0f172a;
+        transform: translateY(-1px);
+    }
+    .td-checkbox-pill:active {
+        transform: scale(0.96);
     }
     .td-checkbox-pill:has(input:checked) {
         border-color: #2563eb;
@@ -299,7 +319,8 @@
         align-items: flex-start;
         gap: 0.6rem;
         box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-        transition: all 0.2s ease;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        animation: tdItemPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .td-selected-item:hover {
         box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
@@ -324,16 +345,17 @@
         cursor: pointer;
         font-size: 0.85rem;
         line-height: 1;
-        padding: 0.3rem;
-        border-radius: 4px;
-        transition: all var(--transition);
+        padding: 0.35rem;
+        border-radius: 6px;
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease, background-color 0.15s ease;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .td-btn-delete:hover {
-        color: var(--danger);
-        background: var(--danger-bg);
+        color: #ef4444;
+        background: #fee2e2;
+        transform: scale(1.15) rotate(90deg);
     }
 
     /* ===== Action Buttons ===== */
@@ -656,18 +678,26 @@
         color: var(--gray-600);
         border-radius: 4px;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease;
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
     }
-    .td-switch-btn:hover {
+    .td-switch-btn:hover:not(.active) {
         color: var(--deep-blue-700);
+        transform: translateY(-0.5px);
     }
     .td-switch-btn.active {
         background: var(--white);
         color: var(--deep-blue-800);
         box-shadow: 0 1px 3px rgba(10, 22, 40, 0.12);
+    }
+    #td-view-tabel:not(.td-hidden),
+    #td-view-grafik:not(.td-hidden) {
+        animation: tdViewFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    #td-table-row-count:not(:empty) {
+        animation: tdBadgePop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
     /* ===== Chart Panel ===== */

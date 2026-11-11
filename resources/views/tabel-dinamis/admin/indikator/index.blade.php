@@ -39,8 +39,16 @@
         margin-bottom: 1.25rem;
         box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04),
                     0 6px 16px -4px rgba(15, 23, 42, 0.06);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         overflow: hidden;
+        animation: tdFadeInUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .td-admin-card:hover {
+        border-color: rgba(147, 197, 253, 0.85);
+        box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05),
+                    0 10px 24px -4px rgba(15, 23, 42, 0.08);
+        transform: translateY(-2px);
     }
     .td-admin-card::before {
         content: '';
