@@ -30,8 +30,8 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 3.5px;
-        background: linear-gradient(90deg, var(--deep-blue-600) 0%, var(--deep-blue-400) 100%);
+        height: 3px;
+        background: #1d4ed8;
     }
     .td-import-card h2 {
         font-size: 1.05rem;

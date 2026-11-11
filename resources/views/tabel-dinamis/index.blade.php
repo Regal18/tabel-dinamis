@@ -106,8 +106,8 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #0d286d 0%, #1d4ed8 40%, #2563eb 75%, #38bdf8 100%);
+        height: 3px;
+        background: #1d4ed8;
     }
     .td-section-box:hover {
         transform: translateY(-4px);
@@ -138,11 +138,9 @@
         font-weight: 800;
         letter-spacing: -0.015em;
         line-height: 1.25;
-        background: linear-gradient(135deg, #091a38 0%, #153e7e 60%, #1d4ed8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #0f2d59;
         margin: 0;
-        transition: all 0.28s ease;
+        transition: color 0.2s ease;
     }
     .td-section-desc {
         font-size: 0.72rem;
@@ -152,9 +150,7 @@
         line-height: 1.2;
     }
     .td-section-box:hover .td-section-title {
-        background: linear-gradient(135deg, #071731 0%, #1d4ed8 50%, #2563eb 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #1d4ed8;
     }
 
     /* ===== Step Badge (Clean & Modern Minimalist) ===== */
@@ -247,10 +243,10 @@
     }
     .td-checkbox-pill:has(input:checked) {
         border-color: #1d4ed8;
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        color: #0f2e6b;
+        background: #eff6ff;
+        color: #1d4ed8;
         font-weight: 700;
-        box-shadow: 0 3px 8px rgba(29, 78, 216, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 6px rgba(29, 78, 216, 0.12);
         transform: translateY(-1px);
     }
     .td-checkbox-pill input[type="checkbox"] {
@@ -493,7 +489,7 @@
     .td-h2-icon {
         width: 30px;
         height: 30px;
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        background: #eff6ff;
         border: 1px solid #bfdbfe;
         border-radius: var(--radius-sm);
         display: inline-flex;
@@ -540,7 +536,7 @@
         font-size: 0.72rem;
         font-weight: 700;
         color: #1d4ed8;
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        background: #eff6ff;
         border: 1px solid #bfdbfe;
         padding: 0.22rem 0.6rem;
         border-radius: 9999px;
@@ -590,8 +586,8 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 3.5px;
-        background: linear-gradient(90deg, var(--deep-blue-600) 0%, var(--deep-blue-400) 100%);
+        height: 3px;
+        background: #1d4ed8;
     }
 
     /* ===== Table Toolbar & Search ===== */
