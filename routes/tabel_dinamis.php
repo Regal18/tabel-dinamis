@@ -8,6 +8,7 @@
  */
 
 use Illuminate\Support\Facades\Route;
+use App\Modules\TabelDinamis\Http\Controllers\BerandaController;
 use App\Modules\TabelDinamis\Http\Controllers\TabelController;
 use App\Modules\TabelDinamis\Http\Controllers\ImportController;
 use App\Modules\TabelDinamis\Http\Controllers\Admin\IndikatorCrudController;
@@ -24,6 +25,7 @@ $middlewareAdmin = config('tabel_dinamis.middleware_admin', ['auth.basic', 'can:
 |--------------------------------------------------------------------------
 */
 Route::middleware($middlewareBaca)->group(function () {
+    Route::get('/beranda', [BerandaController::class, 'index'])->name('tabel-dinamis.beranda');
     Route::get('/', [TabelController::class, 'index'])->name('tabel-dinamis.index');
 });
 

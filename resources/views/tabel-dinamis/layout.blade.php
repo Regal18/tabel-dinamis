@@ -212,6 +212,15 @@
             border-color: rgba(255, 255, 255, 0.25);
             transform: translateY(-1px);
         }
+        .td-header-link.active {
+            background: rgba(37, 99, 235, 0.32);
+            border-color: rgba(96, 165, 250, 0.45);
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .td-header-link.active svg {
+            color: #93c5fd;
+        }
         .td-header-badge {
             display: inline-flex;
             align-items: center;
@@ -539,7 +548,7 @@
 </head>
 <body>
     <header class="td-header">
-        <a href="{{ route('tabel-dinamis.index') }}" class="td-header-brand">
+        <a href="{{ route('tabel-dinamis.beranda') }}" class="td-header-brand" title="Menuju Beranda KINERA">
             <div class="td-header-logo">
                 <img src="{{ asset('images/kinera-logo.png') }}" alt="Logo KINERA">
             </div>
@@ -549,17 +558,33 @@
             </div>
         </a>
         <div class="td-header-actions">
-            <a href="{{ route('tabel-dinamis.admin.indikator.index') }}" class="td-header-link" title="Kelola Master Data Indikator">
+            <a href="{{ route('tabel-dinamis.beranda') }}" class="td-header-link {{ request()->routeIs('tabel-dinamis.beranda') ? 'active' : '' }}" title="Halaman Utama & Profil KINERA">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="15" height="15">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span>Beranda</span>
+            </a>
+            <a href="{{ route('tabel-dinamis.index') }}" class="td-header-link {{ request()->routeIs('tabel-dinamis.index') ? 'active' : '' }}" title="Eksplorasi & Filter Tabel Dinamis">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="15" height="15">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="3" y1="9" x2="21" y2="9"/>
+                    <line x1="9" y1="21" x2="9" y2="9"/>
+                </svg>
+                <span>Tabel Dinamis</span>
+            </a>
+            <a href="{{ route('tabel-dinamis.admin.indikator.index') }}" class="td-header-link {{ request()->routeIs('tabel-dinamis.admin.indikator.*') ? 'active' : '' }}" title="Kelola Master Data Indikator">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="15" height="15">
                     <path d="M9 11l3 3L22 4"/>
                     <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
                 </svg>
                 <span>Master Indikator</span>
             </a>
-            <a href="{{ route('tabel-dinamis.admin.impor.form') }}" class="td-header-link" title="Unggah Berkas Excel">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
-                    <circle cx="12" cy="12" r="3"/>
+            <a href="{{ route('tabel-dinamis.admin.impor.form') }}" class="td-header-link {{ request()->routeIs('tabel-dinamis.admin.impor.*') ? 'active' : '' }}" title="Unggah Berkas Excel">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="15" height="15">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
                 <span>Admin Impor</span>
             </a>
