@@ -11,8 +11,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * Seeder untuk mengolah dan memuat data riil dari 7 berkas Google Spreadsheet
- * perencanaan pembangunan daerah OPD Bidang IPW BAPPEDA Provinsi Maluku Utara.
+ * Seeder untuk mengolah dan memuat data riil dari 8 berkas Google Spreadsheet
+ * perencanaan pembangunan daerah OPD Bidang IPW BAPPEDA Provinsi Maluku Utara
+ * (termasuk Badan Pengelola Perbatasan Daerah - BPPD).
  */
 class SpreadsheetsGoogleDataSeeder extends Seeder
 {
@@ -30,7 +31,7 @@ class SpreadsheetsGoogleDataSeeder extends Seeder
             return;
         }
 
-        $this->command?->info("Memproses " . count($records) . " indikator dari 7 Google Spreadsheet...");
+        $this->command?->info("Memproses " . count($records) . " indikator dari 8 Google Spreadsheet...");
 
         $wilayahList = Wilayah::orderBy('id')->get();
         if ($wilayahList->isEmpty()) {
@@ -104,12 +105,22 @@ class SpreadsheetsGoogleDataSeeder extends Seeder
 
                 $val = (float)$baseVal;
 
+                // Data IDM riil kawasan perbatasan dari Sheet IDM_Kecamatan_Perbatasan
+                $idmRealBorder = [
+                    2 => [2021 => 57.66, 2022 => 59.32, 2023 => 58.59, 2024 => 59.00, 2025 => 66.75], // Halteng
+                    5 => [2021 => 55.88, 2022 => 59.73, 2023 => 60.40, 2024 => 62.18, 2025 => 62.00], // Haltim
+                    7 => [2021 => 65.07, 2022 => 67.69, 2023 => 69.09, 2024 => 70.60, 2025 => 68.50], // Morotai
+                ];
+
                 foreach ($wilayahList as $wil) {
                     $faktor = $faktorWilayah[$wil->id] ?? 1.0;
                     
                     // Hitung nilai target wilayah
                     $isPercent = (strpos(strtolower($indikator->satuan), '%') !== false || strpos(strtolower($indikator->satuan), 'persen') !== false);
-                    if ($isPercent) {
+                    if ($indikator->kode === 'BPPD-IDM-01' && isset($idmRealBorder[$wil->id][$tahunInt])) {
+                        $targetWil = $idmRealBorder[$wil->id][$tahunInt];
+                        $realisasiWil = $idmRealBorder[$wil->id][$tahunInt];
+                    } elseif ($isPercent) {
                         $targetWil = min(100.0, max(0.0, round($val * $faktor, 2)));
                         $realisasiWil = min(100.0, max(0.0, round($targetWil * 0.96, 2)));
                     } else {

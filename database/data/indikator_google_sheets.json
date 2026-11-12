@@ -3000,5 +3000,690 @@
             "2026": 85
         },
         "sumber": "Renja Dinas Kelautan dan Perikanan Maluku Utara"
+    },
+    {
+        "kode": "BPPD-IDM-01",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Indeks Desa Membangun (IDM) Kawasan Perbatasan",
+        "sub_indikator": "Indikator Kinerja Kewilayahan",
+        "satuan": "Poin",
+        "targets": {
+            "2021": 59.5,
+            "2022": 62.2,
+            "2023": 62.7,
+            "2024": 63.9,
+            "2025": 65.8,
+            "2026": 68
+        },
+        "sumber": "IDM Kemendesa \/ BPPD Maluku Utara 2025"
+    },
+    {
+        "kode": "BPPD-IKU-01",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase desa tertinggal\/sangat tertinggal di perbatasan",
+        "sub_indikator": "IKU \/ Sasaran Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 16,
+            "2026": 14
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-IKU-02",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase Perkembangan Wilayah Kawasan Perbatasan Negara",
+        "sub_indikator": "IKU \/ Sasaran Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 66,
+            "2026": 70
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-PRG-03",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Efektivitas Pelaksanaan Penunjang Urusan Perangkat Daerah",
+        "sub_indikator": "Program",
+        "satuan": "%",
+        "targets": {
+            "2025": 88.15,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-04",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Perencanaan Perangkat Daerah",
+        "sub_indikator": "Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 3,
+            "2026": 3
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-05",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD dan Laporan Hasil Koordinasi Penyusunan Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-06",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase pelaksanaan administrasi keuangan",
+        "sub_indikator": "Kegiatan",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-07",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Orang yang Menerima Gaji dan Tunjangan ASN",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Orang Bulan",
+        "targets": {
+            "2025": 13,
+            "2026": 26
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-08",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Keuangan Akhir Tahun SKPD dan Laporan Hasil Koordinasi Penyusunan Laporan Keuangan Akhir Tahun SKPD",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-09",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Keuangan Bulanan\/Triwulanan\/Semesteran SKPD dan Laporan Koordinasi Penyusunan Laporan Keuangan Bulanan\/Triwulanan\/Semesteran SKPD",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-10",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Rekonsiliasi dan Penyusunan Laporan Barang Milik Daerah pada SKPD",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-11",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase pelaksanaan administrasi kepegawaian",
+        "sub_indikator": "Kegiatan",
+        "satuan": "%",
+        "targets": {
+            "2025": 63,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-12",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Paket Pakaian Dinas Beserta Atribut Kelengkapan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-13",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Hasil Koordinasi dan Pelaksanaan Sistem Informasi Kepegawaian",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-14",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Pegawai Berdasarkan Tugas dan Fungsi yang Mengikuti Pendidikan dan Pelatihan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Orang",
+        "targets": {
+            "2026": 5
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-15",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase pelaksanaan administrasi umum",
+        "sub_indikator": "Kegiatan",
+        "satuan": "%",
+        "targets": {
+            "2025": 83,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-16",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Paket Komponen Instalasi Listrik\/Penerangan Bangunan Kantor yang Disediakan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-17",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Paket Peralatan dan Perlengkapan Kantor yang Disediakan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-18",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Paket Bahan Logistik Kantor yang Disediakan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-19",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Paket Barang Cetakan dan Penggandaan yang Disediakan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Paket",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-20",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-21",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Unit Kendaraan Perorangan Dinas atau Kendaraan Dinas Jabatan yang Disediakan",
+        "sub_indikator": "Kegiatan",
+        "satuan": "Unit",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-22",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Penyediaan Jasa Pelayanan Umum Kantor yang Disediakan",
+        "sub_indikator": "Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-23",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase Barang Milik Daerah yang terpelihara",
+        "sub_indikator": "Kegiatan",
+        "satuan": "%",
+        "targets": {
+            "2025": 99,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-24",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Kendaraan Perorangan Dinas atau Kendaraan Dinas Jabatan yang Dipelihara dan Dibayarkan Pajaknya",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Unit",
+        "targets": {
+            "2025": 2,
+            "2026": 2
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-25",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Peralatan dan Mesin Lainnya yang Dipelihara",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Unit",
+        "targets": {
+            "2025": 10,
+            "2026": 10
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-26",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Sarana dan Prasarana Gedung Kantor atau Bangunan Lainnya yang Dipelihara\/Direhabilitasi",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Unit",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-PRG-27",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Cakupan implementasi Pengelolaan Perbatasan",
+        "sub_indikator": "Program",
+        "satuan": "%",
+        "targets": {
+            "2025": 95.21,
+            "2026": 69
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-28",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase Perencanaan dan Fasilitasi Kerja Sama",
+        "sub_indikator": "Kegiatan",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-29",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Hasil Koordinasi, Integrasi, dan Sinkronisasi Kebijakan Otonomi Daerah",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-30",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Rencana Aksi Pembangunan Kawasan Perbatasan yang Disusun",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-31",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase wilayah perbatasan yang dikelola",
+        "sub_indikator": "Kegiatan",
+        "satuan": "%",
+        "targets": {
+            "2025": 67,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-32",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Hasil Koordinasi, Integrasi, dan Sinkronisasi Pembangunan Kawasan Perbatasan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-33",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Hasil Koordinasi, Integrasi, dan Sinkronisasi Pemanfaatan Kawasan Perbatasan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 0,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-34",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Hasil Fasilitasi Penegasan, Pemeliharaan, dan Pengamanan Batas Wilayah Negara",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-35",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Hasil Inventarisasi Potensi Sumber Daya untuk Pengusulan Penetapan Zona Pengembangan Ekonomi, Sosial Budaya, Lingkungan Hidup, dan Zona Lainnya di Kawasan Perbatasan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-36",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase monitoring dan evaluasi yang terlaksana",
+        "sub_indikator": "Kegiatan",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-37",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Hasil Pengendalian dan Pengawasan serta Evaluasi Pelaksanaan Pembangunan Kawasan Perbatasan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-38",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Pembangunan Kawasan Perbatasan",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-39",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Hasil Pengawasan Pelaksanaan Pembangunan Kawasan Perbatasan oleh Pemerintah Daerah Kabupaten\/Kota",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-PRG-40",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Cakupan Implementasi Pengelolaan Perbatasan Negara",
+        "sub_indikator": "Program",
+        "satuan": "%",
+        "targets": {
+            "2026": 69
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-41",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Terlaksananya Monitoring dan Evaluasi",
+        "sub_indikator": "Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-42",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Fasilitasi Provinsi dalam dukungan pelaksanaan pengukuran Indeks Pengelolaan Kawasan Perbatasan (IPKP) Pusat Kegiatan Strategis Nasional (PKSN) dan Indeks Pengelolaan Kawasan Perbatasan (IPKP) Kecamatan Lokasi Prioritas",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-43",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Terlaksananya Fasilitasi Pembinaan Masyarakat Perbatasan Negara",
+        "sub_indikator": "Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-44",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Fasilitasi Pemberdayaan masyarakat kawasan perbatasan negara dalam pengelolaan Batas Wilayah Negara",
+        "sub_indikator": "Sub Kegiatan",
+        "satuan": "Laporan",
+        "targets": {
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-IKU-45",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Indeks Desa",
+        "sub_indikator": "Tujuan \/ Sasaran Daerah",
+        "satuan": "%",
+        "targets": {
+            "2025": 100,
+            "2026": 100
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-IKU-46",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase desa tertinggal\/sangat tertinggal di kawasan perbatasan",
+        "sub_indikator": "Indikator Kinerja Utama (IKU)",
+        "satuan": "%",
+        "targets": {
+            "2025": 16,
+            "2026": 14
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-47",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD dan Laporan Hasil Koordinasi",
+        "sub_indikator": "Sub Kegiatan (Output)",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-48",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Keuangan Akhir Tahun SKPD dan Laporan Hasil Koordinasi",
+        "sub_indikator": "Sub Kegiatan (Output)",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-49",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Keuangan Bulanan\/Triwulanan\/Semesteran SKPD dan Laporan Koordinasi",
+        "sub_indikator": "Sub Kegiatan (Output)",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-50",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Dokumen Hasil Inventarisasi Potensi Sumber Daya untuk Pengusulan Penetapan Zona Pengembangan di Kawasan Perbatasan",
+        "sub_indikator": "Sub Kegiatan (Output)",
+        "satuan": "Dokumen",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-PRG-51",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Persentase Pengelolaan Perbatasan Negara",
+        "sub_indikator": "Program (Outcome)",
+        "satuan": "%",
+        "targets": {
+            "2025": 66,
+            "2026": 69
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
+    },
+    {
+        "kode": "BPPD-KEG-52",
+        "opd_id": 5,
+        "subjek_id": 8,
+        "nama": "Jumlah Laporan Fasilitasi Provinsi dalam dukungan pelaksanaan pengukuran Indeks Pengelolaan Kawasan Perbatasan (IPKP) PKSN dan Lokpri",
+        "sub_indikator": "Sub Kegiatan (Output)",
+        "satuan": "Laporan",
+        "targets": {
+            "2025": 1,
+            "2026": 1
+        },
+        "sumber": "Dokumen Perencanaan BPPD Provinsi Maluku Utara"
     }
 ]
