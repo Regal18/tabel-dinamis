@@ -407,7 +407,7 @@
             Satu Pintu Eksplorasi & Evaluasi <span>Data Pembangunan</span> Maluku Utara
         </h1>
         <p class="td-hero-desc">
-            <strong>KINERA</strong> mengintegrasikan data statistik capaian indikator dari 8 Organisasi Perangkat Daerah (OPD) 
+            <strong>KINERA</strong> mengintegrasikan data statistik capaian indikator dari {{ $totalOpd }} Organisasi Perangkat Daerah (OPD) 
             Bidang Infrastruktur dan Pengembangan Wilayah ke dalam tabel dinamis multidimensi, visualisasi analitik interaktif, 
             dan pelaporan resmi Pemerintah Provinsi Maluku Utara.
         </p>
@@ -618,13 +618,13 @@
         </div>
     </section>
 
-    <!-- ==================== 8 OPD & SEKTOR IPW ==================== -->
+    <!-- ==================== OPD & SEKTOR IPW ==================== -->
     <section class="td-section-card">
         <div class="td-section-head">
             <span class="td-badge-pill">Cakupan Data</span>
-            <h2 class="td-section-h2">8 Organisasi Perangkat Daerah Tergabung</h2>
+            <h2 class="td-section-h2">{{ $totalOpd }} Organisasi Perangkat Daerah Tergabung</h2>
             <p class="td-section-sub">
-                Data kinerja pembangunan dihimpun dari 8 dinas dan badan teknis di bawah koordinasi Bidang Infrastruktur dan Pengembangan Wilayah.
+                Data kinerja pembangunan dihimpun dari {{ $totalOpd }} dinas dan badan teknis di bawah koordinasi Bidang Infrastruktur dan Pengembangan Wilayah.
             </p>
         </div>
 
@@ -700,3 +700,4 @@
 
 </div>
 @endsection
+
