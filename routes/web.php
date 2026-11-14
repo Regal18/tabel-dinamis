@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Redirect halaman utama ke modul Tabel Dinamis
+// Redirect halaman utama aplikasi langsung menuju ke Beranda KINERA
 Route::get('/', function () {
-    return redirect()->route('tabel-dinamis.index');
+    return redirect()->route('tabel-dinamis.beranda');
 });
 
 // Pintasan menuju Beranda KINERA
