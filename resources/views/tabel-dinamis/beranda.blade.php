@@ -494,7 +494,7 @@
                 <div class="td-pillar-num">1</div>
                 <h3 class="td-pillar-title">Eliminasi Silo Data</h3>
                 <p class="td-pillar-desc">
-                    Menyatukan data pembangunan dari 8 perangkat daerah teknis (energi, perhubungan, perikanan, lingkungan, pariwisata, perkim, kominfo, hingga perbatasan) dalam satu portal terpadu.
+                    Menyatukan data pembangunan dari 8 perangkat daerah teknis (energi, perhubungan, PU dan penataan ruang, lingkungan, pariwisata, perkim, kominfo, hingga perbatasan) dalam satu portal terpadu.
                 </p>
             </div>
             <div class="td-pillar-item">
