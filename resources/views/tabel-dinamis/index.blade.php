@@ -702,8 +702,9 @@
 
     /* ===== Chart Panel ===== */
     .td-chart-panel {
-        padding: 1.25rem;
+        padding: 1.5rem;
         background: var(--white);
+        border-radius: 12px;
     }
     .td-chart-toolbar {
         display: flex;
@@ -713,7 +714,7 @@
         align-items: flex-end;
         margin-bottom: 1.25rem;
         padding-bottom: 0.85rem;
-        border-bottom: 1px solid var(--gray-200);
+        border-bottom: 1px solid #f1f5f9;
     }
     .td-chart-controls {
         display: flex;
@@ -722,23 +723,31 @@
         align-items: flex-end;
     }
     .td-chart-select {
-        padding: 0.42rem 0.75rem;
-        border: 1.5px solid var(--gray-300);
-        border-radius: var(--radius-sm);
+        padding: 0.45rem 2.15rem 0.45rem 0.75rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
         font-size: 0.82rem;
-        background: var(--white);
-        color: var(--gray-800);
+        background-color: var(--white);
+        color: #0f172a;
         font-weight: 500;
         cursor: pointer;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.65rem center;
+        background-size: 13px 13px;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
     .td-chart-select:focus {
         outline: none;
-        border-color: #1d4ed8;
-        box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
     }
     .td-chart-canvas-container {
         position: relative;
-        height: 420px;
+        height: 430px;
         width: 100%;
     }
 
@@ -2272,35 +2281,102 @@
             const labels = (baris || []).map(b => b.wilayah);
             const values = (baris || []).map(b => b.nilai[gIdx]?.[safeTIdx] ?? null);
 
-            state.chartInstance = new Chart(ctx, {
+            // Hitung rata-rata provinsi untuk garis benchmark acuan
+            const validVals = values.filter(v => v !== null && v !== undefined && !isNaN(v)).map(Number);
+            const avgYear = validVals.length > 0 ? (validVals.reduce((a, b) => a + b, 0) / validVals.length) : null;
+
+            // Efek gradien modern Deep Blue khas KINERA
+            const chartHeight = dom.chartCanvas.parentElement ? dom.chartCanvas.parentElement.clientHeight : 400;
+            const barGradient = ctx.createLinearGradient(0, 0, 0, chartHeight || 380);
+            barGradient.addColorStop(0, 'rgba(37, 99, 235, 0.90)');  // Deep Blue
+            barGradient.addColorStop(1, 'rgba(147, 197, 253, 0.40)'); // Soft Sky Blue
+
+            const barHoverGradient = ctx.createLinearGradient(0, 0, 0, chartHeight || 380);
+            barHoverGradient.addColorStop(0, 'rgba(29, 78, 216, 1)');
+            barHoverGradient.addColorStop(1, 'rgba(37, 99, 235, 0.75)');
+
+            const datasets = [{
                 type: 'bar',
+                label: `[${g.jenis}] ${g.judul} — ${tahunAktif}${satuanLabel}`,
+                data: values,
+                backgroundColor: barGradient,
+                hoverBackgroundColor: barHoverGradient,
+                borderColor: '#1d4ed8',
+                borderWidth: 1.5,
+                borderRadius: { topLeft: 8, topRight: 8, bottomLeft: 0, bottomRight: 0 },
+                borderSkipped: false,
+                maxBarThickness: 46,
+                barPercentage: 0.68,
+                categoryPercentage: 0.85,
+                order: 2
+            }];
+
+            // Garis Benchmark Rata-rata Provinsi jika ada data valid
+            if (avgYear !== null) {
+                const roundedAvg = Math.round(avgYear * 100) / 100;
+                datasets.unshift({
+                    type: 'line',
+                    label: `Rata-rata Provinsi: ${formatIndo.format(roundedAvg)}${satuanLabel}`,
+                    data: Array(labels.length).fill(roundedAvg),
+                    borderColor: '#f59e0b',
+                    backgroundColor: '#f59e0b',
+                    borderWidth: 2,
+                    borderDash: [6, 4],
+                    pointRadius: 0,
+                    pointHoverRadius: 5,
+                    fill: false,
+                    order: 1
+                });
+            }
+
+            state.chartInstance = new Chart(ctx, {
                 data: {
                     labels: labels,
-                    datasets: [{
-                        label: `[${g.jenis}] ${g.judul} — ${tahunAktif}${satuanLabel}`,
-                        data: values,
-                        backgroundColor: labels.map((_, i) => PALET_WARNA[i % PALET_WARNA.length] + 'cc'),
-                        borderColor: labels.map((_, i) => PALET_WARNA[i % PALET_WARNA.length]),
-                        borderWidth: 1.5,
-                        borderRadius: 6,
-                    }]
+                    datasets: datasets
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    animation: {
+                        duration: 650,
+                        easing: 'easeOutQuart'
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
                     plugins: {
                         legend: {
                             display: true,
                             position: 'top',
+                            align: 'end',
                             labels: {
-                                font: { family: "'Plus Jakarta Sans', sans-serif", weight: '600', size: 12 }
+                                boxWidth: 14,
+                                boxHeight: 14,
+                                borderRadius: 4,
+                                usePointStyle: true,
+                                pointStyle: 'rectRounded',
+                                font: { family: "'Plus Jakarta Sans', sans-serif", weight: '600', size: 12 },
+                                color: '#334155',
+                                padding: 14
                             }
                         },
                         tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.94)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#e2e8f0',
+                            titleFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12, weight: '700' },
+                            bodyFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12, weight: '500' },
+                            padding: { top: 10, bottom: 10, left: 14, right: 14 },
+                            cornerRadius: 8,
+                            borderColor: 'rgba(255, 255, 255, 0.12)',
+                            borderWidth: 1,
+                            boxPadding: 6,
                             callbacks: {
                                 label: function(context) {
                                     const val = context.raw;
-                                    return val === null ? 'Data Nihil (-)' : `${formatIndo.format(val)}${satuanLabel}`;
+                                    if (val === null || val === undefined) return ` ${context.dataset.label}: Data Nihil (-)`;
+                                    return ` ${context.dataset.label}: ${formatIndo.format(val)}${satuanLabel}`;
                                 }
                             }
                         }
@@ -2308,19 +2384,29 @@
                     scales: {
                         x: {
                             ticks: {
-                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
-                                maxRotation: 40,
-                                minRotation: 15
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11, weight: '500' },
+                                color: '#475569',
+                                maxRotation: 35,
+                                minRotation: 0,
+                                autoSkip: false,
+                                padding: 6
                             },
-                            grid: { display: false }
+                            grid: { display: false },
+                            border: { color: '#cbd5e1' }
                         },
                         y: {
                             beginAtZero: true,
                             ticks: {
                                 callback: val => formatIndo.format(val),
-                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 }
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11, weight: '500' },
+                                color: '#64748b',
+                                padding: 8
                             },
-                            grid: { color: 'rgba(15, 34, 64, 0.06)' }
+                            grid: {
+                                color: 'rgba(226, 232, 240, 0.8)',
+                                lineWidth: 1
+                            },
+                            border: { display: false }
                         }
                     }
                 }
@@ -2346,12 +2432,13 @@
                 data: avgData,
                 borderColor: '#0f2240',
                 backgroundColor: '#0f2240',
-                borderWidth: 3.5,
+                borderWidth: 3,
                 borderDash: [6, 4],
                 pointRadius: 5,
                 pointHoverRadius: 7,
-                tension: 0.2,
-                fill: false
+                tension: 0.25,
+                fill: false,
+                order: 1
             });
 
             // Garis per wilayah
@@ -2366,8 +2453,9 @@
                     borderWidth: 2,
                     pointRadius: 4,
                     pointHoverRadius: 6,
-                    tension: 0.25,
-                    fill: false
+                    tension: 0.3,
+                    fill: false,
+                    order: 2
                 });
             });
 
@@ -2377,18 +2465,43 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    animation: {
+                        duration: 650,
+                        easing: 'easeOutQuart'
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
                     plugins: {
                         legend: {
                             position: 'top',
+                            align: 'end',
                             labels: {
-                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11, weight: '600' }
+                                boxWidth: 14,
+                                boxHeight: 14,
+                                borderRadius: 4,
+                                usePointStyle: true,
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11, weight: '600' },
+                                color: '#334155',
+                                padding: 12
                             }
                         },
                         tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.94)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#e2e8f0',
+                            titleFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12, weight: '700' },
+                            bodyFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12, weight: '500' },
+                            padding: { top: 10, bottom: 10, left: 14, right: 14 },
+                            cornerRadius: 8,
+                            borderColor: 'rgba(255, 255, 255, 0.12)',
+                            borderWidth: 1,
+                            boxPadding: 6,
                             callbacks: {
                                 label: function(context) {
                                     const val = context.raw;
-                                    return `${context.dataset.label}: ${val === null ? '-' : formatIndo.format(val)}${satuanLabel}`;
+                                    return ` ${context.dataset.label}: ${val === null ? '-' : formatIndo.format(val)}${satuanLabel}`;
                                 }
                             }
                         }
@@ -2396,17 +2509,26 @@
                     scales: {
                         x: {
                             ticks: {
-                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 12, weight: '600' }
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 12, weight: '600' },
+                                color: '#475569',
+                                padding: 6
                             },
-                            grid: { color: 'rgba(15, 34, 64, 0.04)' }
+                            grid: { color: 'rgba(226, 232, 240, 0.5)' },
+                            border: { color: '#cbd5e1' }
                         },
                         y: {
                             beginAtZero: false,
                             ticks: {
                                 callback: val => formatIndo.format(val),
-                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 }
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 11, weight: '500' },
+                                color: '#64748b',
+                                padding: 8
                             },
-                            grid: { color: 'rgba(15, 34, 64, 0.06)' }
+                            grid: {
+                                color: 'rgba(226, 232, 240, 0.8)',
+                                lineWidth: 1
+                            },
+                            border: { display: false }
                         }
                     }
                 }
