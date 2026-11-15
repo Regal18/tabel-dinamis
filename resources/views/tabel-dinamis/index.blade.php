@@ -1005,53 +1005,205 @@
         body {
             background: #ffffff !important;
             color: #000000 !important;
-            font-size: 10.5pt !important;
+            font-size: 10pt !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
         .td-header, .td-layout-grid, .td-action-buttons, .td-banner-info,
         .td-result-header, .td-footer, #td-alert-box, .td-page-title, .td-page-subtitle,
-        .td-chart-panel, .td-view-switcher {
+        .td-chart-panel, .td-view-switcher, .td-sort-icon {
             display: none !important;
         }
         .td-container {
             padding: 0 !important;
+            margin: 0 !important;
             max-width: 100% !important;
+            width: 100% !important;
         }
         #td-hasil-wrapper {
             box-shadow: none !important;
             border: none !important;
+            border-radius: 0 !important;
             padding: 0 !important;
             margin: 0 !important;
             display: block !important;
+            background: transparent !important;
         }
         #td-hasil-wrapper::before {
             display: none !important;
         }
         .td-print-only {
             display: block !important;
-            margin-bottom: 12pt;
+            margin-bottom: 10pt !important;
         }
+
+        /* Kop Surat Resmi BAPPEDA & Pemprov Malut */
+        .td-kop-surat {
+            margin-bottom: 6pt !important;
+        }
+        .td-kop-bar {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 12px !important;
+        }
+        .td-kop-logo-left {
+            width: 220px !important;
+            flex-shrink: 0 !important;
+            text-align: left !important;
+        }
+        .td-kop-img {
+            height: 52px !important;
+            width: auto !important;
+            max-width: 100% !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+        .td-kop-text {
+            flex: 1 !important;
+            text-align: center !important;
+        }
+        .td-kop-title {
+            font-size: 12.5pt !important;
+            font-weight: 800 !important;
+            margin: 0 !important;
+            text-transform: uppercase !important;
+            color: #000000 !important;
+            letter-spacing: 0.5px !important;
+            line-height: 1.25 !important;
+        }
+        .td-kop-subtitle {
+            font-size: 11pt !important;
+            font-weight: 700 !important;
+            margin: 2px 0 0 0 !important;
+            text-transform: uppercase !important;
+            color: #000000 !important;
+            letter-spacing: 0.3px !important;
+            line-height: 1.25 !important;
+        }
+        .td-kop-address {
+            font-size: 8pt !important;
+            margin: 2px 0 0 0 !important;
+            color: #222222 !important;
+            line-height: 1.2 !important;
+        }
+        .td-kop-logo-spacer {
+            width: 220px !important;
+            flex-shrink: 0 !important;
+        }
+        .td-kop-divider {
+            border-bottom: 2px solid #000000 !important;
+            border-top: 1px solid #000000 !important;
+            height: 2px !important;
+            margin-top: 5px !important;
+            margin-bottom: 8pt !important;
+        }
+        .td-print-meta-bar {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: flex-end !important;
+            margin-bottom: 8pt !important;
+            padding-bottom: 4pt !important;
+            border-bottom: 1px solid #cccccc !important;
+        }
+
+        /* Tabel Dinamis di Mode Cetak */
         .td-table-scroll {
             overflow: visible !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
         .td-table-dynamic {
             width: 100% !important;
             border-collapse: collapse !important;
+            border-spacing: 0 !important;
+            border: 1.5px solid #000000 !important;
+            table-layout: auto !important;
+            font-size: 8.5pt !important;
+            background: #ffffff !important;
+            page-break-inside: auto !important;
         }
-        .td-table-dynamic th, .td-table-dynamic td {
-            border: 1px solid #333333 !important;
-            padding: 4pt 6pt !important;
+        .td-table-dynamic thead {
+            display: table-header-group !important;
+        }
+        .td-table-dynamic tfoot {
+            display: table-footer-group !important;
+        }
+        .td-table-dynamic tr {
+            page-break-inside: avoid !important;
+            page-break-after: auto !important;
+            background: transparent !important;
+            border: none !important;
+        }
+        .td-table-dynamic th,
+        .td-table-dynamic td {
+            border: 1px solid #000000 !important;
+            border-style: solid !important;
+            padding: 4.5pt 6.5pt !important;
             color: #000000 !important;
-            font-size: 9pt !important;
+            font-size: 8.5pt !important;
+            line-height: 1.3 !important;
+            box-shadow: none !important;
+            vertical-align: middle !important;
         }
         .td-table-dynamic th {
-            background: #f1f5f9 !important;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
+            background-color: #f1f5f9 !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
-        .td-th-wilayah, .td-td-wilayah {
+        .td-table-dynamic tbody tr:nth-child(even) td {
+            background-color: #fafafa !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        .td-table-dynamic tbody tr:hover td {
+            background-color: transparent !important;
+        }
+        .td-th-wilayah,
+        .td-td-wilayah {
             position: static !important;
+            left: auto !important;
             box-shadow: none !important;
-            border-right: 1px solid #333333 !important;
+            border: 1px solid #000000 !important;
+            text-align: left !important;
+            font-weight: 600 !important;
+            background-color: inherit !important;
+        }
+        .td-table-dynamic tfoot tr {
+            border: none !important;
+        }
+        .td-table-dynamic tfoot td {
+            border: 1px solid #000000 !important;
+            font-weight: 700 !important;
+            background-color: #f8fafc !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        .td-table-tag {
+            border: 1px solid #334155 !important;
+            background: #ffffff !important;
+            color: #0f172a !important;
+            font-size: 7pt !important;
+            font-weight: 700 !important;
+            padding: 1px 4px !important;
+            border-radius: 3px !important;
+        }
+        .td-output-metadata {
+            margin-top: 10pt !important;
+            padding-top: 8pt !important;
+            border-top: 1px solid #000000 !important;
+            page-break-inside: avoid !important;
+        }
+        .td-meta-card {
+            background: #ffffff !important;
+            border: 1px solid #666666 !important;
+            padding: 6pt 8pt !important;
+            page-break-inside: avoid !important;
         }
     }
 </style>
@@ -1195,17 +1347,26 @@
 <div id="td-hasil-wrapper" class="td-card td-hidden" style="margin-top: 1.5rem;">
     <!-- Kop Cetak Resmi (Hanya Tampil Saat Dicetak / PDF) -->
     <div class="td-print-only">
-        <div style="text-align: center; border-bottom: 2.5px double #000000; padding-bottom: 6px; margin-bottom: 10px;">
-            <h2 style="font-size: 13pt; font-weight: 800; margin: 0; text-transform: uppercase;">PEMERINTAH PROVINSI MALUKU UTARA</h2>
-            <h3 style="font-size: 12pt; font-weight: 700; margin: 2px 0 0 0;">BADAN PERENCANAAN PEMBANGUNAN DAERAH (BAPPEDA)</h3>
-            <p style="font-size: 8.5pt; margin: 2px 0 0 0; color: #333;">Jl. Raya Lintas Halmahera, Gosale Puncak, Sofifi, Maluku Utara</p>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;">
-            <div>
-                <h4 style="font-size: 10.5pt; font-weight: 700; margin: 0; color: #111;">KINERA — KINERJA INFORMASI & DATA DAERAH BIDANG IPW</h4>
-                <p style="font-size: 8.5pt; color: #444; margin: 1px 0 0 0;">Laporan Penyajian Data Tabel Dinamis</p>
+        <div class="td-kop-surat">
+            <div class="td-kop-bar">
+                <div class="td-kop-logo-left">
+                    <img src="{{ asset('images/kop-logo.png') }}" alt="Logo Pemerintah Provinsi Maluku Utara & BAPPEDA" class="td-kop-img">
+                </div>
+                <div class="td-kop-text">
+                    <h2 class="td-kop-title">PEMERINTAH PROVINSI MALUKU UTARA</h2>
+                    <h3 class="td-kop-subtitle">BADAN PERENCANAAN PEMBANGUNAN DAERAH (BAPPEDA)</h3>
+                    <p class="td-kop-address">Jl. Raya Lintas Halmahera, Gosale Puncak, Sofifi, Maluku Utara</p>
+                </div>
+                <div class="td-kop-logo-spacer"></div>
             </div>
-            <div style="text-align: right; font-size: 8pt; color: #444;">
+            <div class="td-kop-divider"></div>
+        </div>
+        <div class="td-print-meta-bar">
+            <div>
+                <h4 style="font-size: 10pt; font-weight: 700; margin: 0; color: #000;">KINERA — KINERJA INFORMASI & DATA DAERAH BIDANG IPW</h4>
+                <p style="font-size: 8pt; color: #333; margin: 1px 0 0 0;">Laporan Penyajian Data Tabel Dinamis Multidimensi</p>
+            </div>
+            <div style="text-align: right; font-size: 8pt; color: #333;">
                 <div>Dicetak: <strong>{{ date('d/m/Y H:i') }} WIT</strong></div>
             </div>
         </div>
