@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="30 32 564 400" width="100%" height="100%">
     <defs>
         <linearGradient id="kineraGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0a192f"/>
-            <stop offset="35%" stop-color="#1d4ed8"/>
-            <stop offset="75%" stop-color="#2563eb"/>
-            <stop offset="100%" stop-color="#38bdf8"/>
+            <stop offset="0%" stop-color="#10357d"/>
+            <stop offset="35%" stop-color="#14449b"/>
+            <stop offset="70%" stop-color="#184dad"/>
+            <stop offset="100%" stop-color="#2563eb"/>
         </linearGradient>
     </defs>
     <path fill-rule="evenodd" clip-rule="evenodd" d="M 466 383 L 504 376 L 526 368 L 543 359 L 566 339 L 573 329 L 580 311 L 582 312 L 580 340 L 576 352 L 566 369 L 551 384 L 536 394 L 504 407 L 484 411 L 489 420 L 377 420 L 371 411 L 354 409 L 315 400 L 268 385 L 253 378 L 252 420 L 160 420 L 160 330 L 124 304 L 118 297 L 108 290 L 106 286 L 104 286 L 94 276 L 94 274 L 91 273 L 64 238 L 49 208 L 43 186 L 42 164 L 44 151 L 54 128 L 72 108 L 89 97 L 76 118 L 71 136 L 70 151 L 72 169 L 81 196 L 99 227 L 118 248 L 118 250 L 157 286 L 196 313 L 222 328 L 262 347 L 296 360 L 329 370 L 390 382 L 414 384 Z M 288 134 L 252 125 L 252 207 L 304 140 L 304 138 Z M 160 144 L 160 118 L 137 121 L 111 130 L 116 122 L 132 111 L 160 102 L 160 44 L 252 44 L 252 102 L 286 107 L 320 117 L 324 114 L 376 44 L 484 44 L 402 149 L 432 164 L 472 190 L 492 206 L 499 214 L 501 214 L 520 234 L 536 257 L 545 278 L 547 302 L 544 313 L 539 320 L 537 303 L 529 284 L 512 260 L 494 241 L 492 241 L 468 219 L 439 199 L 386 170 L 381 174 L 378 180 L 362 198 L 339 229 L 438 354 L 409 353 L 376 348 L 345 341 L 309 330 L 253 256 L 252 306 L 250 306 L 249 304 L 236 299 L 201 279 L 160 249 Z" fill="url(#kineraGradient)" />

@@ -103,7 +103,7 @@
             background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(29, 78, 216, 0.07), transparent 70%);
         }
 
-        /* ===== Central Subtle Watermark Logo KINERA ===== */
+        /* ===== Central Subtle Watermark Logo KINERA (Deep Blue) ===== */
         .td-bg-watermark {
             position: fixed;
             top: 50%;
@@ -115,7 +115,8 @@
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;
-            opacity: 0.04;
+            opacity: 0.065;
+            filter: drop-shadow(0 0 35px rgba(24, 77, 173, 0.12));
             pointer-events: none;
             z-index: -1;
             user-select: none;
