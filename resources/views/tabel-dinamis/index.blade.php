@@ -1369,7 +1369,7 @@
         <div class="td-kop-surat">
             <div class="td-kop-bar">
                 <div class="td-kop-logo-left">
-                    <img src="{{ asset('images/kop-logo.png') }}" alt="Logo Pemerintah Provinsi Maluku Utara & BAPPEDA" class="td-kop-img">
+                    <img src="{{ asset('images/kop-logo.svg') }}" alt="Logo Pemerintah Provinsi Maluku Utara & BAPPEDA" class="td-kop-img">
                 </div>
                 <div class="td-kop-text">
                     <h2 class="td-kop-title">PEMERINTAH PROVINSI MALUKU UTARA</h2>
