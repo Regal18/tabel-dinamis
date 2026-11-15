@@ -103,6 +103,24 @@
             background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(29, 78, 216, 0.07), transparent 70%);
         }
 
+        /* ===== Central Subtle Watermark Logo KINERA ===== */
+        .td-bg-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(650px, 75vw);
+            height: min(480px, 58vh);
+            background-image: url("{{ asset('images/kinera-logo.svg') }}");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: -1;
+            user-select: none;
+        }
+
         /* ===== Header (Clean, Elegant & Modern) ===== */
         .td-header {
             background: rgba(10, 22, 40, 0.95);
@@ -539,7 +557,7 @@
             body {
                 background: #ffffff !important;
             }
-            body::before, body::after {
+            body::before, body::after, .td-bg-watermark {
                 display: none !important;
             }
         }
@@ -547,6 +565,7 @@
     @stack('styles')
 </head>
 <body>
+    <div class="td-bg-watermark" aria-hidden="true"></div>
     <header class="td-header">
         <a href="{{ route('tabel-dinamis.beranda') }}" class="td-header-brand" title="Menuju Beranda KINERA">
             <div class="td-header-logo">
