@@ -103,22 +103,22 @@
             background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(29, 78, 216, 0.07), transparent 70%);
         }
 
-        /* ===== Central Subtle Watermark Logo KINERA (Deep Blue) ===== */
+        /* ===== Central Watermark Logo KINERA (Deep Blue) ===== */
         .td-bg-watermark {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: min(650px, 75vw);
-            height: min(480px, 58vh);
+            width: min(720px, 85vw);
+            height: min(540px, 68vh);
             background-image: url("{{ asset('images/kinera-logo.svg') }}");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;
-            opacity: 0.065;
-            filter: drop-shadow(0 0 35px rgba(24, 77, 173, 0.12));
+            opacity: 0.20;
+            filter: drop-shadow(0 0 50px rgba(15, 59, 143, 0.35)) saturate(1.35);
             pointer-events: none;
-            z-index: -1;
+            z-index: 0;
             user-select: none;
         }
 
@@ -264,6 +264,8 @@
             max-width: 1240px;
             margin: 0 auto;
             padding: 1.25rem 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* ===== Card ===== */
@@ -466,6 +468,8 @@
             margin-top: 2rem;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(8px);
+            position: relative;
+            z-index: 1;
         }
 
         /* ===== Utilities ===== */
