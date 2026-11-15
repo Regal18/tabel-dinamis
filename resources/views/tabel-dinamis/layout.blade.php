@@ -550,7 +550,7 @@
     <header class="td-header">
         <a href="{{ route('tabel-dinamis.beranda') }}" class="td-header-brand" title="Menuju Beranda KINERA">
             <div class="td-header-logo">
-                <img src="{{ asset('images/kinera-logo.png') }}" alt="Logo KINERA">
+                <img src="{{ asset('images/kinera-logo.svg') }}" alt="Logo KINERA">
             </div>
             <div class="td-brand-text">
                 <h1>KINERA</h1>
