@@ -458,18 +458,187 @@
         .td-alert-info    { background: var(--info-bg);    color: var(--info-text); border-color: var(--info-border); }
         .td-alert-warning { background: var(--warning-bg); color: var(--warning); border-color: var(--warning-border); }
 
-        /* ===== Footer ===== */
+        /* ===== Footer (Deep Blue Institutional Styling) ===== */
         .td-footer {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            color: var(--gray-500);
-            font-size: 0.75rem;
-            border-top: 1px solid rgba(226, 232, 240, 0.8);
-            margin-top: 2rem;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
+            background: linear-gradient(180deg, #0d1e38 0%, #07111e 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #94a3b8;
+            padding: 3rem 1.5rem 1.75rem;
+            margin-top: 3.5rem;
             position: relative;
             z-index: 1;
+            box-shadow: 0 -4px 20px rgba(5, 12, 24, 0.15);
+        }
+        .td-footer-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.2fr;
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .td-footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .td-footer-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+        .td-footer-logo {
+            width: 44px;
+            height: 44px;
+            background: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .td-footer-logo:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+        }
+        .td-footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .td-footer-title {
+            font-size: 1.35rem;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+        .td-footer-tagline {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #60a5fa;
+            letter-spacing: 0.02em;
+            margin-top: 2px;
+        }
+        .td-footer-desc {
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: #94a3b8;
+            margin: 0;
+            max-width: 480px;
+        }
+        .td-footer-heading {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .td-footer-heading::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+        .td-footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .td-footer-links li a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.82rem;
+            transition: color 0.15s ease, transform 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .td-footer-links li a:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+        .td-footer-links li a::before {
+            content: '›';
+            color: #3b82f6;
+            font-size: 1rem;
+            line-height: 1;
+        }
+        .td-footer-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .td-footer-text {
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: #94a3b8;
+        }
+        .td-footer-text strong {
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+        .td-footer-bottom {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        .td-footer-copyright {
+            color: #94a3b8;
+        }
+        .td-footer-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            color: #cbd5e1;
+            font-size: 0.72rem;
+        }
+        .td-footer-status .td-dot {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+        }
+        @media (max-width: 900px) {
+            .td-footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .td-footer {
+                padding: 2.5rem 1.25rem 1.25rem;
+            }
+            .td-footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
         }
 
         /* ===== Utilities ===== */
@@ -562,7 +731,7 @@
             body {
                 background: #ffffff !important;
             }
-            body::before, body::after, .td-bg-watermark {
+            body::before, body::after, .td-bg-watermark, .td-header, .td-footer {
                 display: none !important;
             }
         }
@@ -623,7 +792,51 @@
     </main>
 
     <footer class="td-footer">
-        &copy; {{ date('Y') }} BAPPEDA Provinsi Maluku Utara — KINERA (Kinerja Informasi & Data Daerah Bidang IPW)
+        <div class="td-footer-inner">
+            <div class="td-footer-brand">
+                <div class="td-footer-logo-wrap">
+                    <div class="td-footer-logo">
+                        <img src="{{ asset('images/kinera-logo.svg') }}" alt="Logo KINERA">
+                    </div>
+                    <div>
+                        <div class="td-footer-title">KINERA</div>
+                        <div class="td-footer-tagline">Kinerja Informasi &amp; Data Daerah Bidang IPW</div>
+                    </div>
+                </div>
+                <p class="td-footer-desc">
+                    Sistem informasi integrasi dan visualisasi data indikator pembangunan daerah Bidang Infrastruktur dan Kewilayahan (IPW), Badan Perencanaan Pembangunan Daerah Provinsi Maluku Utara.
+                </p>
+            </div>
+
+            <div class="td-footer-nav">
+                <div class="td-footer-heading">Navigasi Utama</div>
+                <ul class="td-footer-links">
+                    <li><a href="{{ route('tabel-dinamis.beranda') }}">Beranda KINERA</a></li>
+                    <li><a href="{{ route('tabel-dinamis.index') }}">Eksplorasi Tabel Dinamis</a></li>
+                    <li><a href="{{ route('tabel-dinamis.admin.indikator.index') }}">Master Data Indikator</a></li>
+                    <li><a href="{{ route('tabel-dinamis.admin.impor.form') }}">Admin Impor Excel</a></li>
+                </ul>
+            </div>
+
+            <div class="td-footer-info">
+                <div class="td-footer-heading">Kontak &amp; Lokasi</div>
+                <div class="td-footer-text">
+                    <strong>BAPPEDA Provinsi Maluku Utara</strong><br>
+                    Bidang Infrastruktur dan Kewilayahan (IPW)<br>
+                    Kawasan Pusat Pemerintahan Provinsi Maluku Utara<br>
+                    Jl. Raya Lintas Halmahera, Sofifi
+                </div>
+            </div>
+        </div>
+
+        <div class="td-footer-bottom">
+            <div class="td-footer-copyright">
+                &copy; {{ date('Y') }} BAPPEDA Provinsi Maluku Utara — KINERA. Hak Cipta Dilindungi.
+            </div>
+            <div class="td-footer-status">
+                <span class="td-dot"></span> IPW Data Hub • Provinsi Maluku Utara
+            </div>
+        </div>
     </footer>
 
     @stack('scripts')
