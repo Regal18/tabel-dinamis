@@ -1045,58 +1045,60 @@
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
-            gap: 12px !important;
+            gap: 14px !important;
         }
         .td-kop-logo-left {
-            width: 220px !important;
+            width: 240px !important;
             flex-shrink: 0 !important;
             text-align: left !important;
         }
         .td-kop-img {
-            height: 52px !important;
+            height: 58px !important;
             width: auto !important;
             max-width: 100% !important;
             object-fit: contain !important;
             display: block !important;
+            image-rendering: -webkit-optimize-contrast !important;
+            image-rendering: crisp-edges !important;
         }
         .td-kop-text {
             flex: 1 !important;
             text-align: center !important;
         }
         .td-kop-title {
-            font-size: 12.5pt !important;
+            font-size: 13pt !important;
             font-weight: 800 !important;
             margin: 0 !important;
             text-transform: uppercase !important;
             color: #000000 !important;
             letter-spacing: 0.5px !important;
-            line-height: 1.25 !important;
+            line-height: 1.2 !important;
         }
         .td-kop-subtitle {
-            font-size: 11pt !important;
+            font-size: 11.5pt !important;
             font-weight: 700 !important;
-            margin: 2px 0 0 0 !important;
+            margin: 3px 0 0 0 !important;
             text-transform: uppercase !important;
             color: #000000 !important;
             letter-spacing: 0.3px !important;
-            line-height: 1.25 !important;
+            line-height: 1.2 !important;
         }
         .td-kop-address {
-            font-size: 8pt !important;
-            margin: 2px 0 0 0 !important;
+            font-size: 8.5pt !important;
+            margin: 3px 0 0 0 !important;
             color: #222222 !important;
             line-height: 1.2 !important;
         }
         .td-kop-logo-spacer {
-            width: 220px !important;
+            width: 240px !important;
             flex-shrink: 0 !important;
         }
         .td-kop-divider {
             border-bottom: 2px solid #000000 !important;
             border-top: 1px solid #000000 !important;
-            height: 2px !important;
-            margin-top: 5px !important;
-            margin-bottom: 8pt !important;
+            height: 3px !important;
+            margin-top: 6px !important;
+            margin-bottom: 10pt !important;
         }
         .td-print-meta-bar {
             display: flex !important;
@@ -1104,7 +1106,7 @@
             align-items: flex-end !important;
             margin-bottom: 8pt !important;
             padding-bottom: 4pt !important;
-            border-bottom: 1px solid #cccccc !important;
+            border-bottom: 1px solid #000000 !important;
         }
 
         /* Tabel Dinamis di Mode Cetak */
@@ -1121,8 +1123,7 @@
             border-collapse: collapse !important;
             border-spacing: 0 !important;
             border: 1.5px solid #000000 !important;
-            table-layout: auto !important;
-            font-size: 8.5pt !important;
+            font-size: 8pt !important;
             background: #ffffff !important;
             page-break-inside: auto !important;
         }
@@ -1142,10 +1143,10 @@
         .td-table-dynamic td {
             border: 1px solid #000000 !important;
             border-style: solid !important;
-            padding: 4.5pt 6.5pt !important;
+            padding: 4.5pt 5.5pt !important;
             color: #000000 !important;
-            font-size: 8.5pt !important;
-            line-height: 1.3 !important;
+            font-size: 8pt !important;
+            line-height: 1.25 !important;
             box-shadow: none !important;
             vertical-align: middle !important;
         }
@@ -1153,8 +1154,18 @@
             background-color: #f1f5f9 !important;
             font-weight: 700 !important;
             text-align: center !important;
+            color: #000000 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
+        }
+        .td-table-dynamic td.td-align-right {
+            text-align: right !important;
+            font-variant-numeric: tabular-nums !important;
+            padding-right: 6pt !important;
+        }
+        .td-table-dynamic td.td-align-center {
+            text-align: center !important;
+            color: #444444 !important;
         }
         .td-table-dynamic tbody tr:nth-child(even) td {
             background-color: #fafafa !important;
@@ -1173,9 +1184,17 @@
             text-align: left !important;
             font-weight: 600 !important;
             background-color: inherit !important;
+            width: 175px !important;
+            min-width: 175px !important;
+            max-width: 175px !important;
+            padding-left: 8pt !important;
+            padding-right: 6pt !important;
         }
         .td-table-dynamic tfoot tr {
             border: none !important;
+        }
+        .td-table-dynamic tfoot tr:first-child td {
+            border-top: 2px solid #000000 !important;
         }
         .td-table-dynamic tfoot td {
             border: 1px solid #000000 !important;
